@@ -14,11 +14,11 @@ import (
 
 // Creator Creator of the object
 type Creator struct {
-	// TODO.
+	// The User email
 	Email *string `json:"email,omitempty"`
-	// TODO.
+	// The User handle.
 	Handle *string `json:"handle,omitempty"`
-	// TODO.
+	// The User name.
 	Name *string `json:"name,omitempty"`
 }
 

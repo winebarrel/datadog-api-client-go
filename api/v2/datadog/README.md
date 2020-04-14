@@ -77,6 +77,53 @@ Class | Method | HTTP request | Description
 *DashboardListsApi* | [**DeleteDashboardListItems**](docs/DashboardListsApi.md#deletedashboardlistitems) | **Delete** /api/v2/dashboard/lists/manual/{dashboard_list_id}/dashboards | Delete items from a dashboard list
 *DashboardListsApi* | [**GetDashboardListItems**](docs/DashboardListsApi.md#getdashboardlistitems) | **Get** /api/v2/dashboard/lists/manual/{dashboard_list_id}/dashboards | Get a Dashboard List
 *DashboardListsApi* | [**UpdateDashboardListItems**](docs/DashboardListsApi.md#updatedashboardlistitems) | **Put** /api/v2/dashboard/lists/manual/{dashboard_list_id}/dashboards | Update items of a dashboard list
+*IncidentsApi* | [**AddServiceToIncident**](docs/IncidentsApi.md#addservicetoincident) | **Post** /api/v1/incidents/{incident_id}/relationships/services | Add a new service to an incident
+*IncidentsApi* | [**AddTeamToIncident**](docs/IncidentsApi.md#addteamtoincident) | **Post** /api/v1/incidents/{incident_id}/relationships/teams | Add a new team to an incident
+*IncidentsApi* | [**CreateIncident**](docs/IncidentsApi.md#createincident) | **Post** /api/v1/incidents | Create a new incident
+*IncidentsApi* | [**CreateIncidentPostmortem**](docs/IncidentsApi.md#createincidentpostmortem) | **Post** /api/v1/incidents/{incident_id}/relationships/postmortems | Create a new postmortem
+*IncidentsApi* | [**CreateIncidentSelection**](docs/IncidentsApi.md#createincidentselection) | **Post** /api/v1/incidents/{incident_id}/relationships/selections | Create a new selection
+*IncidentsApi* | [**CreateIncidentTodo**](docs/IncidentsApi.md#createincidenttodo) | **Post** /api/v1/incidents/{incident_id}/relationships/todos | Create a new todo
+*IncidentsApi* | [**DeleteIncident**](docs/IncidentsApi.md#deleteincident) | **Delete** /api/v1/incidents/{incident_id} | Delete an existing incident
+*IncidentsApi* | [**DeleteIncidentPostmortem**](docs/IncidentsApi.md#deleteincidentpostmortem) | **Delete** /api/v1/incidents/{incident_id}/relationships/postmortems/{postmortem_id} | Update an existing postmortem
+*IncidentsApi* | [**DeleteIncidentSelection**](docs/IncidentsApi.md#deleteincidentselection) | **Delete** /api/v1/incidents/{incident_id}/relationships/selections/{selection_id} | Deletes an existing selection
+*IncidentsApi* | [**DeleteIncidentTodo**](docs/IncidentsApi.md#deleteincidenttodo) | **Delete** /api/v1/incidents/{incident_id}/relationships/todos/{todo_id} | Deletes an existing todo for the given incident
+*IncidentsApi* | [**GetIncident**](docs/IncidentsApi.md#getincident) | **Get** /api/v1/incidents/{incident_id} | Get the details of an incident
+*IncidentsApi* | [**GetIncidentPostmortem**](docs/IncidentsApi.md#getincidentpostmortem) | **Get** /api/v1/incidents/{incident_id}/relationships/postmortems/{postmortem_id} | Get details of a postmortem
+*IncidentsApi* | [**GetIncidentPostmortems**](docs/IncidentsApi.md#getincidentpostmortems) | **Get** /api/v1/incidents/{incident_id}/relationships/postmortems | Get a list of all Postmortems
+*IncidentsApi* | [**GetIncidentSelections**](docs/IncidentsApi.md#getincidentselections) | **Get** /api/v1/incidents/{incident_id}/relationships/selections | Get all selections for the given incident
+*IncidentsApi* | [**GetIncidentTodo**](docs/IncidentsApi.md#getincidenttodo) | **Get** /api/v1/incidents/{incident_id}/relationships/todos/{todo_id} | Get the details of an incident todo
+*IncidentsApi* | [**GetIncidentTodos**](docs/IncidentsApi.md#getincidenttodos) | **Get** /api/v1/incidents/{incident_id}/relationships/todos | Get all todos for the given incident
+*IncidentsApi* | [**GetIncidents**](docs/IncidentsApi.md#getincidents) | **Get** /api/v1/incidents | Get a list of incidents
+*IncidentsApi* | [**GetServicesForIncident**](docs/IncidentsApi.md#getservicesforincident) | **Get** /api/v1/incidents/{incident_id}/relationships/services | Get all services for the given incident
+*IncidentsApi* | [**GetTeamsForIncident**](docs/IncidentsApi.md#getteamsforincident) | **Get** /api/v1/incidents/{incident_id}/relationships/teams | Get all teams for the given incident
+*IncidentsApi* | [**IncidentsSummary**](docs/IncidentsApi.md#incidentssummary) | **Get** /api/v1/incidents/summary | Incidents Summary
+*IncidentsApi* | [**PatchIncident**](docs/IncidentsApi.md#patchincident) | **Patch** /api/v1/incidents/{incident_id} | Update an existing incident
+*IncidentsApi* | [**PatchIncidentPostmortem**](docs/IncidentsApi.md#patchincidentpostmortem) | **Patch** /api/v1/incidents/{incident_id}/relationships/postmortems/{postmortem_id} | Update an existing postmortem
+*IncidentsApi* | [**PatchIncidentSelection**](docs/IncidentsApi.md#patchincidentselection) | **Patch** /api/v1/incidents/{incident_id}/relationships/selections/{selection_id} | Update an existing selection
+*IncidentsApi* | [**PatchIncidentTodo**](docs/IncidentsApi.md#patchincidenttodo) | **Patch** /api/v1/incidents/{incident_id}/relationships/todos/{todo_id} | Update an existing todo
+*IncidentsApi* | [**RemoveServiceFromIncident**](docs/IncidentsApi.md#removeservicefromincident) | **Delete** /api/v1/incidents/{incident_id}/relationships/services/{service_id} | Remove a service from an incident
+*IncidentsApi* | [**RemoveTeamFromIncident**](docs/IncidentsApi.md#removeteamfromincident) | **Delete** /api/v1/incidents/{incident_id}/relationships/teams/{team_id} | Remove a team from an incident
+*IncidentsApi* | [**SearchIncidents**](docs/IncidentsApi.md#searchincidents) | **Get** /api/v1/incidents/search | Search incidents
+*IncidentsConfigApi* | [**CreateIncidentConfigField**](docs/IncidentsConfigApi.md#createincidentconfigfield) | **Post** /api/v1/incidents/config/fields | Create a new incident configuration field
+*IncidentsConfigApi* | [**CreateIncidentConfigFieldChoice**](docs/IncidentsConfigApi.md#createincidentconfigfieldchoice) | **Post** /api/v1/incidents/config/fields/{field_id}/relationships/choices | Create a new choice
+*IncidentsConfigApi* | [**DeleteIncidentConfigField**](docs/IncidentsConfigApi.md#deleteincidentconfigfield) | **Delete** /api/v1/incidents/config/fields/{field_id} | Deletes an existing field
+*IncidentsConfigApi* | [**DeleteIncidentConfigFieldChoice**](docs/IncidentsConfigApi.md#deleteincidentconfigfieldchoice) | **Delete** /api/v1/incidents/config/fields/{field_id}/relationships/choices/{choice_id} | Update an existing choice for the given incident
+*IncidentsConfigApi* | [**GetIncidentConfigField**](docs/IncidentsConfigApi.md#getincidentconfigfield) | **Get** /api/v1/incidents/config/fields/{field_id} | Get the details of a field
+*IncidentsConfigApi* | [**GetIncidentConfigFieldChoice**](docs/IncidentsConfigApi.md#getincidentconfigfieldchoice) | **Get** /api/v1/incidents/config/fields/{field_id}/relationships/choices/{choice_id} | Get the details of a field choice
+*IncidentsConfigApi* | [**GetIncidentConfigFieldChoices**](docs/IncidentsConfigApi.md#getincidentconfigfieldchoices) | **Get** /api/v1/incidents/config/fields/{field_id}/relationships/choices | Get all choices for the given field
+*IncidentsConfigApi* | [**GetIncidentConfigFields**](docs/IncidentsConfigApi.md#getincidentconfigfields) | **Get** /api/v1/incidents/config/fields | Get a list of all configuration fields
+*IncidentsConfigApi* | [**PatchIncidentConfigField**](docs/IncidentsConfigApi.md#patchincidentconfigfield) | **Patch** /api/v1/incidents/config/fields/{field_id} | Updates an existing configuration field
+*IncidentsConfigApi* | [**PatchIncidentConfigFieldChoice**](docs/IncidentsConfigApi.md#patchincidentconfigfieldchoice) | **Patch** /api/v1/incidents/config/fields/{field_id}/relationships/choices/{choice_id} | Update an existing field choice
+*ServicesApi* | [**CreateService**](docs/ServicesApi.md#createservice) | **Post** /api/v1/services | Create a new service
+*ServicesApi* | [**DeleteService**](docs/ServicesApi.md#deleteservice) | **Delete** /api/v1/services/{service_id} | Delete an existing service
+*ServicesApi* | [**GetService**](docs/ServicesApi.md#getservice) | **Get** /api/v1/services/{service_id} | Get details of a service
+*ServicesApi* | [**GetServices**](docs/ServicesApi.md#getservices) | **Get** /api/v1/services | Get a list of all services
+*ServicesApi* | [**PatchService**](docs/ServicesApi.md#patchservice) | **Patch** /api/v1/services/{service_id} | Update an existing service
+*TeamsApi* | [**CreateTeam**](docs/TeamsApi.md#createteam) | **Post** /api/v1/teams | Create a new team
+*TeamsApi* | [**DeleteTeam**](docs/TeamsApi.md#deleteteam) | **Delete** /api/v1/teams/{team_id} | Delete an existing team
+*TeamsApi* | [**GetTeam**](docs/TeamsApi.md#getteam) | **Get** /api/v1/teams/{team_id} | Get details of a team
+*TeamsApi* | [**GetTeams**](docs/TeamsApi.md#getteams) | **Get** /api/v1/teams | Get a list of all teams
+*TeamsApi* | [**PatchTeam**](docs/TeamsApi.md#patchteam) | **Patch** /api/v1/teams/{team_id} | Update an existing team
 *UsersApi* | [**CreateUser**](docs/UsersApi.md#createuser) | **Post** /api/v2/users | Create user
 *UsersApi* | [**DisableUser**](docs/UsersApi.md#disableuser) | **Delete** /api/v2/users/{user_id} | Disable user
 *UsersApi* | [**GetInvitation**](docs/UsersApi.md#getinvitation) | **Get** /api/v2/user_invitations/{user_invitation_uuid} | Get a user invitation
@@ -97,12 +144,71 @@ Class | Method | HTTP request | Description
  - [DashboardListItem](docs/DashboardListItem.md)
  - [DashboardListItems](docs/DashboardListItems.md)
  - [DashboardType](docs/DashboardType.md)
+ - [Incident](docs/Incident.md)
+ - [IncidentAttributes](docs/IncidentAttributes.md)
+ - [IncidentConfigField](docs/IncidentConfigField.md)
+ - [IncidentConfigFieldAttributes](docs/IncidentConfigFieldAttributes.md)
+ - [IncidentConfigFieldChoice](docs/IncidentConfigFieldChoice.md)
+ - [IncidentConfigFieldChoiceAttributes](docs/IncidentConfigFieldChoiceAttributes.md)
+ - [IncidentConfigFieldChoiceListPayload](docs/IncidentConfigFieldChoiceListPayload.md)
+ - [IncidentConfigFieldChoicePayload](docs/IncidentConfigFieldChoicePayload.md)
+ - [IncidentConfigFieldListPayload](docs/IncidentConfigFieldListPayload.md)
+ - [IncidentConfigFieldPayload](docs/IncidentConfigFieldPayload.md)
+ - [IncidentConfigFieldRelationships](docs/IncidentConfigFieldRelationships.md)
+ - [IncidentConfigFieldTable](docs/IncidentConfigFieldTable.md)
+ - [IncidentConfigFieldType](docs/IncidentConfigFieldType.md)
+ - [IncidentCreateWithInitialData](docs/IncidentCreateWithInitialData.md)
+ - [IncidentCreateWithInitialDataAttributes](docs/IncidentCreateWithInitialDataAttributes.md)
+ - [IncidentCreateWithInitialDataPayload](docs/IncidentCreateWithInitialDataPayload.md)
+ - [IncidentFacetPercentilesAggregationDataSchema](docs/IncidentFacetPercentilesAggregationDataSchema.md)
+ - [IncidentFacetSchema](docs/IncidentFacetSchema.md)
+ - [IncidentFacetSchemaDataOneOf](docs/IncidentFacetSchemaDataOneOf.md)
+ - [IncidentFacetStatsAggregationDataSchema](docs/IncidentFacetStatsAggregationDataSchema.md)
+ - [IncidentFacetTermsAggregationDataSchema](docs/IncidentFacetTermsAggregationDataSchema.md)
+ - [IncidentFacetTermsAggregationDataSchemaCountOneOf](docs/IncidentFacetTermsAggregationDataSchemaCountOneOf.md)
+ - [IncidentFacetTermsAggregationDataSchemaNameOneOf](docs/IncidentFacetTermsAggregationDataSchemaNameOneOf.md)
+ - [IncidentFacetType](docs/IncidentFacetType.md)
+ - [IncidentInitialUserDefinedFieldChoices](docs/IncidentInitialUserDefinedFieldChoices.md)
+ - [IncidentListPayload](docs/IncidentListPayload.md)
+ - [IncidentPayload](docs/IncidentPayload.md)
+ - [IncidentPostmortem](docs/IncidentPostmortem.md)
+ - [IncidentPostmortemAttributes](docs/IncidentPostmortemAttributes.md)
+ - [IncidentPostmortemListPayload](docs/IncidentPostmortemListPayload.md)
+ - [IncidentPostmortemPayload](docs/IncidentPostmortemPayload.md)
+ - [IncidentRelationships](docs/IncidentRelationships.md)
+ - [IncidentSearch](docs/IncidentSearch.md)
+ - [IncidentSearchAttributes](docs/IncidentSearchAttributes.md)
+ - [IncidentSearchPayload](docs/IncidentSearchPayload.md)
+ - [IncidentSelection](docs/IncidentSelection.md)
+ - [IncidentSelectionAttributes](docs/IncidentSelectionAttributes.md)
+ - [IncidentSelectionListPayload](docs/IncidentSelectionListPayload.md)
+ - [IncidentSelectionPayload](docs/IncidentSelectionPayload.md)
+ - [IncidentSelectionRelationships](docs/IncidentSelectionRelationships.md)
+ - [IncidentSelectionRelationshipsChoice](docs/IncidentSelectionRelationshipsChoice.md)
+ - [IncidentSelectionRelationshipsField](docs/IncidentSelectionRelationshipsField.md)
+ - [IncidentSummary](docs/IncidentSummary.md)
+ - [IncidentSummaryAttributes](docs/IncidentSummaryAttributes.md)
+ - [IncidentSummaryPayload](docs/IncidentSummaryPayload.md)
+ - [IncidentTimelineCellChoiceChangeContent](docs/IncidentTimelineCellChoiceChangeContent.md)
+ - [IncidentTimelineCellChoiceChangeContentData](docs/IncidentTimelineCellChoiceChangeContentData.md)
+ - [IncidentTimelineCellCommon](docs/IncidentTimelineCellCommon.md)
+ - [IncidentTimelineCellCommonContentOneOf](docs/IncidentTimelineCellCommonContentOneOf.md)
+ - [IncidentTimelineCellMarkdownContent](docs/IncidentTimelineCellMarkdownContent.md)
+ - [IncidentTimelineCellStatusChangeContent](docs/IncidentTimelineCellStatusChangeContent.md)
+ - [IncidentTodo](docs/IncidentTodo.md)
+ - [IncidentTodoAttributes](docs/IncidentTodoAttributes.md)
+ - [IncidentTodoListPayload](docs/IncidentTodoListPayload.md)
+ - [IncidentTodoPayload](docs/IncidentTodoPayload.md)
+ - [IncidentTodoRelationships](docs/IncidentTodoRelationships.md)
  - [Organization](docs/Organization.md)
  - [OrganizationAttributes](docs/OrganizationAttributes.md)
+ - [OrganizationJSONAPIID](docs/OrganizationJSONAPIID.md)
  - [Pagination](docs/Pagination.md)
  - [Permission](docs/Permission.md)
  - [PermissionAttributes](docs/PermissionAttributes.md)
  - [Permissions](docs/Permissions.md)
+ - [QueryMetadata](docs/QueryMetadata.md)
+ - [QueryMetadataPagination](docs/QueryMetadataPagination.md)
  - [QuerySortOrder](docs/QuerySortOrder.md)
  - [RelationshipToOrganization](docs/RelationshipToOrganization.md)
  - [RelationshipToOrganizationData](docs/RelationshipToOrganizationData.md)
@@ -118,6 +224,15 @@ Class | Method | HTTP request | Description
  - [Role](docs/Role.md)
  - [RoleAttributes](docs/RoleAttributes.md)
  - [RoleRelationships](docs/RoleRelationships.md)
+ - [Service](docs/Service.md)
+ - [ServiceAttributes](docs/ServiceAttributes.md)
+ - [ServiceListPayload](docs/ServiceListPayload.md)
+ - [ServicePayload](docs/ServicePayload.md)
+ - [Team](docs/Team.md)
+ - [TeamAttributes](docs/TeamAttributes.md)
+ - [TeamListPayload](docs/TeamListPayload.md)
+ - [TeamPayload](docs/TeamPayload.md)
+ - [User](docs/User.md)
  - [UserCreateAttributes](docs/UserCreateAttributes.md)
  - [UserCreateData](docs/UserCreateData.md)
  - [UserCreatePayload](docs/UserCreatePayload.md)
@@ -128,6 +243,11 @@ Class | Method | HTTP request | Description
  - [UserInvitationResponse](docs/UserInvitationResponse.md)
  - [UserInvitationResponseData](docs/UserInvitationResponseData.md)
  - [UserInvitationsResponse](docs/UserInvitationsResponse.md)
+ - [UserJSONAPIID](docs/UserJSONAPIID.md)
+ - [UserJSONAPIIDData](docs/UserJSONAPIIDData.md)
+ - [UserJSONAPIResponse](docs/UserJSONAPIResponse.md)
+ - [UserJSONAPIResponseRelationships](docs/UserJSONAPIResponseRelationships.md)
+ - [UserJSONAPIResponseRelationshipsOrg](docs/UserJSONAPIResponseRelationshipsOrg.md)
  - [UserRelationships](docs/UserRelationships.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserResponseAttributes](docs/UserResponseAttributes.md)

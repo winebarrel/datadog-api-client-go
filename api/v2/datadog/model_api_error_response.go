@@ -12,9 +12,9 @@ import (
 	"encoding/json"
 )
 
-// APIErrorResponse TODO.
+// APIErrorResponse API Error response.
 type APIErrorResponse struct {
-	// TODO.
+	// An array of error messages.
 	Errors []string `json:"errors"`
 }
 
