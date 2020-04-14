@@ -1,6 +1,6 @@
 module github.com/DataDog/datadog-api-client-go
 
-go 1.14
+go 1.13
 
 require (
 	github.com/dnaeon/go-vcr v1.0.1
