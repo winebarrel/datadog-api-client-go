@@ -5,6 +5,7 @@ All URIs are relative to *https://api.datadoghq.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetDailyCustomReports**](UsageMeteringApi.md#GetDailyCustomReports) | **Get** /api/v1/daily_custom_reports | Get the list of available daily custom reports
+[**GetIngestedSpans**](UsageMeteringApi.md#GetIngestedSpans) | **Get** /api/v1/usage/ingested-spans | Get hourly usage for ingested spans
 [**GetMonthlyCustomReports**](UsageMeteringApi.md#GetMonthlyCustomReports) | **Get** /api/v1/monthly_custom_reports | Get the list of available monthly custom reports
 [**GetSpecifiedDailyCustomReports**](UsageMeteringApi.md#GetSpecifiedDailyCustomReports) | **Get** /api/v1/daily_custom_reports/{report_id} | Get specified daily custom reports
 [**GetSpecifiedMonthlyCustomReports**](UsageMeteringApi.md#GetSpecifiedMonthlyCustomReports) | **Get** /api/v1/monthly_custom_reports/{report_id} | Get specified monthly custom reports
@@ -13,6 +14,7 @@ Method | HTTP request | Description
 [**GetUsageBillableSummary**](UsageMeteringApi.md#GetUsageBillableSummary) | **Get** /api/v1/usage/billable-summary | Get billable usage across your multi-org account
 [**GetUsageFargate**](UsageMeteringApi.md#GetUsageFargate) | **Get** /api/v1/usage/fargate | Get hourly usage for Fargate
 [**GetUsageHosts**](UsageMeteringApi.md#GetUsageHosts) | **Get** /api/v1/usage/hosts | Get hourly usage for hosts and containers
+[**GetUsageIndexedSpans**](UsageMeteringApi.md#GetUsageIndexedSpans) | **Get** /api/v1/usage/indexed-spans | Get hourly usage for indexed spans
 [**GetUsageLambda**](UsageMeteringApi.md#GetUsageLambda) | **Get** /api/v1/usage/aws_lambda | Get hourly usage for Lambda
 [**GetUsageLogs**](UsageMeteringApi.md#GetUsageLogs) | **Get** /api/v1/usage/logs | Get hourly usage for Logs
 [**GetUsageLogsByIndex**](UsageMeteringApi.md#GetUsageLogsByIndex) | **Get** /api/v1/usage/logs_by_index | Get hourly usage for Logs by Index
@@ -71,8 +73,10 @@ func main() {
     sort := *datadog.NewUsageSort() // UsageSort | The field to sort by: `[computed_on, size, start_date, end_date]`. (optional) (default to "start_date")
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("GetDailyCustomReports", true)
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetDailyCustomReports(context.Background()).PageSize(pageSize).PageNumber(pageNumber).SortDir(sortDir).Sort(sort).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetDailyCustomReports(ctx).PageSize(pageSize).PageNumber(pageNumber).SortDir(sortDir).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetDailyCustomReports``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,6 +105,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UsageCustomReportsResponse**](UsageCustomReportsResponse.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth), [appKeyAuth](../README.md#appKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json;datetime-format=rfc3339
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetIngestedSpans
+
+> UsageIngestedSpansResponse GetIngestedSpans(ctx).StartHr(startHr).EndHr(endHr).Execute()
+
+Get hourly usage for ingested spans
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+)
+
+func main() {
+    ctx := context.WithValue(
+        context.Background(),
+        datadog.ContextAPIKeys,
+        map[string]datadog.APIKey{
+            "apiKeyAuth": {
+                Key: os.Getenv("DD_CLIENT_API_KEY"),
+            },
+            "appKeyAuth": {
+                Key: os.Getenv("DD_CLIENT_APP_KEY"),
+            },
+        },
+    )
+
+    startHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage beginning at this hour.
+    endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
+
+    configuration := datadog.NewConfiguration()
+
+    api_client := datadog.NewAPIClient(configuration)
+    resp, r, err := api_client.UsageMeteringApi.GetIngestedSpans(ctx).StartHr(startHr).EndHr(endHr).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetIngestedSpans``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetIngestedSpans`: UsageIngestedSpansResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsageMeteringApi.GetIngestedSpans`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIngestedSpansRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startHr** | **time.Time** | Datetime in ISO-8601 format, UTC, precise to hour: &#x60;[YYYY-MM-DDThh]&#x60; for usage beginning at this hour. | 
+ **endHr** | **time.Time** | Datetime in ISO-8601 format, UTC, precise to hour: &#x60;[YYYY-MM-DDThh]&#x60; for usage ending **before** this hour. | 
+
+### Return type
+
+[**UsageIngestedSpansResponse**](UsageIngestedSpansResponse.md)
 
 ### Authorization
 
@@ -156,8 +242,10 @@ func main() {
     sort := *datadog.NewUsageSort() // UsageSort | The field to sort by: `[computed_on, size, start_date, end_date]`. (optional) (default to "start_date")
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("GetMonthlyCustomReports", true)
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetMonthlyCustomReports(context.Background()).PageSize(pageSize).PageNumber(pageNumber).SortDir(sortDir).Sort(sort).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetMonthlyCustomReports(ctx).PageSize(pageSize).PageNumber(pageNumber).SortDir(sortDir).Sort(sort).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetMonthlyCustomReports``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -238,8 +326,10 @@ func main() {
     reportId := "reportId_example" // string | The specified ID to search results for.
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("GetSpecifiedDailyCustomReports", true)
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetSpecifiedDailyCustomReports(context.Background(), reportId).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetSpecifiedDailyCustomReports(ctx, reportId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetSpecifiedDailyCustomReports``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -321,8 +411,10 @@ func main() {
     reportId := "reportId_example" // string | The specified ID to search results for.
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("GetSpecifiedMonthlyCustomReports", true)
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetSpecifiedMonthlyCustomReports(context.Background(), reportId).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetSpecifiedMonthlyCustomReports(ctx, reportId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetSpecifiedMonthlyCustomReports``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -405,8 +497,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetTracingWithoutLimits(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetTracingWithoutLimits(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetTracingWithoutLimits``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -486,8 +579,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageAnalyzedLogs(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageAnalyzedLogs(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageAnalyzedLogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -566,8 +660,9 @@ func main() {
     month := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to month: `[YYYY-MM]` for usage starting this month. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageBillableSummary(context.Background()).Month(month).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageBillableSummary(ctx).Month(month).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageBillableSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -646,8 +741,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageFargate(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageFargate(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageFargate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -727,8 +823,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageHosts(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageHosts(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageHosts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -755,6 +852,88 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UsageHostsResponse**](UsageHostsResponse.md)
+
+### Authorization
+
+[apiKeyAuth](../README.md#apiKeyAuth), [appKeyAuth](../README.md#appKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json;datetime-format=rfc3339
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetUsageIndexedSpans
+
+> UsageIndexedSpansResponse GetUsageIndexedSpans(ctx).StartHr(startHr).EndHr(endHr).Execute()
+
+Get hourly usage for indexed spans
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+)
+
+func main() {
+    ctx := context.WithValue(
+        context.Background(),
+        datadog.ContextAPIKeys,
+        map[string]datadog.APIKey{
+            "apiKeyAuth": {
+                Key: os.Getenv("DD_CLIENT_API_KEY"),
+            },
+            "appKeyAuth": {
+                Key: os.Getenv("DD_CLIENT_APP_KEY"),
+            },
+        },
+    )
+
+    startHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage beginning at this hour.
+    endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
+
+    configuration := datadog.NewConfiguration()
+
+    api_client := datadog.NewAPIClient(configuration)
+    resp, r, err := api_client.UsageMeteringApi.GetUsageIndexedSpans(ctx).StartHr(startHr).EndHr(endHr).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageIndexedSpans``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetUsageIndexedSpans`: UsageIndexedSpansResponse
+    fmt.Fprintf(os.Stdout, "Response from `UsageMeteringApi.GetUsageIndexedSpans`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetUsageIndexedSpansRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startHr** | **time.Time** | Datetime in ISO-8601 format, UTC, precise to hour: &#x60;[YYYY-MM-DDThh]&#x60; for usage beginning at this hour. | 
+ **endHr** | **time.Time** | Datetime in ISO-8601 format, UTC, precise to hour: &#x60;[YYYY-MM-DDThh]&#x60; for usage ending **before** this hour. | 
+
+### Return type
+
+[**UsageIndexedSpansResponse**](UsageIndexedSpansResponse.md)
 
 ### Authorization
 
@@ -808,8 +987,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageLambda(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageLambda(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageLambda``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -889,8 +1069,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageLogs(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageLogs(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageLogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -971,8 +1152,9 @@ func main() {
     indexName := []string{"Inner_example"} // []string | Comma-separated list of log index names. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageLogsByIndex(context.Background()).StartHr(startHr).EndHr(endHr).IndexName(indexName).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageLogsByIndex(ctx).StartHr(startHr).EndHr(endHr).IndexName(indexName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageLogsByIndex``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1053,8 +1235,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageNetworkFlows(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageNetworkFlows(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageNetworkFlows``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1134,8 +1317,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageNetworkHosts(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageNetworkHosts(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageNetworkHosts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1215,8 +1399,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageProfiling(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageProfiling(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageProfiling``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1297,8 +1482,9 @@ func main() {
     type_ := "type__example" // string | RUM type: `[browser, mobile]`. Defaults to `browser`. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageRumSessions(context.Background()).StartHr(startHr).EndHr(endHr).Type_(type_).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageRumSessions(ctx).StartHr(startHr).EndHr(endHr).Type_(type_).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageRumSessions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1379,8 +1565,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]` for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageSNMP(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageSNMP(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageSNMP``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1461,8 +1648,9 @@ func main() {
     includeOrgDetails := true // bool | Include usage summaries for each sub-org. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageSummary(context.Background()).StartMonth(startMonth).EndMonth(endMonth).IncludeOrgDetails(includeOrgDetails).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageSummary(ctx).StartMonth(startMonth).EndMonth(endMonth).IncludeOrgDetails(includeOrgDetails).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1543,8 +1731,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageSynthetics(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageSynthetics(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageSynthetics``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1624,8 +1813,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageSyntheticsAPI(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageSyntheticsAPI(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageSyntheticsAPI``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1705,8 +1895,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageSyntheticsBrowser(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageSyntheticsBrowser(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageSyntheticsBrowser``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1786,8 +1977,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageTimeseries(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageTimeseries(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageTimeseries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1867,8 +2059,9 @@ func main() {
     names := []string{"Inner_example"} // []string | Comma-separated list of metric names. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageTopAvgMetrics(context.Background()).Month(month).Names(names).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageTopAvgMetrics(ctx).Month(month).Names(names).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageTopAvgMetrics``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1948,8 +2141,9 @@ func main() {
     endHr := time.Now() // time.Time | Datetime in ISO-8601 format, UTC, precise to hour: [YYYY-MM-DDThh] for usage ending **before** this hour. (optional)
 
     configuration := datadog.NewConfiguration()
+
     api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.UsageMeteringApi.GetUsageTrace(context.Background()).StartHr(startHr).EndHr(endHr).Execute()
+    resp, r, err := api_client.UsageMeteringApi.GetUsageTrace(ctx).StartHr(startHr).EndHr(endHr).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `UsageMeteringApi.GetUsageTrace``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

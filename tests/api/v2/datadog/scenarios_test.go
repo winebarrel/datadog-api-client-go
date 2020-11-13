@@ -39,44 +39,45 @@ func undoCreateService(ctx gobdd.Context) {
 
 func undoCreateTeam(ctx gobdd.Context) {
 	team := tests.GetResponse(ctx)[0].Interface().(datadog.IncidentTeamResponse)
-	cctx := tests.GetCtx(ctx)
-	Client(cctx).IncidentTeamsApi.DeleteIncidentTeam(cctx, team.Data.GetId()).Execute()
+	client := Client(tests.GetCtx(ctx))
+	client.GetConfig().SetUnstableOperationEnabled("DeleteIncidentTeam", true)
+	client.IncidentTeamsApi.DeleteIncidentTeam(tests.GetCtx(ctx), team.Data.GetId()).Execute()
 }
 
 var requestsUndo = map[string]func(ctx gobdd.Context){
 	"AddPermissionToRole":      undoIgnore,
 	"AddUserToRole":            undoIgnore,
 	"AggregateLogs":            undoIgnore,
-	"CreateRole":               undoCreateRole,
 	"CreateIncidentService":    undoCreateService,
 	"CreateIncidentTeam":       undoCreateTeam,
+	"CreateRole":               undoCreateRole,
 	"CreateUser":               undoCreateUser,
-	"DisableUser":              undoIgnore,
-	"DeleteRole":               undoIgnore,
 	"DeleteIncidentService":    undoIgnore,
 	"DeleteIncidentTeam":       undoIgnore,
+	"DeleteRole":               undoIgnore,
+	"DisableUser":              undoIgnore,
+	"GetIncidentService":       undoIgnore,
+	"GetIncidentTeam":          undoIgnore,
 	"GetInvitation":            undoIgnore,
 	"GetRole":                  undoIgnore,
-	"GetIncidentService":       undoIgnore,
-	"GetIncidentServices":      undoIgnore,
-	"GetIncidentTeam":          undoIgnore,
-	"GetIncidentTeams":         undoIgnore,
 	"GetUser":                  undoIgnore,
+	"ListIncidentServices":     undoIgnore,
+	"ListIncidentTeams":        undoIgnore,
 	"ListLogs":                 undoIgnore,
 	"ListLogsGet":              undoIgnore,
 	"ListPermissions":          undoIgnore,
 	"ListRolePermissions":      undoIgnore,
 	"ListRoles":                undoIgnore,
 	"ListRoleUsers":            undoIgnore,
-	"ListUsers":                undoIgnore,
 	"ListUserPermissions":      undoIgnore,
+	"ListUsers":                undoIgnore,
 	"RemovePermissionFromRole": undoIgnore,
 	"RemoveUserFromRole":       undoIgnore,
 	"SendInvitations":          undoIgnore,
-	"UpdateRole":               undoIgnore,
 	"UpdateIncidentService":    undoIgnore,
-	"UpdateUser":               undoIgnore,
 	"UpdateIncidentTeam":       undoIgnore,
+	"UpdateRole":               undoIgnore,
+	"UpdateUser":               undoIgnore,
 }
 
 func TestScenarios(t *testing.T) {
@@ -284,7 +285,9 @@ func service(t gobdd.StepTest, ctx gobdd.Context) {
 }
 
 func deleteTeam(ctx context.Context, teamID string) {
-	_, err := Client(ctx).IncidentTeamsApi.DeleteIncidentTeam(ctx, teamID).Execute()
+	client := Client(ctx)
+	client.GetConfig().SetUnstableOperationEnabled("DeleteIncidentTeam", true)
+	_, err := client.IncidentTeamsApi.DeleteIncidentTeam(ctx, teamID).Execute()
 	if err == nil {
 		return
 	}
