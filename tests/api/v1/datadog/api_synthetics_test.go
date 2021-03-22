@@ -1671,4 +1671,13 @@ func TestSyntheticsAPIMultistepTestEndpointLifecycle(t *testing.T) {
 	}
 	assert.Equal(200, httpresp.StatusCode)
 	assert.Equal(updatedName, synt.GetName())
+
+	// Read api test
+	synt, httpresp, err = Client(ctx).SyntheticsApi.GetAPITest(ctx, publicID).Execute()
+	if err != nil {
+		t.Fatalf("Error getting Synthetics test %s: Response %s: %v", publicID, err.(datadog.GenericOpenAPIError).Body(), err)
+	}
+	assert.Equal(200, httpresp.StatusCode)
+	config := synt.GetConfig()
+	assert.Equal(1, len(config.GetSteps()))
 }
