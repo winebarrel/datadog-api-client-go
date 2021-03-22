@@ -26,7 +26,6 @@ Create a log-based metric
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -34,40 +33,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     body := *datadog.NewLogsMetricCreateRequest(*datadog.NewLogsMetricCreateData(*datadog.NewLogsMetricCreateAttributes(*datadog.NewLogsMetricCompute(datadog.LogsMetricComputeAggregationType("count"))), "logs.page.load.count", datadog.LogsMetricType("logs_metrics"))) // LogsMetricCreateRequest | The definition of the new log-based metric.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.LogsMetricsApi.CreateLogsMetric(ctx).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.LogsMetricsApi.CreateLogsMetric(ctx).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogsMetricsApi.CreateLogsMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateLogsMetric`: LogsMetricResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.CreateLogsMetric:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.CreateLogsMetric:\n%s\n", responseContent)
 }
 ```
 
@@ -116,40 +96,20 @@ Delete a log-based metric
 package main
 
 import (
-    "context"
     "fmt"
     "os"
     datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricId := "metricId_example" // string | The name of the log-based metric.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    r, err := api_client.LogsMetricsApi.DeleteLogsMetric(ctx, metricId).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    r, err := apiClient.LogsMetricsApi.DeleteLogsMetric(ctx, metricId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogsMetricsApi.DeleteLogsMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -206,7 +166,6 @@ Get a log-based metric
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -214,40 +173,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricId := "metricId_example" // string | The name of the log-based metric.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.LogsMetricsApi.GetLogsMetric(ctx, metricId).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.LogsMetricsApi.GetLogsMetric(ctx, metricId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogsMetricsApi.GetLogsMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetLogsMetric`: LogsMetricResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.GetLogsMetric:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.GetLogsMetric:\n%s\n", responseContent)
 }
 ```
 
@@ -300,7 +240,6 @@ Get all log-based metrics
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -308,39 +247,20 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.LogsMetricsApi.ListLogsMetrics(ctx).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.LogsMetricsApi.ListLogsMetrics(ctx).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogsMetricsApi.ListLogsMetrics``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListLogsMetrics`: LogsMetricsResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.ListLogsMetrics:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.ListLogsMetrics:\n%s\n", responseContent)
 }
 ```
 
@@ -385,7 +305,6 @@ Update a log-based metric
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -393,41 +312,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricId := "metricId_example" // string | The name of the log-based metric.
     body := *datadog.NewLogsMetricUpdateRequest(*datadog.NewLogsMetricUpdateData(*datadog.NewLogsMetricUpdateAttributes(), datadog.LogsMetricType("logs_metrics"))) // LogsMetricUpdateRequest | New definition of the log-based metric.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.LogsMetricsApi.UpdateLogsMetric(ctx, metricId).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.LogsMetricsApi.UpdateLogsMetric(ctx, metricId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LogsMetricsApi.UpdateLogsMetric``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateLogsMetric`: LogsMetricResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.UpdateLogsMetric:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from LogsMetricsApi.UpdateLogsMetric:\n%s\n", responseContent)
 }
 ```
 

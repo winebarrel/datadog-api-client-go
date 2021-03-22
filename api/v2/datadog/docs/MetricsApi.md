@@ -28,7 +28,6 @@ Create a tag configuration
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -36,26 +35,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
     body := *datadog.NewMetricTagConfigurationCreateRequest(*datadog.NewMetricTagConfigurationCreateData("test.metric.latency", datadog.MetricTagConfigurationType("manage_tags"))) // MetricTagConfigurationCreateRequest | 
@@ -63,15 +43,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("CreateTagConfiguration", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.CreateTagConfiguration(ctx, metricName).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.CreateTagConfiguration(ctx, metricName).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.CreateTagConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateTagConfiguration`: MetricTagConfigurationResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.CreateTagConfiguration:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.CreateTagConfiguration:\n%s\n", responseContent)
 }
 ```
 
@@ -125,41 +105,21 @@ Delete a tag configuration
 package main
 
 import (
-    "context"
     "fmt"
     "os"
     datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("DeleteTagConfiguration", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    r, err := api_client.MetricsApi.DeleteTagConfiguration(ctx, metricName).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    r, err := apiClient.MetricsApi.DeleteTagConfiguration(ctx, metricName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.DeleteTagConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,7 +176,6 @@ List tag configuration by name
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -224,41 +183,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("ListTagConfigurationByName", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.ListTagConfigurationByName(ctx, metricName).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.ListTagConfigurationByName(ctx, metricName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.ListTagConfigurationByName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTagConfigurationByName`: MetricTagConfigurationResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagConfigurationByName:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagConfigurationByName:\n%s\n", responseContent)
 }
 ```
 
@@ -311,7 +251,6 @@ List tag configurations
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -319,26 +258,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     filterConfigured := true // bool | Filter metrics that have configured tags. (optional)
     filterTagsConfigured := "app" // string | Filter tag configurations by configured tags. (optional)
@@ -348,15 +268,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("ListTagConfigurations", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.ListTagConfigurations(ctx).FilterConfigured(filterConfigured).FilterTagsConfigured(filterTagsConfigured).FilterMetricType(filterMetricType).FilterIncludePercentiles(filterIncludePercentiles).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.ListTagConfigurations(ctx).FilterConfigured(filterConfigured).FilterTagsConfigured(filterTagsConfigured).FilterMetricType(filterMetricType).FilterIncludePercentiles(filterIncludePercentiles).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.ListTagConfigurations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTagConfigurations`: MetricsAndMetricTagConfigurationsResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagConfigurations:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagConfigurations:\n%s\n", responseContent)
 }
 ```
 
@@ -408,7 +328,6 @@ List tags by metric name
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -416,41 +335,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("ListTagsByMetricName", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.ListTagsByMetricName(ctx, metricName).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.ListTagsByMetricName(ctx, metricName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.ListTagsByMetricName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTagsByMetricName`: MetricAllTagsResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagsByMetricName:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListTagsByMetricName:\n%s\n", responseContent)
 }
 ```
 
@@ -503,7 +403,6 @@ List distinct metric volumes by metric name
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -511,41 +410,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("ListVolumesByMetricName", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.ListVolumesByMetricName(ctx, metricName).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.ListVolumesByMetricName(ctx, metricName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.ListVolumesByMetricName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListVolumesByMetricName`: MetricVolumesResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListVolumesByMetricName:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.ListVolumesByMetricName:\n%s\n", responseContent)
 }
 ```
 
@@ -598,7 +478,6 @@ Update a tag configuration
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -606,26 +485,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
     body := *datadog.NewMetricTagConfigurationUpdateRequest(*datadog.NewMetricTagConfigurationUpdateData("test.metric.latency", datadog.MetricTagConfigurationType("manage_tags"))) // MetricTagConfigurationUpdateRequest | 
@@ -633,15 +493,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("UpdateTagConfiguration", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.MetricsApi.UpdateTagConfiguration(ctx, metricName).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.MetricsApi.UpdateTagConfiguration(ctx, metricName).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MetricsApi.UpdateTagConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTagConfiguration`: MetricTagConfigurationResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from MetricsApi.UpdateTagConfiguration:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from MetricsApi.UpdateTagConfiguration:\n%s\n", responseContent)
 }
 ```
 

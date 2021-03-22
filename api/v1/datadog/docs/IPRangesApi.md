@@ -22,7 +22,6 @@ List IP Ranges
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -30,28 +29,20 @@ import (
 )
 
 func main() {
-    ctx := context.Background()
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.IPRangesApi.GetIPRanges(ctx).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.IPRangesApi.GetIPRanges(ctx).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IPRangesApi.GetIPRanges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIPRanges`: IPRanges
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from IPRangesApi.GetIPRanges:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from IPRangesApi.GetIPRanges:\n%s\n", responseContent)
 }
 ```
 

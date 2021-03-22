@@ -26,7 +26,6 @@ Create a new incident service
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -34,41 +33,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     body := *datadog.NewIncidentServiceCreateRequest(*datadog.NewIncidentServiceCreateData(datadog.IncidentServiceType("services"))) // IncidentServiceCreateRequest | Incident Service Payload.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("CreateIncidentService", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.IncidentServicesApi.CreateIncidentService(ctx).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.IncidentServicesApi.CreateIncidentService(ctx).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IncidentServicesApi.CreateIncidentService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateIncidentService`: IncidentServiceResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.CreateIncidentService:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.CreateIncidentService:\n%s\n", responseContent)
 }
 ```
 
@@ -117,41 +97,21 @@ Delete an existing incident service
 package main
 
 import (
-    "context"
     "fmt"
     "os"
     datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     serviceId := "serviceId_example" // string | The ID of the incident service.
 
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("DeleteIncidentService", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    r, err := api_client.IncidentServicesApi.DeleteIncidentService(ctx, serviceId).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    r, err := apiClient.IncidentServicesApi.DeleteIncidentService(ctx, serviceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IncidentServicesApi.DeleteIncidentService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,7 +168,6 @@ Get details of an incident service
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -216,26 +175,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     serviceId := "serviceId_example" // string | The ID of the incident service.
     include := datadog.IncidentRelatedObject("users") // IncidentRelatedObject | Specifies which types of related objects should be included in the response. (optional)
@@ -243,15 +183,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("GetIncidentService", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.IncidentServicesApi.GetIncidentService(ctx, serviceId).Include(include).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.IncidentServicesApi.GetIncidentService(ctx, serviceId).Include(include).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IncidentServicesApi.GetIncidentService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIncidentService`: IncidentServiceResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.GetIncidentService:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.GetIncidentService:\n%s\n", responseContent)
 }
 ```
 
@@ -305,7 +245,6 @@ Get a list of all incident services
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -313,26 +252,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     include := datadog.IncidentRelatedObject("users") // IncidentRelatedObject | Specifies which types of related objects should be included in the response. (optional)
     pageSize := int64(789) // int64 | Size for a given page. (optional) (default to 10)
@@ -342,15 +262,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("ListIncidentServices", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.IncidentServicesApi.ListIncidentServices(ctx).Include(include).PageSize(pageSize).PageOffset(pageOffset).Filter(filter).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.IncidentServicesApi.ListIncidentServices(ctx).Include(include).PageSize(pageSize).PageOffset(pageOffset).Filter(filter).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IncidentServicesApi.ListIncidentServices``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIncidentServices`: IncidentServicesResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.ListIncidentServices:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.ListIncidentServices:\n%s\n", responseContent)
 }
 ```
 
@@ -402,7 +322,6 @@ Update an existing incident service
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -410,26 +329,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     serviceId := "serviceId_example" // string | The ID of the incident service.
     body := *datadog.NewIncidentServiceUpdateRequest(*datadog.NewIncidentServiceUpdateData("00000000-0000-0000-0000-000000000000", datadog.IncidentServiceType("services"))) // IncidentServiceUpdateRequest | Incident Service Payload.
@@ -437,15 +337,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("UpdateIncidentService", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.IncidentServicesApi.UpdateIncidentService(ctx, serviceId).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.IncidentServicesApi.UpdateIncidentService(ctx, serviceId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IncidentServicesApi.UpdateIncidentService``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateIncidentService`: IncidentServiceResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.UpdateIncidentService:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from IncidentServicesApi.UpdateIncidentService:\n%s\n", responseContent)
 }
 ```
 

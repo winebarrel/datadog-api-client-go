@@ -29,7 +29,6 @@ Check if SLOs can be safely deleted
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -37,40 +36,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     ids := "id1, id2, id3" // string | A comma separated list of the IDs of the service level objectives objects.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.CheckCanDeleteSLO(ctx).Ids(ids).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.CheckCanDeleteSLO(ctx).Ids(ids).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CheckCanDeleteSLO``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CheckCanDeleteSLO`: CheckCanDeleteSLOResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.CheckCanDeleteSLO:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.CheckCanDeleteSLO:\n%s\n", responseContent)
 }
 ```
 
@@ -119,7 +99,6 @@ Create an SLO object
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -127,40 +106,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     body := *datadog.NewServiceLevelObjectiveRequest("Name_example", []datadog.SLOThreshold{*datadog.NewSLOThreshold(float64(99.9), datadog.SLOTimeframe("7d"))}, datadog.SLOType("metric")) // ServiceLevelObjectiveRequest | Service level objective request object.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.CreateSLO(ctx).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.CreateSLO(ctx).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.CreateSLO``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSLO`: SLOListResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.CreateSLO:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.CreateSLO:\n%s\n", responseContent)
 }
 ```
 
@@ -209,7 +169,6 @@ Delete an SLO
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -217,41 +176,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     sloId := "sloId_example" // string | The ID of the service level objective.
     force := "force_example" // string | Delete the monitor even if it's referenced by other resources (e.g. SLO, composite monitor). (optional)
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.DeleteSLO(ctx, sloId).Force(force).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.DeleteSLO(ctx, sloId).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLO``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteSLO`: SLODeleteResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.DeleteSLO:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.DeleteSLO:\n%s\n", responseContent)
 }
 ```
 
@@ -305,7 +245,6 @@ Bulk Delete SLO Timeframes
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -313,40 +252,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     body := map[string][]datadog.SLOTimeframe{"key": []datadog.SLOTimeframe{datadog.SLOTimeframe("7d")}} // map[string][]SLOTimeframe | Delete multiple service level objective objects request body.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk(ctx).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk(ctx).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteSLOTimeframeInBulk`: SLOBulkDeleteResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk:\n%s\n", responseContent)
 }
 ```
 
@@ -395,7 +315,6 @@ Get an SLO's details
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -403,40 +322,21 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     sloId := "sloId_example" // string | The ID of the service level objective object.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.GetSLO(ctx, sloId).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.GetSLO(ctx, sloId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLO``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSLO`: SLOResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.GetSLO:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.GetSLO:\n%s\n", responseContent)
 }
 ```
 
@@ -489,7 +389,6 @@ Get an SLO's history
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -497,26 +396,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     sloId := "sloId_example" // string | The ID of the service level objective object.
     fromTs := int64(789) // int64 | The `from` timestamp for the query window in epoch seconds.
@@ -525,15 +405,15 @@ func main() {
     configuration := datadog.NewConfiguration()
     configuration.SetUnstableOperationEnabled("GetSLOHistory", true)
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.GetSLOHistory(ctx, sloId).FromTs(fromTs).ToTs(toTs).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.GetSLOHistory(ctx, sloId).FromTs(fromTs).ToTs(toTs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.GetSLOHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSLOHistory`: SLOHistoryResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.GetSLOHistory:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.GetSLOHistory:\n%s\n", responseContent)
 }
 ```
 
@@ -588,7 +468,6 @@ Get all SLOs
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -596,26 +475,7 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     ids := "id1, id2, id3" // string | A comma separated list of the IDs of the service level objectives objects. (optional)
     query := "monitor" // string | The query string to filter results based on SLO names. (optional)
@@ -624,15 +484,15 @@ func main() {
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.ListSLOs(ctx).Ids(ids).Query(query).TagsQuery(tagsQuery).MetricsQuery(metricsQuery).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.ListSLOs(ctx).Ids(ids).Query(query).TagsQuery(tagsQuery).MetricsQuery(metricsQuery).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.ListSLOs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSLOs`: SLOListResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.ListSLOs:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.ListSLOs:\n%s\n", responseContent)
 }
 ```
 
@@ -684,7 +544,6 @@ Update an SLO
 package main
 
 import (
-    "context"
     "encoding/json"
     "fmt"
     "os"
@@ -692,41 +551,22 @@ import (
 )
 
 func main() {
-    ctx := context.WithValue(
-        context.Background(),
-        datadog.ContextAPIKeys,
-        map[string]datadog.APIKey{
-            "apiKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_API_KEY"),
-            },
-            "appKeyAuth": {
-                Key: os.Getenv("DD_CLIENT_APP_KEY"),
-            },
-        },
-    )
-
-    if site, ok := os.LookupEnv("DD_SITE"); ok {
-        ctx = context.WithValue(
-            ctx,
-            datadog.ContextServerVariables,
-            map[string]string{"site": site},
-        )
-    }
+    ctx := datadog.NewDefaultContext()
 
     sloId := "sloId_example" // string | The ID of the service level objective object.
     body := *datadog.NewServiceLevelObjective("Name_example", []datadog.SLOThreshold{*datadog.NewSLOThreshold(float64(99.9), datadog.SLOTimeframe("7d"))}, datadog.SLOType("metric")) // ServiceLevelObjective | The edited service level objective request object.
 
     configuration := datadog.NewConfiguration()
 
-    api_client := datadog.NewAPIClient(configuration)
-    resp, r, err := api_client.ServiceLevelObjectivesApi.UpdateSLO(ctx, sloId).Body(body).Execute()
+    apiClient := datadog.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceLevelObjectivesApi.UpdateSLO(ctx, sloId).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectivesApi.UpdateSLO``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateSLO`: SLOListResponse
-    response_content, _ := json.MarshalIndent(resp, "", "  ")
-    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.UpdateSLO:\n%s\n", response_content)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from ServiceLevelObjectivesApi.UpdateSLO:\n%s\n", responseContent)
 }
 ```
 
