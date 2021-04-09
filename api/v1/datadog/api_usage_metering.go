@@ -29,7 +29,7 @@ var (
 // UsageMeteringApiService UsageMeteringApi service
 type UsageMeteringApiService service
 
-type ApiGetDailyCustomReportsRequest struct {
+type apiGetDailyCustomReportsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	pageSize   *int64
@@ -38,45 +38,59 @@ type ApiGetDailyCustomReportsRequest struct {
 	sort       *UsageSort
 }
 
-func (r ApiGetDailyCustomReportsRequest) PageSize(pageSize int64) ApiGetDailyCustomReportsRequest {
-	r.pageSize = &pageSize
-	return r
-}
-func (r ApiGetDailyCustomReportsRequest) PageNumber(pageNumber int64) ApiGetDailyCustomReportsRequest {
-	r.pageNumber = &pageNumber
-	return r
-}
-func (r ApiGetDailyCustomReportsRequest) SortDir(sortDir UsageSortDirection) ApiGetDailyCustomReportsRequest {
-	r.sortDir = &sortDir
-	return r
-}
-func (r ApiGetDailyCustomReportsRequest) Sort(sort UsageSort) ApiGetDailyCustomReportsRequest {
-	r.sort = &sort
-	return r
+type ApiGetDailyCustomReportsOptionalParameters struct {
+	PageSize   *int64
+	PageNumber *int64
+	SortDir    *UsageSortDirection
+	Sort       *UsageSort
 }
 
-func (r ApiGetDailyCustomReportsRequest) Execute() (UsageCustomReportsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetDailyCustomReportsExecute(r)
+func NewApiGetDailyCustomReportsOptionalParameters() *ApiGetDailyCustomReportsOptionalParameters {
+	this := ApiGetDailyCustomReportsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetDailyCustomReportsOptionalParameters) WithPageSize(pageSize int64) *ApiGetDailyCustomReportsOptionalParameters {
+	r.PageSize = &pageSize
+	return r
+}
+func (r *ApiGetDailyCustomReportsOptionalParameters) WithPageNumber(pageNumber int64) *ApiGetDailyCustomReportsOptionalParameters {
+	r.PageNumber = &pageNumber
+	return r
+}
+func (r *ApiGetDailyCustomReportsOptionalParameters) WithSortDir(sortDir UsageSortDirection) *ApiGetDailyCustomReportsOptionalParameters {
+	r.SortDir = &sortDir
+	return r
+}
+func (r *ApiGetDailyCustomReportsOptionalParameters) WithSort(sort UsageSort) *ApiGetDailyCustomReportsOptionalParameters {
+	r.Sort = &sort
+	return r
 }
 
 /*
  * GetDailyCustomReports Get the list of available daily custom reports
  * Get daily custom reports.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetDailyCustomReportsRequest
  */
-func (a *UsageMeteringApiService) GetDailyCustomReports(ctx _context.Context) ApiGetDailyCustomReportsRequest {
-	return ApiGetDailyCustomReportsRequest{
+func (a *UsageMeteringApiService) GetDailyCustomReports(ctx _context.Context, o ...ApiGetDailyCustomReportsOptionalParameters) (UsageCustomReportsResponse, *_nethttp.Response, error) {
+	req := apiGetDailyCustomReportsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.pageSize = o[0].PageSize
+		req.pageNumber = o[0].PageNumber
+		req.sortDir = o[0].SortDir
+		req.sort = o[0].Sort
+	}
+
+	return req.ApiService.getDailyCustomReportsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageCustomReportsResponse
  */
-func (a *UsageMeteringApiService) GetDailyCustomReportsExecute(r ApiGetDailyCustomReportsRequest) (UsageCustomReportsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getDailyCustomReportsExecute(r apiGetDailyCustomReportsRequest) (UsageCustomReportsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -211,44 +225,49 @@ func (a *UsageMeteringApiService) GetDailyCustomReportsExecute(r ApiGetDailyCust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetIncidentManagementRequest struct {
+type apiGetIncidentManagementRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetIncidentManagementRequest) StartHr(startHr time.Time) ApiGetIncidentManagementRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetIncidentManagementRequest) EndHr(endHr time.Time) ApiGetIncidentManagementRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetIncidentManagementOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetIncidentManagementRequest) Execute() (UsageIncidentManagementResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetIncidentManagementExecute(r)
+func NewApiGetIncidentManagementOptionalParameters() *ApiGetIncidentManagementOptionalParameters {
+	this := ApiGetIncidentManagementOptionalParameters{}
+	return &this
+}
+func (r *ApiGetIncidentManagementOptionalParameters) WithEndHr(endHr time.Time) *ApiGetIncidentManagementOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetIncidentManagement Get hourly usage for incident management
  * Get hourly usage for incident management.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetIncidentManagementRequest
  */
-func (a *UsageMeteringApiService) GetIncidentManagement(ctx _context.Context) ApiGetIncidentManagementRequest {
-	return ApiGetIncidentManagementRequest{
+func (a *UsageMeteringApiService) GetIncidentManagement(ctx _context.Context, startHr time.Time, o ...ApiGetIncidentManagementOptionalParameters) (UsageIncidentManagementResponse, *_nethttp.Response, error) {
+	req := apiGetIncidentManagementRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getIncidentManagementExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageIncidentManagementResponse
  */
-func (a *UsageMeteringApiService) GetIncidentManagementExecute(r ApiGetIncidentManagementRequest) (UsageIncidentManagementResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getIncidentManagementExecute(r apiGetIncidentManagementRequest) (UsageIncidentManagementResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -381,44 +400,49 @@ func (a *UsageMeteringApiService) GetIncidentManagementExecute(r ApiGetIncidentM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetIngestedSpansRequest struct {
+type apiGetIngestedSpansRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetIngestedSpansRequest) StartHr(startHr time.Time) ApiGetIngestedSpansRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetIngestedSpansRequest) EndHr(endHr time.Time) ApiGetIngestedSpansRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetIngestedSpansOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetIngestedSpansRequest) Execute() (UsageIngestedSpansResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetIngestedSpansExecute(r)
+func NewApiGetIngestedSpansOptionalParameters() *ApiGetIngestedSpansOptionalParameters {
+	this := ApiGetIngestedSpansOptionalParameters{}
+	return &this
+}
+func (r *ApiGetIngestedSpansOptionalParameters) WithEndHr(endHr time.Time) *ApiGetIngestedSpansOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetIngestedSpans Get hourly usage for ingested spans
  * Get hourly usage for ingested spans.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetIngestedSpansRequest
  */
-func (a *UsageMeteringApiService) GetIngestedSpans(ctx _context.Context) ApiGetIngestedSpansRequest {
-	return ApiGetIngestedSpansRequest{
+func (a *UsageMeteringApiService) GetIngestedSpans(ctx _context.Context, startHr time.Time, o ...ApiGetIngestedSpansOptionalParameters) (UsageIngestedSpansResponse, *_nethttp.Response, error) {
+	req := apiGetIngestedSpansRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getIngestedSpansExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageIngestedSpansResponse
  */
-func (a *UsageMeteringApiService) GetIngestedSpansExecute(r ApiGetIngestedSpansRequest) (UsageIngestedSpansResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getIngestedSpansExecute(r apiGetIngestedSpansRequest) (UsageIngestedSpansResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -551,7 +575,7 @@ func (a *UsageMeteringApiService) GetIngestedSpansExecute(r ApiGetIngestedSpansR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMonthlyCustomReportsRequest struct {
+type apiGetMonthlyCustomReportsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	pageSize   *int64
@@ -560,45 +584,59 @@ type ApiGetMonthlyCustomReportsRequest struct {
 	sort       *UsageSort
 }
 
-func (r ApiGetMonthlyCustomReportsRequest) PageSize(pageSize int64) ApiGetMonthlyCustomReportsRequest {
-	r.pageSize = &pageSize
-	return r
-}
-func (r ApiGetMonthlyCustomReportsRequest) PageNumber(pageNumber int64) ApiGetMonthlyCustomReportsRequest {
-	r.pageNumber = &pageNumber
-	return r
-}
-func (r ApiGetMonthlyCustomReportsRequest) SortDir(sortDir UsageSortDirection) ApiGetMonthlyCustomReportsRequest {
-	r.sortDir = &sortDir
-	return r
-}
-func (r ApiGetMonthlyCustomReportsRequest) Sort(sort UsageSort) ApiGetMonthlyCustomReportsRequest {
-	r.sort = &sort
-	return r
+type ApiGetMonthlyCustomReportsOptionalParameters struct {
+	PageSize   *int64
+	PageNumber *int64
+	SortDir    *UsageSortDirection
+	Sort       *UsageSort
 }
 
-func (r ApiGetMonthlyCustomReportsRequest) Execute() (UsageCustomReportsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetMonthlyCustomReportsExecute(r)
+func NewApiGetMonthlyCustomReportsOptionalParameters() *ApiGetMonthlyCustomReportsOptionalParameters {
+	this := ApiGetMonthlyCustomReportsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetMonthlyCustomReportsOptionalParameters) WithPageSize(pageSize int64) *ApiGetMonthlyCustomReportsOptionalParameters {
+	r.PageSize = &pageSize
+	return r
+}
+func (r *ApiGetMonthlyCustomReportsOptionalParameters) WithPageNumber(pageNumber int64) *ApiGetMonthlyCustomReportsOptionalParameters {
+	r.PageNumber = &pageNumber
+	return r
+}
+func (r *ApiGetMonthlyCustomReportsOptionalParameters) WithSortDir(sortDir UsageSortDirection) *ApiGetMonthlyCustomReportsOptionalParameters {
+	r.SortDir = &sortDir
+	return r
+}
+func (r *ApiGetMonthlyCustomReportsOptionalParameters) WithSort(sort UsageSort) *ApiGetMonthlyCustomReportsOptionalParameters {
+	r.Sort = &sort
+	return r
 }
 
 /*
  * GetMonthlyCustomReports Get the list of available monthly custom reports
  * Get monthly custom reports.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetMonthlyCustomReportsRequest
  */
-func (a *UsageMeteringApiService) GetMonthlyCustomReports(ctx _context.Context) ApiGetMonthlyCustomReportsRequest {
-	return ApiGetMonthlyCustomReportsRequest{
+func (a *UsageMeteringApiService) GetMonthlyCustomReports(ctx _context.Context, o ...ApiGetMonthlyCustomReportsOptionalParameters) (UsageCustomReportsResponse, *_nethttp.Response, error) {
+	req := apiGetMonthlyCustomReportsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.pageSize = o[0].PageSize
+		req.pageNumber = o[0].PageNumber
+		req.sortDir = o[0].SortDir
+		req.sort = o[0].Sort
+	}
+
+	return req.ApiService.getMonthlyCustomReportsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageCustomReportsResponse
  */
-func (a *UsageMeteringApiService) GetMonthlyCustomReportsExecute(r ApiGetMonthlyCustomReportsRequest) (UsageCustomReportsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getMonthlyCustomReportsExecute(r apiGetMonthlyCustomReportsRequest) (UsageCustomReportsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -733,36 +771,31 @@ func (a *UsageMeteringApiService) GetMonthlyCustomReportsExecute(r ApiGetMonthly
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetSpecifiedDailyCustomReportsRequest struct {
+type apiGetSpecifiedDailyCustomReportsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	reportId   string
 }
 
-func (r ApiGetSpecifiedDailyCustomReportsRequest) Execute() (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetSpecifiedDailyCustomReportsExecute(r)
-}
-
 /*
  * GetSpecifiedDailyCustomReports Get specified daily custom reports
  * Get specified daily custom reports.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param reportId The specified ID to search results for.
- * @return ApiGetSpecifiedDailyCustomReportsRequest
  */
-func (a *UsageMeteringApiService) GetSpecifiedDailyCustomReports(ctx _context.Context, reportId string) ApiGetSpecifiedDailyCustomReportsRequest {
-	return ApiGetSpecifiedDailyCustomReportsRequest{
+func (a *UsageMeteringApiService) GetSpecifiedDailyCustomReports(ctx _context.Context, reportId string) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
+	req := apiGetSpecifiedDailyCustomReportsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reportId:   reportId,
 	}
+
+	return req.ApiService.getSpecifiedDailyCustomReportsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSpecifiedCustomReportsResponse
  */
-func (a *UsageMeteringApiService) GetSpecifiedDailyCustomReportsExecute(r ApiGetSpecifiedDailyCustomReportsRequest) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getSpecifiedDailyCustomReportsExecute(r apiGetSpecifiedDailyCustomReportsRequest) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -896,36 +929,31 @@ func (a *UsageMeteringApiService) GetSpecifiedDailyCustomReportsExecute(r ApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetSpecifiedMonthlyCustomReportsRequest struct {
+type apiGetSpecifiedMonthlyCustomReportsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	reportId   string
 }
 
-func (r ApiGetSpecifiedMonthlyCustomReportsRequest) Execute() (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetSpecifiedMonthlyCustomReportsExecute(r)
-}
-
 /*
  * GetSpecifiedMonthlyCustomReports Get specified monthly custom reports
  * Get specified monthly custom reports.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param reportId The specified ID to search results for.
- * @return ApiGetSpecifiedMonthlyCustomReportsRequest
  */
-func (a *UsageMeteringApiService) GetSpecifiedMonthlyCustomReports(ctx _context.Context, reportId string) ApiGetSpecifiedMonthlyCustomReportsRequest {
-	return ApiGetSpecifiedMonthlyCustomReportsRequest{
+func (a *UsageMeteringApiService) GetSpecifiedMonthlyCustomReports(ctx _context.Context, reportId string) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
+	req := apiGetSpecifiedMonthlyCustomReportsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		reportId:   reportId,
 	}
+
+	return req.ApiService.getSpecifiedMonthlyCustomReportsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSpecifiedCustomReportsResponse
  */
-func (a *UsageMeteringApiService) GetSpecifiedMonthlyCustomReportsExecute(r ApiGetSpecifiedMonthlyCustomReportsRequest) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getSpecifiedMonthlyCustomReportsExecute(r apiGetSpecifiedMonthlyCustomReportsRequest) (UsageSpecifiedCustomReportsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1069,24 +1097,24 @@ func (a *UsageMeteringApiService) GetSpecifiedMonthlyCustomReportsExecute(r ApiG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetTracingWithoutLimitsRequest struct {
+type apiGetTracingWithoutLimitsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetTracingWithoutLimitsRequest) StartHr(startHr time.Time) ApiGetTracingWithoutLimitsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetTracingWithoutLimitsRequest) EndHr(endHr time.Time) ApiGetTracingWithoutLimitsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetTracingWithoutLimitsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetTracingWithoutLimitsRequest) Execute() (UsageTracingWithoutLimitsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetTracingWithoutLimitsExecute(r)
+func NewApiGetTracingWithoutLimitsOptionalParameters() *ApiGetTracingWithoutLimitsOptionalParameters {
+	this := ApiGetTracingWithoutLimitsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetTracingWithoutLimitsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetTracingWithoutLimitsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
@@ -1094,21 +1122,26 @@ func (r ApiGetTracingWithoutLimitsRequest) Execute() (UsageTracingWithoutLimitsR
  * Get hourly usage for tracing without limits.
 
 **Note** This endpoint has been renamed to `/api/v1/usage/ingested-spans`.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetTracingWithoutLimitsRequest
 */
-func (a *UsageMeteringApiService) GetTracingWithoutLimits(ctx _context.Context) ApiGetTracingWithoutLimitsRequest {
-	return ApiGetTracingWithoutLimitsRequest{
+func (a *UsageMeteringApiService) GetTracingWithoutLimits(ctx _context.Context, startHr time.Time, o ...ApiGetTracingWithoutLimitsOptionalParameters) (UsageTracingWithoutLimitsResponse, *_nethttp.Response, error) {
+	req := apiGetTracingWithoutLimitsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getTracingWithoutLimitsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageTracingWithoutLimitsResponse
  */
-func (a *UsageMeteringApiService) GetTracingWithoutLimitsExecute(r ApiGetTracingWithoutLimitsRequest) (UsageTracingWithoutLimitsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getTracingWithoutLimitsExecute(r apiGetTracingWithoutLimitsRequest) (UsageTracingWithoutLimitsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1241,44 +1274,49 @@ func (a *UsageMeteringApiService) GetTracingWithoutLimitsExecute(r ApiGetTracing
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageAnalyzedLogsRequest struct {
+type apiGetUsageAnalyzedLogsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageAnalyzedLogsRequest) StartHr(startHr time.Time) ApiGetUsageAnalyzedLogsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageAnalyzedLogsRequest) EndHr(endHr time.Time) ApiGetUsageAnalyzedLogsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageAnalyzedLogsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageAnalyzedLogsRequest) Execute() (UsageAnalyzedLogsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageAnalyzedLogsExecute(r)
+func NewApiGetUsageAnalyzedLogsOptionalParameters() *ApiGetUsageAnalyzedLogsOptionalParameters {
+	this := ApiGetUsageAnalyzedLogsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageAnalyzedLogsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageAnalyzedLogsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageAnalyzedLogs Get hourly usage for analyzed logs
  * Get hourly usage for analyzed logs (Security Monitoring).
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageAnalyzedLogsRequest
  */
-func (a *UsageMeteringApiService) GetUsageAnalyzedLogs(ctx _context.Context) ApiGetUsageAnalyzedLogsRequest {
-	return ApiGetUsageAnalyzedLogsRequest{
+func (a *UsageMeteringApiService) GetUsageAnalyzedLogs(ctx _context.Context, startHr time.Time, o ...ApiGetUsageAnalyzedLogsOptionalParameters) (UsageAnalyzedLogsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageAnalyzedLogsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageAnalyzedLogsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageAnalyzedLogsResponse
  */
-func (a *UsageMeteringApiService) GetUsageAnalyzedLogsExecute(r ApiGetUsageAnalyzedLogsRequest) (UsageAnalyzedLogsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageAnalyzedLogsExecute(r apiGetUsageAnalyzedLogsRequest) (UsageAnalyzedLogsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1411,7 +1449,7 @@ func (a *UsageMeteringApiService) GetUsageAnalyzedLogsExecute(r ApiGetUsageAnaly
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageAttributionRequest struct {
+type apiGetUsageAttributionRequest struct {
 	ctx           _context.Context
 	ApiService    *UsageMeteringApiService
 	startMonth    *time.Time
@@ -1421,49 +1459,55 @@ type ApiGetUsageAttributionRequest struct {
 	sortName      *UsageAttributionSort
 }
 
-func (r ApiGetUsageAttributionRequest) StartMonth(startMonth time.Time) ApiGetUsageAttributionRequest {
-	r.startMonth = &startMonth
-	return r
-}
-func (r ApiGetUsageAttributionRequest) Fields(fields string) ApiGetUsageAttributionRequest {
-	r.fields = &fields
-	return r
-}
-func (r ApiGetUsageAttributionRequest) EndMonth(endMonth time.Time) ApiGetUsageAttributionRequest {
-	r.endMonth = &endMonth
-	return r
-}
-func (r ApiGetUsageAttributionRequest) SortDirection(sortDirection UsageSortDirection) ApiGetUsageAttributionRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-func (r ApiGetUsageAttributionRequest) SortName(sortName UsageAttributionSort) ApiGetUsageAttributionRequest {
-	r.sortName = &sortName
-	return r
+type ApiGetUsageAttributionOptionalParameters struct {
+	EndMonth      *time.Time
+	SortDirection *UsageSortDirection
+	SortName      *UsageAttributionSort
 }
 
-func (r ApiGetUsageAttributionRequest) Execute() (UsageAttributionResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageAttributionExecute(r)
+func NewApiGetUsageAttributionOptionalParameters() *ApiGetUsageAttributionOptionalParameters {
+	this := ApiGetUsageAttributionOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageAttributionOptionalParameters) WithEndMonth(endMonth time.Time) *ApiGetUsageAttributionOptionalParameters {
+	r.EndMonth = &endMonth
+	return r
+}
+func (r *ApiGetUsageAttributionOptionalParameters) WithSortDirection(sortDirection UsageSortDirection) *ApiGetUsageAttributionOptionalParameters {
+	r.SortDirection = &sortDirection
+	return r
+}
+func (r *ApiGetUsageAttributionOptionalParameters) WithSortName(sortName UsageAttributionSort) *ApiGetUsageAttributionOptionalParameters {
+	r.SortName = &sortName
+	return r
 }
 
 /*
  * GetUsageAttribution Get Usage Attribution
  * Get Usage Attribution.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageAttributionRequest
  */
-func (a *UsageMeteringApiService) GetUsageAttribution(ctx _context.Context) ApiGetUsageAttributionRequest {
-	return ApiGetUsageAttributionRequest{
+func (a *UsageMeteringApiService) GetUsageAttribution(ctx _context.Context, startMonth time.Time, fields string, o ...ApiGetUsageAttributionOptionalParameters) (UsageAttributionResponse, *_nethttp.Response, error) {
+	req := apiGetUsageAttributionRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startMonth: &startMonth,
+		fields:     &fields,
 	}
+
+	if len(o) > 0 {
+		req.endMonth = o[0].EndMonth
+		req.sortDirection = o[0].SortDirection
+		req.sortName = o[0].SortName
+	}
+
+	return req.ApiService.getUsageAttributionExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageAttributionResponse
  */
-func (a *UsageMeteringApiService) GetUsageAttributionExecute(r ApiGetUsageAttributionRequest) (UsageAttributionResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageAttributionExecute(r apiGetUsageAttributionRequest) (UsageAttributionResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1603,39 +1647,47 @@ func (a *UsageMeteringApiService) GetUsageAttributionExecute(r ApiGetUsageAttrib
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageBillableSummaryRequest struct {
+type apiGetUsageBillableSummaryRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	month      *time.Time
 }
 
-func (r ApiGetUsageBillableSummaryRequest) Month(month time.Time) ApiGetUsageBillableSummaryRequest {
-	r.month = &month
-	return r
+type ApiGetUsageBillableSummaryOptionalParameters struct {
+	Month *time.Time
 }
 
-func (r ApiGetUsageBillableSummaryRequest) Execute() (UsageBillableSummaryResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageBillableSummaryExecute(r)
+func NewApiGetUsageBillableSummaryOptionalParameters() *ApiGetUsageBillableSummaryOptionalParameters {
+	this := ApiGetUsageBillableSummaryOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageBillableSummaryOptionalParameters) WithMonth(month time.Time) *ApiGetUsageBillableSummaryOptionalParameters {
+	r.Month = &month
+	return r
 }
 
 /*
  * GetUsageBillableSummary Get billable usage across your account
  * Get billable usage across your account.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageBillableSummaryRequest
  */
-func (a *UsageMeteringApiService) GetUsageBillableSummary(ctx _context.Context) ApiGetUsageBillableSummaryRequest {
-	return ApiGetUsageBillableSummaryRequest{
+func (a *UsageMeteringApiService) GetUsageBillableSummary(ctx _context.Context, o ...ApiGetUsageBillableSummaryOptionalParameters) (UsageBillableSummaryResponse, *_nethttp.Response, error) {
+	req := apiGetUsageBillableSummaryRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.month = o[0].Month
+	}
+
+	return req.ApiService.getUsageBillableSummaryExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageBillableSummaryResponse
  */
-func (a *UsageMeteringApiService) GetUsageBillableSummaryExecute(r ApiGetUsageBillableSummaryRequest) (UsageBillableSummaryResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageBillableSummaryExecute(r apiGetUsageBillableSummaryRequest) (UsageBillableSummaryResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1764,44 +1816,49 @@ func (a *UsageMeteringApiService) GetUsageBillableSummaryExecute(r ApiGetUsageBi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageComplianceMonitoringRequest struct {
+type apiGetUsageComplianceMonitoringRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageComplianceMonitoringRequest) StartHr(startHr time.Time) ApiGetUsageComplianceMonitoringRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageComplianceMonitoringRequest) EndHr(endHr time.Time) ApiGetUsageComplianceMonitoringRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageComplianceMonitoringOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageComplianceMonitoringRequest) Execute() (UsageComplianceResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageComplianceMonitoringExecute(r)
+func NewApiGetUsageComplianceMonitoringOptionalParameters() *ApiGetUsageComplianceMonitoringOptionalParameters {
+	this := ApiGetUsageComplianceMonitoringOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageComplianceMonitoringOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageComplianceMonitoringOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageComplianceMonitoring Get hourly usage for Compliance Monitoring
  * Get hourly usage for Compliance Monitoring.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageComplianceMonitoringRequest
  */
-func (a *UsageMeteringApiService) GetUsageComplianceMonitoring(ctx _context.Context) ApiGetUsageComplianceMonitoringRequest {
-	return ApiGetUsageComplianceMonitoringRequest{
+func (a *UsageMeteringApiService) GetUsageComplianceMonitoring(ctx _context.Context, startHr time.Time, o ...ApiGetUsageComplianceMonitoringOptionalParameters) (UsageComplianceResponse, *_nethttp.Response, error) {
+	req := apiGetUsageComplianceMonitoringRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageComplianceMonitoringExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageComplianceResponse
  */
-func (a *UsageMeteringApiService) GetUsageComplianceMonitoringExecute(r ApiGetUsageComplianceMonitoringRequest) (UsageComplianceResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageComplianceMonitoringExecute(r apiGetUsageComplianceMonitoringRequest) (UsageComplianceResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1934,44 +1991,49 @@ func (a *UsageMeteringApiService) GetUsageComplianceMonitoringExecute(r ApiGetUs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageFargateRequest struct {
+type apiGetUsageFargateRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageFargateRequest) StartHr(startHr time.Time) ApiGetUsageFargateRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageFargateRequest) EndHr(endHr time.Time) ApiGetUsageFargateRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageFargateOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageFargateRequest) Execute() (UsageFargateResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageFargateExecute(r)
+func NewApiGetUsageFargateOptionalParameters() *ApiGetUsageFargateOptionalParameters {
+	this := ApiGetUsageFargateOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageFargateOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageFargateOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageFargate Get hourly usage for Fargate
  * Get hourly usage for [Fargate](https://docs.datadoghq.com/integrations/ecs_fargate/).
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageFargateRequest
  */
-func (a *UsageMeteringApiService) GetUsageFargate(ctx _context.Context) ApiGetUsageFargateRequest {
-	return ApiGetUsageFargateRequest{
+func (a *UsageMeteringApiService) GetUsageFargate(ctx _context.Context, startHr time.Time, o ...ApiGetUsageFargateOptionalParameters) (UsageFargateResponse, *_nethttp.Response, error) {
+	req := apiGetUsageFargateRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageFargateExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageFargateResponse
  */
-func (a *UsageMeteringApiService) GetUsageFargateExecute(r ApiGetUsageFargateRequest) (UsageFargateResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageFargateExecute(r apiGetUsageFargateRequest) (UsageFargateResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2104,44 +2166,49 @@ func (a *UsageMeteringApiService) GetUsageFargateExecute(r ApiGetUsageFargateReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageHostsRequest struct {
+type apiGetUsageHostsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageHostsRequest) StartHr(startHr time.Time) ApiGetUsageHostsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageHostsRequest) EndHr(endHr time.Time) ApiGetUsageHostsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageHostsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageHostsRequest) Execute() (UsageHostsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageHostsExecute(r)
+func NewApiGetUsageHostsOptionalParameters() *ApiGetUsageHostsOptionalParameters {
+	this := ApiGetUsageHostsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageHostsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageHostsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageHosts Get hourly usage for hosts and containers
  * Get hourly usage for hosts and containers.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageHostsRequest
  */
-func (a *UsageMeteringApiService) GetUsageHosts(ctx _context.Context) ApiGetUsageHostsRequest {
-	return ApiGetUsageHostsRequest{
+func (a *UsageMeteringApiService) GetUsageHosts(ctx _context.Context, startHr time.Time, o ...ApiGetUsageHostsOptionalParameters) (UsageHostsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageHostsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageHostsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageHostsResponse
  */
-func (a *UsageMeteringApiService) GetUsageHostsExecute(r ApiGetUsageHostsRequest) (UsageHostsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageHostsExecute(r apiGetUsageHostsRequest) (UsageHostsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2274,44 +2341,49 @@ func (a *UsageMeteringApiService) GetUsageHostsExecute(r ApiGetUsageHostsRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageIndexedSpansRequest struct {
+type apiGetUsageIndexedSpansRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageIndexedSpansRequest) StartHr(startHr time.Time) ApiGetUsageIndexedSpansRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageIndexedSpansRequest) EndHr(endHr time.Time) ApiGetUsageIndexedSpansRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageIndexedSpansOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageIndexedSpansRequest) Execute() (UsageIndexedSpansResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageIndexedSpansExecute(r)
+func NewApiGetUsageIndexedSpansOptionalParameters() *ApiGetUsageIndexedSpansOptionalParameters {
+	this := ApiGetUsageIndexedSpansOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageIndexedSpansOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageIndexedSpansOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageIndexedSpans Get hourly usage for indexed spans
  * Get hourly usage for indexed spans.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageIndexedSpansRequest
  */
-func (a *UsageMeteringApiService) GetUsageIndexedSpans(ctx _context.Context) ApiGetUsageIndexedSpansRequest {
-	return ApiGetUsageIndexedSpansRequest{
+func (a *UsageMeteringApiService) GetUsageIndexedSpans(ctx _context.Context, startHr time.Time, o ...ApiGetUsageIndexedSpansOptionalParameters) (UsageIndexedSpansResponse, *_nethttp.Response, error) {
+	req := apiGetUsageIndexedSpansRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageIndexedSpansExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageIndexedSpansResponse
  */
-func (a *UsageMeteringApiService) GetUsageIndexedSpansExecute(r ApiGetUsageIndexedSpansRequest) (UsageIndexedSpansResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageIndexedSpansExecute(r apiGetUsageIndexedSpansRequest) (UsageIndexedSpansResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2444,44 +2516,49 @@ func (a *UsageMeteringApiService) GetUsageIndexedSpansExecute(r ApiGetUsageIndex
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageInternetOfThingsRequest struct {
+type apiGetUsageInternetOfThingsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageInternetOfThingsRequest) StartHr(startHr time.Time) ApiGetUsageInternetOfThingsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageInternetOfThingsRequest) EndHr(endHr time.Time) ApiGetUsageInternetOfThingsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageInternetOfThingsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageInternetOfThingsRequest) Execute() (UsageIoTResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageInternetOfThingsExecute(r)
+func NewApiGetUsageInternetOfThingsOptionalParameters() *ApiGetUsageInternetOfThingsOptionalParameters {
+	this := ApiGetUsageInternetOfThingsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageInternetOfThingsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageInternetOfThingsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageInternetOfThings Get hourly usage for IoT
  * Get hourly usage for IoT.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageInternetOfThingsRequest
  */
-func (a *UsageMeteringApiService) GetUsageInternetOfThings(ctx _context.Context) ApiGetUsageInternetOfThingsRequest {
-	return ApiGetUsageInternetOfThingsRequest{
+func (a *UsageMeteringApiService) GetUsageInternetOfThings(ctx _context.Context, startHr time.Time, o ...ApiGetUsageInternetOfThingsOptionalParameters) (UsageIoTResponse, *_nethttp.Response, error) {
+	req := apiGetUsageInternetOfThingsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageInternetOfThingsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageIoTResponse
  */
-func (a *UsageMeteringApiService) GetUsageInternetOfThingsExecute(r ApiGetUsageInternetOfThingsRequest) (UsageIoTResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageInternetOfThingsExecute(r apiGetUsageInternetOfThingsRequest) (UsageIoTResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2614,44 +2691,49 @@ func (a *UsageMeteringApiService) GetUsageInternetOfThingsExecute(r ApiGetUsageI
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageLambdaRequest struct {
+type apiGetUsageLambdaRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageLambdaRequest) StartHr(startHr time.Time) ApiGetUsageLambdaRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageLambdaRequest) EndHr(endHr time.Time) ApiGetUsageLambdaRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageLambdaOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageLambdaRequest) Execute() (UsageLambdaResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageLambdaExecute(r)
+func NewApiGetUsageLambdaOptionalParameters() *ApiGetUsageLambdaOptionalParameters {
+	this := ApiGetUsageLambdaOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageLambdaOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageLambdaOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageLambda Get hourly usage for Lambda
  * Get hourly usage for lambda.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageLambdaRequest
  */
-func (a *UsageMeteringApiService) GetUsageLambda(ctx _context.Context) ApiGetUsageLambdaRequest {
-	return ApiGetUsageLambdaRequest{
+func (a *UsageMeteringApiService) GetUsageLambda(ctx _context.Context, startHr time.Time, o ...ApiGetUsageLambdaOptionalParameters) (UsageLambdaResponse, *_nethttp.Response, error) {
+	req := apiGetUsageLambdaRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageLambdaExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageLambdaResponse
  */
-func (a *UsageMeteringApiService) GetUsageLambdaExecute(r ApiGetUsageLambdaRequest) (UsageLambdaResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageLambdaExecute(r apiGetUsageLambdaRequest) (UsageLambdaResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2784,44 +2866,49 @@ func (a *UsageMeteringApiService) GetUsageLambdaExecute(r ApiGetUsageLambdaReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageLogsRequest struct {
+type apiGetUsageLogsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageLogsRequest) StartHr(startHr time.Time) ApiGetUsageLogsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageLogsRequest) EndHr(endHr time.Time) ApiGetUsageLogsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageLogsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageLogsRequest) Execute() (UsageLogsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageLogsExecute(r)
+func NewApiGetUsageLogsOptionalParameters() *ApiGetUsageLogsOptionalParameters {
+	this := ApiGetUsageLogsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageLogsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageLogsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageLogs Get hourly usage for Logs
  * Get hourly usage for logs.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageLogsRequest
  */
-func (a *UsageMeteringApiService) GetUsageLogs(ctx _context.Context) ApiGetUsageLogsRequest {
-	return ApiGetUsageLogsRequest{
+func (a *UsageMeteringApiService) GetUsageLogs(ctx _context.Context, startHr time.Time, o ...ApiGetUsageLogsOptionalParameters) (UsageLogsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageLogsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageLogsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageLogsResponse
  */
-func (a *UsageMeteringApiService) GetUsageLogsExecute(r ApiGetUsageLogsRequest) (UsageLogsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageLogsExecute(r apiGetUsageLogsRequest) (UsageLogsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2954,7 +3041,7 @@ func (a *UsageMeteringApiService) GetUsageLogsExecute(r ApiGetUsageLogsRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageLogsByIndexRequest struct {
+type apiGetUsageLogsByIndexRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
@@ -2962,41 +3049,48 @@ type ApiGetUsageLogsByIndexRequest struct {
 	indexName  *[]string
 }
 
-func (r ApiGetUsageLogsByIndexRequest) StartHr(startHr time.Time) ApiGetUsageLogsByIndexRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageLogsByIndexRequest) EndHr(endHr time.Time) ApiGetUsageLogsByIndexRequest {
-	r.endHr = &endHr
-	return r
-}
-func (r ApiGetUsageLogsByIndexRequest) IndexName(indexName []string) ApiGetUsageLogsByIndexRequest {
-	r.indexName = &indexName
-	return r
+type ApiGetUsageLogsByIndexOptionalParameters struct {
+	EndHr     *time.Time
+	IndexName *[]string
 }
 
-func (r ApiGetUsageLogsByIndexRequest) Execute() (UsageLogsByIndexResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageLogsByIndexExecute(r)
+func NewApiGetUsageLogsByIndexOptionalParameters() *ApiGetUsageLogsByIndexOptionalParameters {
+	this := ApiGetUsageLogsByIndexOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageLogsByIndexOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageLogsByIndexOptionalParameters {
+	r.EndHr = &endHr
+	return r
+}
+func (r *ApiGetUsageLogsByIndexOptionalParameters) WithIndexName(indexName []string) *ApiGetUsageLogsByIndexOptionalParameters {
+	r.IndexName = &indexName
+	return r
 }
 
 /*
  * GetUsageLogsByIndex Get hourly usage for Logs by Index
  * Get hourly usage for logs by index.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageLogsByIndexRequest
  */
-func (a *UsageMeteringApiService) GetUsageLogsByIndex(ctx _context.Context) ApiGetUsageLogsByIndexRequest {
-	return ApiGetUsageLogsByIndexRequest{
+func (a *UsageMeteringApiService) GetUsageLogsByIndex(ctx _context.Context, startHr time.Time, o ...ApiGetUsageLogsByIndexOptionalParameters) (UsageLogsByIndexResponse, *_nethttp.Response, error) {
+	req := apiGetUsageLogsByIndexRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+		req.indexName = o[0].IndexName
+	}
+
+	return req.ApiService.getUsageLogsByIndexExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageLogsByIndexResponse
  */
-func (a *UsageMeteringApiService) GetUsageLogsByIndexExecute(r ApiGetUsageLogsByIndexRequest) (UsageLogsByIndexResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageLogsByIndexExecute(r apiGetUsageLogsByIndexRequest) (UsageLogsByIndexResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3140,44 +3234,49 @@ func (a *UsageMeteringApiService) GetUsageLogsByIndexExecute(r ApiGetUsageLogsBy
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageNetworkFlowsRequest struct {
+type apiGetUsageNetworkFlowsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageNetworkFlowsRequest) StartHr(startHr time.Time) ApiGetUsageNetworkFlowsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageNetworkFlowsRequest) EndHr(endHr time.Time) ApiGetUsageNetworkFlowsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageNetworkFlowsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageNetworkFlowsRequest) Execute() (UsageNetworkFlowsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageNetworkFlowsExecute(r)
+func NewApiGetUsageNetworkFlowsOptionalParameters() *ApiGetUsageNetworkFlowsOptionalParameters {
+	this := ApiGetUsageNetworkFlowsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageNetworkFlowsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageNetworkFlowsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageNetworkFlows Get hourly usage for Network Flows
  * Get hourly usage for network flows.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageNetworkFlowsRequest
  */
-func (a *UsageMeteringApiService) GetUsageNetworkFlows(ctx _context.Context) ApiGetUsageNetworkFlowsRequest {
-	return ApiGetUsageNetworkFlowsRequest{
+func (a *UsageMeteringApiService) GetUsageNetworkFlows(ctx _context.Context, startHr time.Time, o ...ApiGetUsageNetworkFlowsOptionalParameters) (UsageNetworkFlowsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageNetworkFlowsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageNetworkFlowsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageNetworkFlowsResponse
  */
-func (a *UsageMeteringApiService) GetUsageNetworkFlowsExecute(r ApiGetUsageNetworkFlowsRequest) (UsageNetworkFlowsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageNetworkFlowsExecute(r apiGetUsageNetworkFlowsRequest) (UsageNetworkFlowsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3310,44 +3409,49 @@ func (a *UsageMeteringApiService) GetUsageNetworkFlowsExecute(r ApiGetUsageNetwo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageNetworkHostsRequest struct {
+type apiGetUsageNetworkHostsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageNetworkHostsRequest) StartHr(startHr time.Time) ApiGetUsageNetworkHostsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageNetworkHostsRequest) EndHr(endHr time.Time) ApiGetUsageNetworkHostsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageNetworkHostsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageNetworkHostsRequest) Execute() (UsageNetworkHostsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageNetworkHostsExecute(r)
+func NewApiGetUsageNetworkHostsOptionalParameters() *ApiGetUsageNetworkHostsOptionalParameters {
+	this := ApiGetUsageNetworkHostsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageNetworkHostsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageNetworkHostsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageNetworkHosts Get hourly usage for Network Hosts
  * Get hourly usage for network hosts.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageNetworkHostsRequest
  */
-func (a *UsageMeteringApiService) GetUsageNetworkHosts(ctx _context.Context) ApiGetUsageNetworkHostsRequest {
-	return ApiGetUsageNetworkHostsRequest{
+func (a *UsageMeteringApiService) GetUsageNetworkHosts(ctx _context.Context, startHr time.Time, o ...ApiGetUsageNetworkHostsOptionalParameters) (UsageNetworkHostsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageNetworkHostsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageNetworkHostsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageNetworkHostsResponse
  */
-func (a *UsageMeteringApiService) GetUsageNetworkHostsExecute(r ApiGetUsageNetworkHostsRequest) (UsageNetworkHostsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageNetworkHostsExecute(r apiGetUsageNetworkHostsRequest) (UsageNetworkHostsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3480,44 +3584,49 @@ func (a *UsageMeteringApiService) GetUsageNetworkHostsExecute(r ApiGetUsageNetwo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageProfilingRequest struct {
+type apiGetUsageProfilingRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageProfilingRequest) StartHr(startHr time.Time) ApiGetUsageProfilingRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageProfilingRequest) EndHr(endHr time.Time) ApiGetUsageProfilingRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageProfilingOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageProfilingRequest) Execute() (UsageProfilingResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageProfilingExecute(r)
+func NewApiGetUsageProfilingOptionalParameters() *ApiGetUsageProfilingOptionalParameters {
+	this := ApiGetUsageProfilingOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageProfilingOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageProfilingOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageProfiling Get hourly usage for profiled hosts
  * Get hourly usage for profiled hosts.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageProfilingRequest
  */
-func (a *UsageMeteringApiService) GetUsageProfiling(ctx _context.Context) ApiGetUsageProfilingRequest {
-	return ApiGetUsageProfilingRequest{
+func (a *UsageMeteringApiService) GetUsageProfiling(ctx _context.Context, startHr time.Time, o ...ApiGetUsageProfilingOptionalParameters) (UsageProfilingResponse, *_nethttp.Response, error) {
+	req := apiGetUsageProfilingRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageProfilingExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageProfilingResponse
  */
-func (a *UsageMeteringApiService) GetUsageProfilingExecute(r ApiGetUsageProfilingRequest) (UsageProfilingResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageProfilingExecute(r apiGetUsageProfilingRequest) (UsageProfilingResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3650,7 +3759,7 @@ func (a *UsageMeteringApiService) GetUsageProfilingExecute(r ApiGetUsageProfilin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageRumSessionsRequest struct {
+type apiGetUsageRumSessionsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
@@ -3658,41 +3767,48 @@ type ApiGetUsageRumSessionsRequest struct {
 	type_      *string
 }
 
-func (r ApiGetUsageRumSessionsRequest) StartHr(startHr time.Time) ApiGetUsageRumSessionsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageRumSessionsRequest) EndHr(endHr time.Time) ApiGetUsageRumSessionsRequest {
-	r.endHr = &endHr
-	return r
-}
-func (r ApiGetUsageRumSessionsRequest) Type_(type_ string) ApiGetUsageRumSessionsRequest {
-	r.type_ = &type_
-	return r
+type ApiGetUsageRumSessionsOptionalParameters struct {
+	EndHr *time.Time
+	Type_ *string
 }
 
-func (r ApiGetUsageRumSessionsRequest) Execute() (UsageRumSessionsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageRumSessionsExecute(r)
+func NewApiGetUsageRumSessionsOptionalParameters() *ApiGetUsageRumSessionsOptionalParameters {
+	this := ApiGetUsageRumSessionsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageRumSessionsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageRumSessionsOptionalParameters {
+	r.EndHr = &endHr
+	return r
+}
+func (r *ApiGetUsageRumSessionsOptionalParameters) WithType_(type_ string) *ApiGetUsageRumSessionsOptionalParameters {
+	r.Type_ = &type_
+	return r
 }
 
 /*
  * GetUsageRumSessions Get hourly usage for RUM Sessions
  * Get hourly usage for [RUM](https://docs.datadoghq.com/real_user_monitoring/) Sessions.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageRumSessionsRequest
  */
-func (a *UsageMeteringApiService) GetUsageRumSessions(ctx _context.Context) ApiGetUsageRumSessionsRequest {
-	return ApiGetUsageRumSessionsRequest{
+func (a *UsageMeteringApiService) GetUsageRumSessions(ctx _context.Context, startHr time.Time, o ...ApiGetUsageRumSessionsOptionalParameters) (UsageRumSessionsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageRumSessionsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+		req.type_ = o[0].Type_
+	}
+
+	return req.ApiService.getUsageRumSessionsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageRumSessionsResponse
  */
-func (a *UsageMeteringApiService) GetUsageRumSessionsExecute(r ApiGetUsageRumSessionsRequest) (UsageRumSessionsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageRumSessionsExecute(r apiGetUsageRumSessionsRequest) (UsageRumSessionsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3828,44 +3944,49 @@ func (a *UsageMeteringApiService) GetUsageRumSessionsExecute(r ApiGetUsageRumSes
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageSNMPRequest struct {
+type apiGetUsageSNMPRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageSNMPRequest) StartHr(startHr time.Time) ApiGetUsageSNMPRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageSNMPRequest) EndHr(endHr time.Time) ApiGetUsageSNMPRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageSNMPOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageSNMPRequest) Execute() (UsageSNMPResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageSNMPExecute(r)
+func NewApiGetUsageSNMPOptionalParameters() *ApiGetUsageSNMPOptionalParameters {
+	this := ApiGetUsageSNMPOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageSNMPOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageSNMPOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageSNMP Get hourly usage for SNMP devices
  * Get hourly usage for SNMP devices.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageSNMPRequest
  */
-func (a *UsageMeteringApiService) GetUsageSNMP(ctx _context.Context) ApiGetUsageSNMPRequest {
-	return ApiGetUsageSNMPRequest{
+func (a *UsageMeteringApiService) GetUsageSNMP(ctx _context.Context, startHr time.Time, o ...ApiGetUsageSNMPOptionalParameters) (UsageSNMPResponse, *_nethttp.Response, error) {
+	req := apiGetUsageSNMPRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageSNMPExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSNMPResponse
  */
-func (a *UsageMeteringApiService) GetUsageSNMPExecute(r ApiGetUsageSNMPRequest) (UsageSNMPResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageSNMPExecute(r apiGetUsageSNMPRequest) (UsageSNMPResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -3998,7 +4119,7 @@ func (a *UsageMeteringApiService) GetUsageSNMPExecute(r ApiGetUsageSNMPRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageSummaryRequest struct {
+type apiGetUsageSummaryRequest struct {
 	ctx               _context.Context
 	ApiService        *UsageMeteringApiService
 	startMonth        *time.Time
@@ -4006,41 +4127,48 @@ type ApiGetUsageSummaryRequest struct {
 	includeOrgDetails *bool
 }
 
-func (r ApiGetUsageSummaryRequest) StartMonth(startMonth time.Time) ApiGetUsageSummaryRequest {
-	r.startMonth = &startMonth
-	return r
-}
-func (r ApiGetUsageSummaryRequest) EndMonth(endMonth time.Time) ApiGetUsageSummaryRequest {
-	r.endMonth = &endMonth
-	return r
-}
-func (r ApiGetUsageSummaryRequest) IncludeOrgDetails(includeOrgDetails bool) ApiGetUsageSummaryRequest {
-	r.includeOrgDetails = &includeOrgDetails
-	return r
+type ApiGetUsageSummaryOptionalParameters struct {
+	EndMonth          *time.Time
+	IncludeOrgDetails *bool
 }
 
-func (r ApiGetUsageSummaryRequest) Execute() (UsageSummaryResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageSummaryExecute(r)
+func NewApiGetUsageSummaryOptionalParameters() *ApiGetUsageSummaryOptionalParameters {
+	this := ApiGetUsageSummaryOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageSummaryOptionalParameters) WithEndMonth(endMonth time.Time) *ApiGetUsageSummaryOptionalParameters {
+	r.EndMonth = &endMonth
+	return r
+}
+func (r *ApiGetUsageSummaryOptionalParameters) WithIncludeOrgDetails(includeOrgDetails bool) *ApiGetUsageSummaryOptionalParameters {
+	r.IncludeOrgDetails = &includeOrgDetails
+	return r
 }
 
 /*
  * GetUsageSummary Get usage across your multi-org account
  * Get usage across your multi-org account. You must have the multi-org feature enabled.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageSummaryRequest
  */
-func (a *UsageMeteringApiService) GetUsageSummary(ctx _context.Context) ApiGetUsageSummaryRequest {
-	return ApiGetUsageSummaryRequest{
+func (a *UsageMeteringApiService) GetUsageSummary(ctx _context.Context, startMonth time.Time, o ...ApiGetUsageSummaryOptionalParameters) (UsageSummaryResponse, *_nethttp.Response, error) {
+	req := apiGetUsageSummaryRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startMonth: &startMonth,
 	}
+
+	if len(o) > 0 {
+		req.endMonth = o[0].EndMonth
+		req.includeOrgDetails = o[0].IncludeOrgDetails
+	}
+
+	return req.ApiService.getUsageSummaryExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSummaryResponse
  */
-func (a *UsageMeteringApiService) GetUsageSummaryExecute(r ApiGetUsageSummaryRequest) (UsageSummaryResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageSummaryExecute(r apiGetUsageSummaryRequest) (UsageSummaryResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -4176,44 +4304,49 @@ func (a *UsageMeteringApiService) GetUsageSummaryExecute(r ApiGetUsageSummaryReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageSyntheticsRequest struct {
+type apiGetUsageSyntheticsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageSyntheticsRequest) StartHr(startHr time.Time) ApiGetUsageSyntheticsRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageSyntheticsRequest) EndHr(endHr time.Time) ApiGetUsageSyntheticsRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageSyntheticsOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageSyntheticsRequest) Execute() (UsageSyntheticsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageSyntheticsExecute(r)
+func NewApiGetUsageSyntheticsOptionalParameters() *ApiGetUsageSyntheticsOptionalParameters {
+	this := ApiGetUsageSyntheticsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageSyntheticsOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageSyntheticsOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageSynthetics Get hourly usage for Synthetics Checks
  * Get hourly usage for [Synthetics checks](https://docs.datadoghq.com/synthetics/).
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageSyntheticsRequest
  */
-func (a *UsageMeteringApiService) GetUsageSynthetics(ctx _context.Context) ApiGetUsageSyntheticsRequest {
-	return ApiGetUsageSyntheticsRequest{
+func (a *UsageMeteringApiService) GetUsageSynthetics(ctx _context.Context, startHr time.Time, o ...ApiGetUsageSyntheticsOptionalParameters) (UsageSyntheticsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageSyntheticsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageSyntheticsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSyntheticsResponse
  */
-func (a *UsageMeteringApiService) GetUsageSyntheticsExecute(r ApiGetUsageSyntheticsRequest) (UsageSyntheticsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageSyntheticsExecute(r apiGetUsageSyntheticsRequest) (UsageSyntheticsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -4346,44 +4479,49 @@ func (a *UsageMeteringApiService) GetUsageSyntheticsExecute(r ApiGetUsageSynthet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageSyntheticsAPIRequest struct {
+type apiGetUsageSyntheticsAPIRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageSyntheticsAPIRequest) StartHr(startHr time.Time) ApiGetUsageSyntheticsAPIRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageSyntheticsAPIRequest) EndHr(endHr time.Time) ApiGetUsageSyntheticsAPIRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageSyntheticsAPIOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageSyntheticsAPIRequest) Execute() (UsageSyntheticsAPIResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageSyntheticsAPIExecute(r)
+func NewApiGetUsageSyntheticsAPIOptionalParameters() *ApiGetUsageSyntheticsAPIOptionalParameters {
+	this := ApiGetUsageSyntheticsAPIOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageSyntheticsAPIOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageSyntheticsAPIOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageSyntheticsAPI Get hourly usage for Synthetics API Checks
  * Get hourly usage for [synthetics API checks](https://docs.datadoghq.com/synthetics/).
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageSyntheticsAPIRequest
  */
-func (a *UsageMeteringApiService) GetUsageSyntheticsAPI(ctx _context.Context) ApiGetUsageSyntheticsAPIRequest {
-	return ApiGetUsageSyntheticsAPIRequest{
+func (a *UsageMeteringApiService) GetUsageSyntheticsAPI(ctx _context.Context, startHr time.Time, o ...ApiGetUsageSyntheticsAPIOptionalParameters) (UsageSyntheticsAPIResponse, *_nethttp.Response, error) {
+	req := apiGetUsageSyntheticsAPIRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageSyntheticsAPIExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSyntheticsAPIResponse
  */
-func (a *UsageMeteringApiService) GetUsageSyntheticsAPIExecute(r ApiGetUsageSyntheticsAPIRequest) (UsageSyntheticsAPIResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageSyntheticsAPIExecute(r apiGetUsageSyntheticsAPIRequest) (UsageSyntheticsAPIResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -4516,44 +4654,49 @@ func (a *UsageMeteringApiService) GetUsageSyntheticsAPIExecute(r ApiGetUsageSynt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageSyntheticsBrowserRequest struct {
+type apiGetUsageSyntheticsBrowserRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageSyntheticsBrowserRequest) StartHr(startHr time.Time) ApiGetUsageSyntheticsBrowserRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageSyntheticsBrowserRequest) EndHr(endHr time.Time) ApiGetUsageSyntheticsBrowserRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageSyntheticsBrowserOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageSyntheticsBrowserRequest) Execute() (UsageSyntheticsBrowserResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageSyntheticsBrowserExecute(r)
+func NewApiGetUsageSyntheticsBrowserOptionalParameters() *ApiGetUsageSyntheticsBrowserOptionalParameters {
+	this := ApiGetUsageSyntheticsBrowserOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageSyntheticsBrowserOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageSyntheticsBrowserOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageSyntheticsBrowser Get hourly usage for Synthetics Browser Checks
  * Get hourly usage for synthetics browser checks.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageSyntheticsBrowserRequest
  */
-func (a *UsageMeteringApiService) GetUsageSyntheticsBrowser(ctx _context.Context) ApiGetUsageSyntheticsBrowserRequest {
-	return ApiGetUsageSyntheticsBrowserRequest{
+func (a *UsageMeteringApiService) GetUsageSyntheticsBrowser(ctx _context.Context, startHr time.Time, o ...ApiGetUsageSyntheticsBrowserOptionalParameters) (UsageSyntheticsBrowserResponse, *_nethttp.Response, error) {
+	req := apiGetUsageSyntheticsBrowserRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageSyntheticsBrowserExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageSyntheticsBrowserResponse
  */
-func (a *UsageMeteringApiService) GetUsageSyntheticsBrowserExecute(r ApiGetUsageSyntheticsBrowserRequest) (UsageSyntheticsBrowserResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageSyntheticsBrowserExecute(r apiGetUsageSyntheticsBrowserRequest) (UsageSyntheticsBrowserResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -4686,44 +4829,49 @@ func (a *UsageMeteringApiService) GetUsageSyntheticsBrowserExecute(r ApiGetUsage
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageTimeseriesRequest struct {
+type apiGetUsageTimeseriesRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageTimeseriesRequest) StartHr(startHr time.Time) ApiGetUsageTimeseriesRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageTimeseriesRequest) EndHr(endHr time.Time) ApiGetUsageTimeseriesRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageTimeseriesOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageTimeseriesRequest) Execute() (UsageTimeseriesResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageTimeseriesExecute(r)
+func NewApiGetUsageTimeseriesOptionalParameters() *ApiGetUsageTimeseriesOptionalParameters {
+	this := ApiGetUsageTimeseriesOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageTimeseriesOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageTimeseriesOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
  * GetUsageTimeseries Get hourly usage for custom metrics
  * Get hourly usage for [custom metrics](https://docs.datadoghq.com/developers/metrics/custom_metrics/).
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageTimeseriesRequest
  */
-func (a *UsageMeteringApiService) GetUsageTimeseries(ctx _context.Context) ApiGetUsageTimeseriesRequest {
-	return ApiGetUsageTimeseriesRequest{
+func (a *UsageMeteringApiService) GetUsageTimeseries(ctx _context.Context, startHr time.Time, o ...ApiGetUsageTimeseriesOptionalParameters) (UsageTimeseriesResponse, *_nethttp.Response, error) {
+	req := apiGetUsageTimeseriesRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageTimeseriesExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageTimeseriesResponse
  */
-func (a *UsageMeteringApiService) GetUsageTimeseriesExecute(r ApiGetUsageTimeseriesRequest) (UsageTimeseriesResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageTimeseriesExecute(r apiGetUsageTimeseriesRequest) (UsageTimeseriesResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -4856,7 +5004,7 @@ func (a *UsageMeteringApiService) GetUsageTimeseriesExecute(r ApiGetUsageTimeser
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageTopAvgMetricsRequest struct {
+type apiGetUsageTopAvgMetricsRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	month      *time.Time
@@ -4865,45 +5013,59 @@ type ApiGetUsageTopAvgMetricsRequest struct {
 	limit      *int32
 }
 
-func (r ApiGetUsageTopAvgMetricsRequest) Month(month time.Time) ApiGetUsageTopAvgMetricsRequest {
-	r.month = &month
-	return r
-}
-func (r ApiGetUsageTopAvgMetricsRequest) Day(day time.Time) ApiGetUsageTopAvgMetricsRequest {
-	r.day = &day
-	return r
-}
-func (r ApiGetUsageTopAvgMetricsRequest) Names(names []string) ApiGetUsageTopAvgMetricsRequest {
-	r.names = &names
-	return r
-}
-func (r ApiGetUsageTopAvgMetricsRequest) Limit(limit int32) ApiGetUsageTopAvgMetricsRequest {
-	r.limit = &limit
-	return r
+type ApiGetUsageTopAvgMetricsOptionalParameters struct {
+	Month *time.Time
+	Day   *time.Time
+	Names *[]string
+	Limit *int32
 }
 
-func (r ApiGetUsageTopAvgMetricsRequest) Execute() (UsageTopAvgMetricsResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageTopAvgMetricsExecute(r)
+func NewApiGetUsageTopAvgMetricsOptionalParameters() *ApiGetUsageTopAvgMetricsOptionalParameters {
+	this := ApiGetUsageTopAvgMetricsOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageTopAvgMetricsOptionalParameters) WithMonth(month time.Time) *ApiGetUsageTopAvgMetricsOptionalParameters {
+	r.Month = &month
+	return r
+}
+func (r *ApiGetUsageTopAvgMetricsOptionalParameters) WithDay(day time.Time) *ApiGetUsageTopAvgMetricsOptionalParameters {
+	r.Day = &day
+	return r
+}
+func (r *ApiGetUsageTopAvgMetricsOptionalParameters) WithNames(names []string) *ApiGetUsageTopAvgMetricsOptionalParameters {
+	r.Names = &names
+	return r
+}
+func (r *ApiGetUsageTopAvgMetricsOptionalParameters) WithLimit(limit int32) *ApiGetUsageTopAvgMetricsOptionalParameters {
+	r.Limit = &limit
+	return r
 }
 
 /*
  * GetUsageTopAvgMetrics Get top custom metrics by hourly average
  * Get top [custom metrics](https://docs.datadoghq.com/developers/metrics/custom_metrics/) by hourly average. Use the month parameter to get a month-to-date data resolution or use the day parameter to get a daily resolution. One of the two is required, and only one of the two is allowed.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageTopAvgMetricsRequest
  */
-func (a *UsageMeteringApiService) GetUsageTopAvgMetrics(ctx _context.Context) ApiGetUsageTopAvgMetricsRequest {
-	return ApiGetUsageTopAvgMetricsRequest{
+func (a *UsageMeteringApiService) GetUsageTopAvgMetrics(ctx _context.Context, o ...ApiGetUsageTopAvgMetricsOptionalParameters) (UsageTopAvgMetricsResponse, *_nethttp.Response, error) {
+	req := apiGetUsageTopAvgMetricsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.month = o[0].Month
+		req.day = o[0].Day
+		req.names = o[0].Names
+		req.limit = o[0].Limit
+	}
+
+	return req.ApiService.getUsageTopAvgMetricsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageTopAvgMetricsResponse
  */
-func (a *UsageMeteringApiService) GetUsageTopAvgMetricsExecute(r ApiGetUsageTopAvgMetricsRequest) (UsageTopAvgMetricsResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageTopAvgMetricsExecute(r apiGetUsageTopAvgMetricsRequest) (UsageTopAvgMetricsResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -5049,24 +5211,24 @@ func (a *UsageMeteringApiService) GetUsageTopAvgMetricsExecute(r ApiGetUsageTopA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetUsageTraceRequest struct {
+type apiGetUsageTraceRequest struct {
 	ctx        _context.Context
 	ApiService *UsageMeteringApiService
 	startHr    *time.Time
 	endHr      *time.Time
 }
 
-func (r ApiGetUsageTraceRequest) StartHr(startHr time.Time) ApiGetUsageTraceRequest {
-	r.startHr = &startHr
-	return r
-}
-func (r ApiGetUsageTraceRequest) EndHr(endHr time.Time) ApiGetUsageTraceRequest {
-	r.endHr = &endHr
-	return r
+type ApiGetUsageTraceOptionalParameters struct {
+	EndHr *time.Time
 }
 
-func (r ApiGetUsageTraceRequest) Execute() (UsageTraceResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetUsageTraceExecute(r)
+func NewApiGetUsageTraceOptionalParameters() *ApiGetUsageTraceOptionalParameters {
+	this := ApiGetUsageTraceOptionalParameters{}
+	return &this
+}
+func (r *ApiGetUsageTraceOptionalParameters) WithEndHr(endHr time.Time) *ApiGetUsageTraceOptionalParameters {
+	r.EndHr = &endHr
+	return r
 }
 
 /*
@@ -5074,21 +5236,26 @@ func (r ApiGetUsageTraceRequest) Execute() (UsageTraceResponse, *_nethttp.Respon
  * Get hourly usage for trace search.
 
 **Note** This endpoint has been renamed to `/api/v1/usage/indexed-spans`.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetUsageTraceRequest
 */
-func (a *UsageMeteringApiService) GetUsageTrace(ctx _context.Context) ApiGetUsageTraceRequest {
-	return ApiGetUsageTraceRequest{
+func (a *UsageMeteringApiService) GetUsageTrace(ctx _context.Context, startHr time.Time, o ...ApiGetUsageTraceOptionalParameters) (UsageTraceResponse, *_nethttp.Response, error) {
+	req := apiGetUsageTraceRequest{
 		ApiService: a,
 		ctx:        ctx,
+		startHr:    &startHr,
 	}
+
+	if len(o) > 0 {
+		req.endHr = o[0].EndHr
+	}
+
+	return req.ApiService.getUsageTraceExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return UsageTraceResponse
  */
-func (a *UsageMeteringApiService) GetUsageTraceExecute(r ApiGetUsageTraceRequest) (UsageTraceResponse, *_nethttp.Response, error) {
+func (a *UsageMeteringApiService) getUsageTraceExecute(r apiGetUsageTraceRequest) (UsageTraceResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

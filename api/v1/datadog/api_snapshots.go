@@ -24,7 +24,7 @@ var (
 // SnapshotsApiService SnapshotsApi service
 type SnapshotsApiService service
 
-type ApiGetGraphSnapshotRequest struct {
+type apiGetGraphSnapshotRequest struct {
 	ctx         _context.Context
 	ApiService  *SnapshotsApiService
 	start       *int64
@@ -35,54 +35,62 @@ type ApiGetGraphSnapshotRequest struct {
 	title       *string
 }
 
-func (r ApiGetGraphSnapshotRequest) Start(start int64) ApiGetGraphSnapshotRequest {
-	r.start = &start
-	return r
-}
-func (r ApiGetGraphSnapshotRequest) End(end int64) ApiGetGraphSnapshotRequest {
-	r.end = &end
-	return r
-}
-func (r ApiGetGraphSnapshotRequest) MetricQuery(metricQuery string) ApiGetGraphSnapshotRequest {
-	r.metricQuery = &metricQuery
-	return r
-}
-func (r ApiGetGraphSnapshotRequest) EventQuery(eventQuery string) ApiGetGraphSnapshotRequest {
-	r.eventQuery = &eventQuery
-	return r
-}
-func (r ApiGetGraphSnapshotRequest) GraphDef(graphDef string) ApiGetGraphSnapshotRequest {
-	r.graphDef = &graphDef
-	return r
-}
-func (r ApiGetGraphSnapshotRequest) Title(title string) ApiGetGraphSnapshotRequest {
-	r.title = &title
-	return r
+type ApiGetGraphSnapshotOptionalParameters struct {
+	MetricQuery *string
+	EventQuery  *string
+	GraphDef    *string
+	Title       *string
 }
 
-func (r ApiGetGraphSnapshotRequest) Execute() (GraphSnapshot, *_nethttp.Response, error) {
-	return r.ApiService.GetGraphSnapshotExecute(r)
+func NewApiGetGraphSnapshotOptionalParameters() *ApiGetGraphSnapshotOptionalParameters {
+	this := ApiGetGraphSnapshotOptionalParameters{}
+	return &this
+}
+func (r *ApiGetGraphSnapshotOptionalParameters) WithMetricQuery(metricQuery string) *ApiGetGraphSnapshotOptionalParameters {
+	r.MetricQuery = &metricQuery
+	return r
+}
+func (r *ApiGetGraphSnapshotOptionalParameters) WithEventQuery(eventQuery string) *ApiGetGraphSnapshotOptionalParameters {
+	r.EventQuery = &eventQuery
+	return r
+}
+func (r *ApiGetGraphSnapshotOptionalParameters) WithGraphDef(graphDef string) *ApiGetGraphSnapshotOptionalParameters {
+	r.GraphDef = &graphDef
+	return r
+}
+func (r *ApiGetGraphSnapshotOptionalParameters) WithTitle(title string) *ApiGetGraphSnapshotOptionalParameters {
+	r.Title = &title
+	return r
 }
 
 /*
  * GetGraphSnapshot Take graph snapshots
  * Take graph snapshots.
 **Note**: When a snapshot is created, there is some delay before it is available.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiGetGraphSnapshotRequest
 */
-func (a *SnapshotsApiService) GetGraphSnapshot(ctx _context.Context) ApiGetGraphSnapshotRequest {
-	return ApiGetGraphSnapshotRequest{
+func (a *SnapshotsApiService) GetGraphSnapshot(ctx _context.Context, start int64, end int64, o ...ApiGetGraphSnapshotOptionalParameters) (GraphSnapshot, *_nethttp.Response, error) {
+	req := apiGetGraphSnapshotRequest{
 		ApiService: a,
 		ctx:        ctx,
+		start:      &start,
+		end:        &end,
 	}
+
+	if len(o) > 0 {
+		req.metricQuery = o[0].MetricQuery
+		req.eventQuery = o[0].EventQuery
+		req.graphDef = o[0].GraphDef
+		req.title = o[0].Title
+	}
+
+	return req.ApiService.getGraphSnapshotExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return GraphSnapshot
  */
-func (a *SnapshotsApiService) GetGraphSnapshotExecute(r ApiGetGraphSnapshotRequest) (GraphSnapshot, *_nethttp.Response, error) {
+func (a *SnapshotsApiService) getGraphSnapshotExecute(r apiGetGraphSnapshotRequest) (GraphSnapshot, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

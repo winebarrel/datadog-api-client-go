@@ -25,39 +25,31 @@ var (
 // LogsApiService LogsApi service
 type LogsApiService service
 
-type ApiAggregateLogsRequest struct {
+type apiAggregateLogsRequest struct {
 	ctx        _context.Context
 	ApiService *LogsApiService
 	body       *LogsAggregateRequest
 }
 
-func (r ApiAggregateLogsRequest) Body(body LogsAggregateRequest) ApiAggregateLogsRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiAggregateLogsRequest) Execute() (LogsAggregateResponse, *_nethttp.Response, error) {
-	return r.ApiService.AggregateLogsExecute(r)
-}
-
 /*
  * AggregateLogs Aggregate events
  * The API endpoint to aggregate events into buckets and compute metrics and timeseries.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiAggregateLogsRequest
  */
-func (a *LogsApiService) AggregateLogs(ctx _context.Context) ApiAggregateLogsRequest {
-	return ApiAggregateLogsRequest{
+func (a *LogsApiService) AggregateLogs(ctx _context.Context, body LogsAggregateRequest) (LogsAggregateResponse, *_nethttp.Response, error) {
+	req := apiAggregateLogsRequest{
 		ApiService: a,
 		ctx:        ctx,
+		body:       &body,
 	}
+
+	return req.ApiService.aggregateLogsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return LogsAggregateResponse
  */
-func (a *LogsApiService) AggregateLogsExecute(r ApiAggregateLogsRequest) (LogsAggregateResponse, *_nethttp.Response, error) {
+func (a *LogsApiService) aggregateLogsExecute(r apiAggregateLogsRequest) (LogsAggregateResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -188,19 +180,23 @@ func (a *LogsApiService) AggregateLogsExecute(r ApiAggregateLogsRequest) (LogsAg
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListLogsRequest struct {
+type apiListLogsRequest struct {
 	ctx        _context.Context
 	ApiService *LogsApiService
 	body       *LogsListRequest
 }
 
-func (r ApiListLogsRequest) Body(body LogsListRequest) ApiListLogsRequest {
-	r.body = &body
-	return r
+type ApiListLogsOptionalParameters struct {
+	Body *LogsListRequest
 }
 
-func (r ApiListLogsRequest) Execute() (LogsListResponse, *_nethttp.Response, error) {
-	return r.ApiService.ListLogsExecute(r)
+func NewApiListLogsOptionalParameters() *ApiListLogsOptionalParameters {
+	this := ApiListLogsOptionalParameters{}
+	return &this
+}
+func (r *ApiListLogsOptionalParameters) WithBody(body LogsListRequest) *ApiListLogsOptionalParameters {
+	r.Body = &body
+	return r
 }
 
 /*
@@ -216,21 +212,25 @@ See [Datadog Logs Archive documentation][2].**
 
 [1]: /logs/guide/collect-multiple-logs-with-pagination
 [2]: https://docs.datadoghq.com/logs/archives
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListLogsRequest
 */
-func (a *LogsApiService) ListLogs(ctx _context.Context) ApiListLogsRequest {
-	return ApiListLogsRequest{
+func (a *LogsApiService) ListLogs(ctx _context.Context, o ...ApiListLogsOptionalParameters) (LogsListResponse, *_nethttp.Response, error) {
+	req := apiListLogsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.body = o[0].Body
+	}
+
+	return req.ApiService.listLogsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return LogsListResponse
  */
-func (a *LogsApiService) ListLogsExecute(r ApiListLogsRequest) (LogsListResponse, *_nethttp.Response, error) {
+func (a *LogsApiService) listLogsExecute(r apiListLogsRequest) (LogsListResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -358,7 +358,7 @@ func (a *LogsApiService) ListLogsExecute(r ApiListLogsRequest) (LogsListResponse
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListLogsGetRequest struct {
+type apiListLogsGetRequest struct {
 	ctx         _context.Context
 	ApiService  *LogsApiService
 	filterQuery *string
@@ -370,37 +370,47 @@ type ApiListLogsGetRequest struct {
 	pageLimit   *int32
 }
 
-func (r ApiListLogsGetRequest) FilterQuery(filterQuery string) ApiListLogsGetRequest {
-	r.filterQuery = &filterQuery
-	return r
-}
-func (r ApiListLogsGetRequest) FilterIndex(filterIndex string) ApiListLogsGetRequest {
-	r.filterIndex = &filterIndex
-	return r
-}
-func (r ApiListLogsGetRequest) FilterFrom(filterFrom time.Time) ApiListLogsGetRequest {
-	r.filterFrom = &filterFrom
-	return r
-}
-func (r ApiListLogsGetRequest) FilterTo(filterTo time.Time) ApiListLogsGetRequest {
-	r.filterTo = &filterTo
-	return r
-}
-func (r ApiListLogsGetRequest) Sort(sort LogsSort) ApiListLogsGetRequest {
-	r.sort = &sort
-	return r
-}
-func (r ApiListLogsGetRequest) PageCursor(pageCursor string) ApiListLogsGetRequest {
-	r.pageCursor = &pageCursor
-	return r
-}
-func (r ApiListLogsGetRequest) PageLimit(pageLimit int32) ApiListLogsGetRequest {
-	r.pageLimit = &pageLimit
-	return r
+type ApiListLogsGetOptionalParameters struct {
+	FilterQuery *string
+	FilterIndex *string
+	FilterFrom  *time.Time
+	FilterTo    *time.Time
+	Sort        *LogsSort
+	PageCursor  *string
+	PageLimit   *int32
 }
 
-func (r ApiListLogsGetRequest) Execute() (LogsListResponse, *_nethttp.Response, error) {
-	return r.ApiService.ListLogsGetExecute(r)
+func NewApiListLogsGetOptionalParameters() *ApiListLogsGetOptionalParameters {
+	this := ApiListLogsGetOptionalParameters{}
+	return &this
+}
+func (r *ApiListLogsGetOptionalParameters) WithFilterQuery(filterQuery string) *ApiListLogsGetOptionalParameters {
+	r.FilterQuery = &filterQuery
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithFilterIndex(filterIndex string) *ApiListLogsGetOptionalParameters {
+	r.FilterIndex = &filterIndex
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithFilterFrom(filterFrom time.Time) *ApiListLogsGetOptionalParameters {
+	r.FilterFrom = &filterFrom
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithFilterTo(filterTo time.Time) *ApiListLogsGetOptionalParameters {
+	r.FilterTo = &filterTo
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithSort(sort LogsSort) *ApiListLogsGetOptionalParameters {
+	r.Sort = &sort
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithPageCursor(pageCursor string) *ApiListLogsGetOptionalParameters {
+	r.PageCursor = &pageCursor
+	return r
+}
+func (r *ApiListLogsGetOptionalParameters) WithPageLimit(pageLimit int32) *ApiListLogsGetOptionalParameters {
+	r.PageLimit = &pageLimit
+	return r
 }
 
 /*
@@ -416,21 +426,31 @@ See [Datadog Logs Archive documentation][2].**
 
 [1]: /logs/guide/collect-multiple-logs-with-pagination
 [2]: https://docs.datadoghq.com/logs/archives
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListLogsGetRequest
 */
-func (a *LogsApiService) ListLogsGet(ctx _context.Context) ApiListLogsGetRequest {
-	return ApiListLogsGetRequest{
+func (a *LogsApiService) ListLogsGet(ctx _context.Context, o ...ApiListLogsGetOptionalParameters) (LogsListResponse, *_nethttp.Response, error) {
+	req := apiListLogsGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.filterQuery = o[0].FilterQuery
+		req.filterIndex = o[0].FilterIndex
+		req.filterFrom = o[0].FilterFrom
+		req.filterTo = o[0].FilterTo
+		req.sort = o[0].Sort
+		req.pageCursor = o[0].PageCursor
+		req.pageLimit = o[0].PageLimit
+	}
+
+	return req.ApiService.listLogsGetExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return LogsListResponse
  */
-func (a *LogsApiService) ListLogsGetExecute(r ApiListLogsGetRequest) (LogsListResponse, *_nethttp.Response, error) {
+func (a *LogsApiService) listLogsGetExecute(r apiListLogsGetRequest) (LogsListResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}

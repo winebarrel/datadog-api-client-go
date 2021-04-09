@@ -26,39 +26,31 @@ var (
 // MonitorsApiService MonitorsApi service
 type MonitorsApiService service
 
-type ApiCheckCanDeleteMonitorRequest struct {
+type apiCheckCanDeleteMonitorRequest struct {
 	ctx        _context.Context
 	ApiService *MonitorsApiService
 	monitorIds *[]int64
 }
 
-func (r ApiCheckCanDeleteMonitorRequest) MonitorIds(monitorIds []int64) ApiCheckCanDeleteMonitorRequest {
-	r.monitorIds = &monitorIds
-	return r
-}
-
-func (r ApiCheckCanDeleteMonitorRequest) Execute() (CheckCanDeleteMonitorResponse, *_nethttp.Response, error) {
-	return r.ApiService.CheckCanDeleteMonitorExecute(r)
-}
-
 /*
  * CheckCanDeleteMonitor Check if a monitor can be deleted
  * Check if the given monitors can be deleted.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCheckCanDeleteMonitorRequest
  */
-func (a *MonitorsApiService) CheckCanDeleteMonitor(ctx _context.Context) ApiCheckCanDeleteMonitorRequest {
-	return ApiCheckCanDeleteMonitorRequest{
+func (a *MonitorsApiService) CheckCanDeleteMonitor(ctx _context.Context, monitorIds []int64) (CheckCanDeleteMonitorResponse, *_nethttp.Response, error) {
+	req := apiCheckCanDeleteMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
+		monitorIds: &monitorIds,
 	}
+
+	return req.ApiService.checkCanDeleteMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return CheckCanDeleteMonitorResponse
  */
-func (a *MonitorsApiService) CheckCanDeleteMonitorExecute(r ApiCheckCanDeleteMonitorRequest) (CheckCanDeleteMonitorResponse, *_nethttp.Response, error) {
+func (a *MonitorsApiService) checkCanDeleteMonitorExecute(r apiCheckCanDeleteMonitorRequest) (CheckCanDeleteMonitorResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -208,19 +200,10 @@ func (a *MonitorsApiService) CheckCanDeleteMonitorExecute(r ApiCheckCanDeleteMon
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCreateMonitorRequest struct {
+type apiCreateMonitorRequest struct {
 	ctx        _context.Context
 	ApiService *MonitorsApiService
 	body       *Monitor
-}
-
-func (r ApiCreateMonitorRequest) Body(body Monitor) ApiCreateMonitorRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiCreateMonitorRequest) Execute() (Monitor, *_nethttp.Response, error) {
-	return r.ApiService.CreateMonitorExecute(r)
 }
 
 /*
@@ -346,21 +329,22 @@ Email notifications can be sent to specific users by using the same '@username' 
 * **`tags`** [*optional*, *default* = **empty list**]: A list of tags to associate with your monitor.
 When getting all monitor details via the API, use the `monitor_tags` argument to filter results by these tags.
 It is only available via the API and isn't visible or editable in the Datadog UI.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiCreateMonitorRequest
 */
-func (a *MonitorsApiService) CreateMonitor(ctx _context.Context) ApiCreateMonitorRequest {
-	return ApiCreateMonitorRequest{
+func (a *MonitorsApiService) CreateMonitor(ctx _context.Context, body Monitor) (Monitor, *_nethttp.Response, error) {
+	req := apiCreateMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
+		body:       &body,
 	}
+
+	return req.ApiService.createMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return Monitor
  */
-func (a *MonitorsApiService) CreateMonitorExecute(r ApiCreateMonitorRequest) (Monitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) createMonitorExecute(r apiCreateMonitorRequest) (Monitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -491,42 +475,49 @@ func (a *MonitorsApiService) CreateMonitorExecute(r ApiCreateMonitorRequest) (Mo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteMonitorRequest struct {
+type apiDeleteMonitorRequest struct {
 	ctx        _context.Context
 	ApiService *MonitorsApiService
 	monitorId  int64
 	force      *string
 }
 
-func (r ApiDeleteMonitorRequest) Force(force string) ApiDeleteMonitorRequest {
-	r.force = &force
-	return r
+type ApiDeleteMonitorOptionalParameters struct {
+	Force *string
 }
 
-func (r ApiDeleteMonitorRequest) Execute() (DeletedMonitor, *_nethttp.Response, error) {
-	return r.ApiService.DeleteMonitorExecute(r)
+func NewApiDeleteMonitorOptionalParameters() *ApiDeleteMonitorOptionalParameters {
+	this := ApiDeleteMonitorOptionalParameters{}
+	return &this
+}
+func (r *ApiDeleteMonitorOptionalParameters) WithForce(force string) *ApiDeleteMonitorOptionalParameters {
+	r.Force = &force
+	return r
 }
 
 /*
  * DeleteMonitor Delete a monitor
  * Delete the specified monitor
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param monitorId The ID of the monitor.
- * @return ApiDeleteMonitorRequest
  */
-func (a *MonitorsApiService) DeleteMonitor(ctx _context.Context, monitorId int64) ApiDeleteMonitorRequest {
-	return ApiDeleteMonitorRequest{
+func (a *MonitorsApiService) DeleteMonitor(ctx _context.Context, monitorId int64, o ...ApiDeleteMonitorOptionalParameters) (DeletedMonitor, *_nethttp.Response, error) {
+	req := apiDeleteMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
 		monitorId:  monitorId,
 	}
+
+	if len(o) > 0 {
+		req.force = o[0].Force
+	}
+
+	return req.ApiService.deleteMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return DeletedMonitor
  */
-func (a *MonitorsApiService) DeleteMonitorExecute(r ApiDeleteMonitorRequest) (DeletedMonitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) deleteMonitorExecute(r apiDeleteMonitorRequest) (DeletedMonitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -676,42 +667,49 @@ func (a *MonitorsApiService) DeleteMonitorExecute(r ApiDeleteMonitorRequest) (De
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetMonitorRequest struct {
+type apiGetMonitorRequest struct {
 	ctx         _context.Context
 	ApiService  *MonitorsApiService
 	monitorId   int64
 	groupStates *string
 }
 
-func (r ApiGetMonitorRequest) GroupStates(groupStates string) ApiGetMonitorRequest {
-	r.groupStates = &groupStates
-	return r
+type ApiGetMonitorOptionalParameters struct {
+	GroupStates *string
 }
 
-func (r ApiGetMonitorRequest) Execute() (Monitor, *_nethttp.Response, error) {
-	return r.ApiService.GetMonitorExecute(r)
+func NewApiGetMonitorOptionalParameters() *ApiGetMonitorOptionalParameters {
+	this := ApiGetMonitorOptionalParameters{}
+	return &this
+}
+func (r *ApiGetMonitorOptionalParameters) WithGroupStates(groupStates string) *ApiGetMonitorOptionalParameters {
+	r.GroupStates = &groupStates
+	return r
 }
 
 /*
  * GetMonitor Get a monitor's details
  * Get details about the specified monitor from your organization.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param monitorId The ID of the monitor
- * @return ApiGetMonitorRequest
  */
-func (a *MonitorsApiService) GetMonitor(ctx _context.Context, monitorId int64) ApiGetMonitorRequest {
-	return ApiGetMonitorRequest{
+func (a *MonitorsApiService) GetMonitor(ctx _context.Context, monitorId int64, o ...ApiGetMonitorOptionalParameters) (Monitor, *_nethttp.Response, error) {
+	req := apiGetMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
 		monitorId:  monitorId,
 	}
+
+	if len(o) > 0 {
+		req.groupStates = o[0].GroupStates
+	}
+
+	return req.ApiService.getMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return Monitor
  */
-func (a *MonitorsApiService) GetMonitorExecute(r ApiGetMonitorRequest) (Monitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) getMonitorExecute(r apiGetMonitorRequest) (Monitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -851,7 +849,7 @@ func (a *MonitorsApiService) GetMonitorExecute(r ApiGetMonitorRequest) (Monitor,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListMonitorsRequest struct {
+type apiListMonitorsRequest struct {
 	ctx           _context.Context
 	ApiService    *MonitorsApiService
 	groupStates   *string
@@ -864,61 +862,83 @@ type ApiListMonitorsRequest struct {
 	pageSize      *int32
 }
 
-func (r ApiListMonitorsRequest) GroupStates(groupStates string) ApiListMonitorsRequest {
-	r.groupStates = &groupStates
-	return r
-}
-func (r ApiListMonitorsRequest) Name(name string) ApiListMonitorsRequest {
-	r.name = &name
-	return r
-}
-func (r ApiListMonitorsRequest) Tags(tags string) ApiListMonitorsRequest {
-	r.tags = &tags
-	return r
-}
-func (r ApiListMonitorsRequest) MonitorTags(monitorTags string) ApiListMonitorsRequest {
-	r.monitorTags = &monitorTags
-	return r
-}
-func (r ApiListMonitorsRequest) WithDowntimes(withDowntimes bool) ApiListMonitorsRequest {
-	r.withDowntimes = &withDowntimes
-	return r
-}
-func (r ApiListMonitorsRequest) IdOffset(idOffset int64) ApiListMonitorsRequest {
-	r.idOffset = &idOffset
-	return r
-}
-func (r ApiListMonitorsRequest) Page(page int64) ApiListMonitorsRequest {
-	r.page = &page
-	return r
-}
-func (r ApiListMonitorsRequest) PageSize(pageSize int32) ApiListMonitorsRequest {
-	r.pageSize = &pageSize
-	return r
+type ApiListMonitorsOptionalParameters struct {
+	GroupStates   *string
+	Name          *string
+	Tags          *string
+	MonitorTags   *string
+	WithDowntimes *bool
+	IdOffset      *int64
+	Page          *int64
+	PageSize      *int32
 }
 
-func (r ApiListMonitorsRequest) Execute() ([]Monitor, *_nethttp.Response, error) {
-	return r.ApiService.ListMonitorsExecute(r)
+func NewApiListMonitorsOptionalParameters() *ApiListMonitorsOptionalParameters {
+	this := ApiListMonitorsOptionalParameters{}
+	return &this
+}
+func (r *ApiListMonitorsOptionalParameters) WithGroupStates(groupStates string) *ApiListMonitorsOptionalParameters {
+	r.GroupStates = &groupStates
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithName(name string) *ApiListMonitorsOptionalParameters {
+	r.Name = &name
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithTags(tags string) *ApiListMonitorsOptionalParameters {
+	r.Tags = &tags
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithMonitorTags(monitorTags string) *ApiListMonitorsOptionalParameters {
+	r.MonitorTags = &monitorTags
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithWithDowntimes(withDowntimes bool) *ApiListMonitorsOptionalParameters {
+	r.WithDowntimes = &withDowntimes
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithIdOffset(idOffset int64) *ApiListMonitorsOptionalParameters {
+	r.IdOffset = &idOffset
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithPage(page int64) *ApiListMonitorsOptionalParameters {
+	r.Page = &page
+	return r
+}
+func (r *ApiListMonitorsOptionalParameters) WithPageSize(pageSize int32) *ApiListMonitorsOptionalParameters {
+	r.PageSize = &pageSize
+	return r
 }
 
 /*
  * ListMonitors Get all monitor details
  * Get details about the specified monitor from your organization.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiListMonitorsRequest
  */
-func (a *MonitorsApiService) ListMonitors(ctx _context.Context) ApiListMonitorsRequest {
-	return ApiListMonitorsRequest{
+func (a *MonitorsApiService) ListMonitors(ctx _context.Context, o ...ApiListMonitorsOptionalParameters) ([]Monitor, *_nethttp.Response, error) {
+	req := apiListMonitorsRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
+
+	if len(o) > 0 {
+		req.groupStates = o[0].GroupStates
+		req.name = o[0].Name
+		req.tags = o[0].Tags
+		req.monitorTags = o[0].MonitorTags
+		req.withDowntimes = o[0].WithDowntimes
+		req.idOffset = o[0].IdOffset
+		req.page = o[0].Page
+		req.pageSize = o[0].PageSize
+	}
+
+	return req.ApiService.listMonitorsExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return []Monitor
  */
-func (a *MonitorsApiService) ListMonitorsExecute(r ApiListMonitorsRequest) ([]Monitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) listMonitorsExecute(r apiListMonitorsRequest) ([]Monitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -1068,42 +1088,33 @@ func (a *MonitorsApiService) ListMonitorsExecute(r ApiListMonitorsRequest) ([]Mo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateMonitorRequest struct {
+type apiUpdateMonitorRequest struct {
 	ctx        _context.Context
 	ApiService *MonitorsApiService
 	monitorId  int64
 	body       *MonitorUpdateRequest
 }
 
-func (r ApiUpdateMonitorRequest) Body(body MonitorUpdateRequest) ApiUpdateMonitorRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiUpdateMonitorRequest) Execute() (Monitor, *_nethttp.Response, error) {
-	return r.ApiService.UpdateMonitorExecute(r)
-}
-
 /*
  * UpdateMonitor Edit a monitor
  * Edit the specified monitor.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param monitorId The ID of the monitor.
- * @return ApiUpdateMonitorRequest
  */
-func (a *MonitorsApiService) UpdateMonitor(ctx _context.Context, monitorId int64) ApiUpdateMonitorRequest {
-	return ApiUpdateMonitorRequest{
+func (a *MonitorsApiService) UpdateMonitor(ctx _context.Context, monitorId int64, body MonitorUpdateRequest) (Monitor, *_nethttp.Response, error) {
+	req := apiUpdateMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
 		monitorId:  monitorId,
+		body:       &body,
 	}
+
+	return req.ApiService.updateMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return Monitor
  */
-func (a *MonitorsApiService) UpdateMonitorExecute(r ApiUpdateMonitorRequest) (Monitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) updateMonitorExecute(r apiUpdateMonitorRequest) (Monitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPut
 		localVarPostBody     interface{}
@@ -1255,39 +1266,31 @@ func (a *MonitorsApiService) UpdateMonitorExecute(r ApiUpdateMonitorRequest) (Mo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiValidateMonitorRequest struct {
+type apiValidateMonitorRequest struct {
 	ctx        _context.Context
 	ApiService *MonitorsApiService
 	body       *Monitor
 }
 
-func (r ApiValidateMonitorRequest) Body(body Monitor) ApiValidateMonitorRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiValidateMonitorRequest) Execute() (Monitor, *_nethttp.Response, error) {
-	return r.ApiService.ValidateMonitorExecute(r)
-}
-
 /*
  * ValidateMonitor Validate a monitor
  * Validate the monitor provided in the request.
- * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @return ApiValidateMonitorRequest
  */
-func (a *MonitorsApiService) ValidateMonitor(ctx _context.Context) ApiValidateMonitorRequest {
-	return ApiValidateMonitorRequest{
+func (a *MonitorsApiService) ValidateMonitor(ctx _context.Context, body Monitor) (Monitor, *_nethttp.Response, error) {
+	req := apiValidateMonitorRequest{
 		ApiService: a,
 		ctx:        ctx,
+		body:       &body,
 	}
+
+	return req.ApiService.validateMonitorExecute(req)
 }
 
 /*
  * Execute executes the request
  * @return Monitor
  */
-func (a *MonitorsApiService) ValidateMonitorExecute(r ApiValidateMonitorRequest) (Monitor, *_nethttp.Response, error) {
+func (a *MonitorsApiService) validateMonitorExecute(r apiValidateMonitorRequest) (Monitor, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
