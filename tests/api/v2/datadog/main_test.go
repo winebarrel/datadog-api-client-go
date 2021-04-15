@@ -4,7 +4,7 @@
  * Copyright 2019-Present Datadog, Inc.
  */
 
-package test
+package datadog
 
 import (
 	"testing"
