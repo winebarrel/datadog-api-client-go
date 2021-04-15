@@ -15,7 +15,9 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path"
 	"reflect"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -189,8 +191,19 @@ func SendRequest(ctx context.Context, method, url string, payload []byte) (*http
 	return resp, body, respErr
 }
 
+func FeaturePath() (string, error) {
+	_, filename, _, _ := runtime.Caller(0)
+	f, err := os.Open(path.Join(path.Dir(filename), "features"))
+	if err != nil {
+		return "", err
+	}
+	fmt.Println(f.Name())
+	return string(f.Name()), nil
+}
+
 func RunScenarios(t *testing.T) {
-	requestsUndo, err := tests.LoadRequestsUndo("./features/undo.json")
+	featuresDir, _ := FeaturePath()
+	requestsUndo, err := tests.LoadRequestsUndo(path.Join(featuresDir, "undo.json"))
 	if err != nil {
 		t.Fatalf("could not load undo actions: %v", err)
 	}
@@ -200,6 +213,7 @@ func RunScenarios(t *testing.T) {
 	}
 	s := gobdd.NewSuite(
 		t,
+		gobdd.WithFeaturesPath(fmt.Sprintf("%s/*.feature", featuresDir)),
 		gobdd.WithTags(bddTags),
 		gobdd.WithIgnoredTags(tests.GetIgnoredTags()),
 		gobdd.WithBeforeScenario(func(ctx gobdd.Context) {
@@ -261,7 +275,7 @@ func RunScenarios(t *testing.T) {
 	s.AddStep(`an instance of "([^"]+)" API`, anInstanceOf)
 	s.AddStep(`operation "([^"]+)" enabled`, enableOperations)
 
-	steps, err := tests.LoadGivenSteps("./features/given.json")
+	steps, err := tests.LoadGivenSteps(path.Join(featuresDir, "given.json"))
 	if err != nil {
 		t.Fatalf("could not load given steps: %v", err)
 	}
