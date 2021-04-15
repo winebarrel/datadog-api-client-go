@@ -15,7 +15,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
-func TestScenarios(t *testing.T) {
+func RunScenarios(t *testing.T) {
 	requestsUndo, err := tests.LoadRequestsUndo("./features/undo.json")
 	if err != nil {
 		t.Fatalf("could not load undo actions: %v", err)
@@ -96,6 +96,10 @@ func TestScenarios(t *testing.T) {
 	}
 
 	s.Run()
+}
+
+func TestScenarios(t *testing.T) {
+	RunScenarios(t)
 }
 
 func aValidAPIKeyAuth(t gobdd.StepTest, ctx gobdd.Context) {
