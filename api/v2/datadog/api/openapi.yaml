@@ -3443,12 +3443,9 @@ paths:
                   "keepAlive": 3600,
                   "maxSignalDuration": 86400
                 },
-                "hasExtendedTitle": false,
                 "message": "Test rule",
                 "tags": [],
-                "isDefault": false,
-                "isEnabled": true,
-                "type": "log_detection"
+                "isEnabled": true
               }
           step: there is a valid "security_rule" in the system
       x-undo:
