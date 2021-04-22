@@ -349,6 +349,7 @@ func main() {
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("ListTagsByMetricName", true)
 
     apiClient := datadog.NewAPIClient(configuration)
     resp, r, err := apiClient.MetricsApi.ListTagsByMetricName(ctx, metricName).Execute()
@@ -424,6 +425,7 @@ func main() {
     metricName := "dist.http.endpoint.request" // string | The name of the metric.
 
     configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("ListVolumesByMetricName", true)
 
     apiClient := datadog.NewAPIClient(configuration)
     resp, r, err := apiClient.MetricsApi.ListVolumesByMetricName(ctx, metricName).Execute()
