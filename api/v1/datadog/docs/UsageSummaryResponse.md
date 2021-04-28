@@ -4,53 +4,53 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AgentHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all agent hosts over all hours in the current months for all organizations. | [optional] 
-**ApmAzureAppServiceHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all Azure app services using APM over all hours in the current months all organizations. | [optional] 
-**ApmHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all distinct APM hosts over all hours in the current months for all organizations. | [optional] 
-**AwsHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all AWS hosts over all hours in the current months for all organizations. | [optional] 
-**AwsLambdaFuncCount** | Pointer to **int64** | Shows the average of the number of functions that executed 1 or more times each hour in the current months for all organizations. | [optional] 
-**AwsLambdaInvocationsSum** | Pointer to **int64** | Shows the sum of all AWS Lambda invocations over all hours in the current months for all organizations. | [optional] 
-**AzureAppServiceTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all Azure app services over all hours in the current months for all organizations. | [optional] 
-**AzureHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all Azure hosts over all hours in the current months for all organizations. | [optional] 
-**BillableIngestedBytesAggSum** | Pointer to **int64** | Shows the sum of all log bytes ingested over all hours in the current months for all organizations. | [optional] 
-**ComplianceContainerAggSum** | Pointer to **interface{}** | Shows the sum of all compliance containers over all hours in the current months for all organizations. | [optional] 
-**ComplianceHostAggSum** | Pointer to **int64** | Shows the sum of all compliance hosts over all hours in the current months for all organizations. | [optional] 
-**ContainerAvgSum** | Pointer to **int64** | Shows the average of all distinct containers over all hours in the current months for all organizations. | [optional] 
-**ContainerHwmSum** | Pointer to **int64** | Shows the sum of the high-water marks of all distinct containers over all hours in the current months for all organizations. | [optional] 
-**CustomTsSum** | Pointer to **int64** | Shows the average number of distinct custom metrics over all hours in the current months for all organizations. | [optional] 
+**AgentHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all agent hosts over all hours in the current months for all organizations. | [optional] 
+**ApmAzureAppServiceHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all Azure app services using APM over all hours in the current months all organizations. | [optional] 
+**ApmHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all distinct APM hosts over all hours in the current months for all organizations. | [optional] 
+**AwsHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all AWS hosts over all hours in the current months for all organizations. | [optional] 
+**AwsLambdaFuncCount** | Pointer to **NullableInt64** | Shows the average of the number of functions that executed 1 or more times each hour in the current months for all organizations. | [optional] 
+**AwsLambdaInvocationsSum** | Pointer to **NullableInt64** | Shows the sum of all AWS Lambda invocations over all hours in the current months for all organizations. | [optional] 
+**AzureAppServiceTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all Azure app services over all hours in the current months for all organizations. | [optional] 
+**AzureHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all Azure hosts over all hours in the current months for all organizations. | [optional] 
+**BillableIngestedBytesAggSum** | Pointer to **NullableInt64** | Shows the sum of all log bytes ingested over all hours in the current months for all organizations. | [optional] 
+**ComplianceContainerAggSum** | Pointer to **NullableInt64** | Shows the sum of all compliance containers over all hours in the current months for all organizations. | [optional] 
+**ComplianceHostAggSum** | Pointer to **NullableInt64** | Shows the sum of all compliance hosts over all hours in the current months for all organizations. | [optional] 
+**ContainerAvgSum** | Pointer to **NullableInt64** | Shows the average of all distinct containers over all hours in the current months for all organizations. | [optional] 
+**ContainerHwmSum** | Pointer to **NullableInt64** | Shows the sum of the high-water marks of all distinct containers over all hours in the current months for all organizations. | [optional] 
+**CustomTsSum** | Pointer to **NullableInt64** | Shows the average number of distinct custom metrics over all hours in the current months for all organizations. | [optional] 
 **EndDate** | Pointer to **time.Time** | Shows the last date of usage in the current months for all organizations. | [optional] 
-**FargateTasksCountAvgSum** | Pointer to **int64** | Shows the average of all Fargate tasks over all hours in the current months for all organizations. | [optional] 
-**FargateTasksCountHwmSum** | Pointer to **int64** | Shows the sum of the high-water marks of all Fargate tasks over all hours in the current months for all organizations. | [optional] 
-**GcpHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all GCP hosts over all hours in the current months for all organizations. | [optional] 
-**HerokuHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all Heroku dynos over all hours in the current months for all organizations. | [optional] 
-**IncidentManagementMonthlyActiveUsersHwmSum** | Pointer to **int64** | Shows sum of the the high-water marks of incident management monthly active users in the current months for all organizations. | [optional] 
-**IndexedEventsCountAggSum** | Pointer to **int64** | Shows the sum of all log events indexed over all hours in the current months for all organizations. | [optional] 
-**InfraHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all distinct infrastructure hosts over all hours in the current months for all organizations. | [optional] 
-**IngestedEventsBytesAggSum** | Pointer to **int64** | Shows the sum of all log bytes ingested over all hours in the current months for all organizations. | [optional] 
-**IotDeviceAggSum** | Pointer to **int64** | Shows the sum of all IoT devices over all hours in the current months for all organizations. | [optional] 
-**IotDeviceTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all IoT devices over all hours in the current months of all organizations. | [optional] 
+**FargateTasksCountAvgSum** | Pointer to **NullableInt64** | Shows the average of all Fargate tasks over all hours in the current months for all organizations. | [optional] 
+**FargateTasksCountHwmSum** | Pointer to **NullableInt64** | Shows the sum of the high-water marks of all Fargate tasks over all hours in the current months for all organizations. | [optional] 
+**GcpHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all GCP hosts over all hours in the current months for all organizations. | [optional] 
+**HerokuHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all Heroku dynos over all hours in the current months for all organizations. | [optional] 
+**IncidentManagementMonthlyActiveUsersHwmSum** | Pointer to **NullableInt64** | Shows sum of the the high-water marks of incident management monthly active users in the current months for all organizations. | [optional] 
+**IndexedEventsCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all log events indexed over all hours in the current months for all organizations. | [optional] 
+**InfraHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all distinct infrastructure hosts over all hours in the current months for all organizations. | [optional] 
+**IngestedEventsBytesAggSum** | Pointer to **NullableInt64** | Shows the sum of all log bytes ingested over all hours in the current months for all organizations. | [optional] 
+**IotDeviceAggSum** | Pointer to **NullableInt64** | Shows the sum of all IoT devices over all hours in the current months for all organizations. | [optional] 
+**IotDeviceTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all IoT devices over all hours in the current months of all organizations. | [optional] 
 **LastUpdated** | Pointer to **time.Time** | Shows the the most recent hour in the current months for all organizations for which all usages were calculated. | [optional] 
-**LiveIndexedEventsAggSum** | Pointer to **int64** | Shows the sum of all live logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
-**LiveIngestedBytesAggSum** | Pointer to **int64** | Shows the sum of all live logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
-**MobileRumSessionCountAggSum** | Pointer to **int64** | Shows the sum of all mobile RUM Sessions over all hours in the current months for all organizations. | [optional] 
-**MobileRumSessionCountAndroidAggSum** | Pointer to **int64** | Shows the sum of all mobile RUM Sessions on Android over all hours in the current months for all organizations. | [optional] 
-**MobileRumSessionCountIosAggSum** | Pointer to **int64** | Shows the sum of all mobile RUM Sessions on iOS over all hours in the current months for all organizations. | [optional] 
-**NetflowIndexedEventsCountAggSum** | Pointer to **int64** | Shows the sum of all Network flows indexed over all hours in the current months for all organizations. | [optional] 
-**NpmHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all distinct Networks hosts over all hours in the current months for all organizations. | [optional] 
-**OpentelemetryHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all hosts reported by the Datadog exporter for the OpenTelemetry Collector over all hours in the current months for all organizations. | [optional] 
-**ProfilingContainerAgentCountAvg** | Pointer to **int64** | Shows the average number of profiled containers over all hours in the current months for all organizations. | [optional] 
-**ProfilingHostCountTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all profiled hosts over all hours in the current months for all organizations. | [optional] 
-**RehydratedIndexedEventsAggSum** | Pointer to **int64** | Shows the sum of all rehydrated logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
-**RehydratedIngestedBytesAggSum** | Pointer to **int64** | Shows the sum of all rehydrated logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
-**RumSessionCountAggSum** | Pointer to **int64** | Shows the sum of all browser RUM Sessions over all hours in the current months for all organizations. | [optional] 
-**RumTotalSessionCountAggSum** | Pointer to **int64** | Shows the sum of RUM Sessions (browser and mobile) over all hours in the current months for all organizations. | [optional] 
+**LiveIndexedEventsAggSum** | Pointer to **NullableInt64** | Shows the sum of all live logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
+**LiveIngestedBytesAggSum** | Pointer to **NullableInt64** | Shows the sum of all live logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
+**MobileRumSessionCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all mobile RUM Sessions over all hours in the current months for all organizations. | [optional] 
+**MobileRumSessionCountAndroidAggSum** | Pointer to **NullableInt64** | Shows the sum of all mobile RUM Sessions on Android over all hours in the current months for all organizations. | [optional] 
+**MobileRumSessionCountIosAggSum** | Pointer to **NullableInt64** | Shows the sum of all mobile RUM Sessions on iOS over all hours in the current months for all organizations. | [optional] 
+**NetflowIndexedEventsCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all Network flows indexed over all hours in the current months for all organizations. | [optional] 
+**NpmHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all distinct Networks hosts over all hours in the current months for all organizations. | [optional] 
+**OpentelemetryHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all hosts reported by the Datadog exporter for the OpenTelemetry Collector over all hours in the current months for all organizations. | [optional] 
+**ProfilingContainerAgentCountAvg** | Pointer to **NullableInt64** | Shows the average number of profiled containers over all hours in the current months for all organizations. | [optional] 
+**ProfilingHostCountTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all profiled hosts over all hours in the current months for all organizations. | [optional] 
+**RehydratedIndexedEventsAggSum** | Pointer to **NullableInt64** | Shows the sum of all rehydrated logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
+**RehydratedIngestedBytesAggSum** | Pointer to **NullableInt64** | Shows the sum of all rehydrated logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020). | [optional] 
+**RumSessionCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all browser RUM Sessions over all hours in the current months for all organizations. | [optional] 
+**RumTotalSessionCountAggSum** | Pointer to **NullableInt64** | Shows the sum of RUM Sessions (browser and mobile) over all hours in the current months for all organizations. | [optional] 
 **StartDate** | Pointer to **time.Time** | Shows the first date of usage in the current months for all organizations. | [optional] 
-**SyntheticsBrowserCheckCallsCountAggSum** | Pointer to **int64** | Shows the sum of all Synthetic browser tests over all hours in the current months for all organizations. | [optional] 
-**SyntheticsCheckCallsCountAggSum** | Pointer to **int64** | Shows the sum of all Synthetic API tests over all hours in the current months for all organizations. | [optional] 
-**TraceSearchIndexedEventsCountAggSum** | Pointer to **int64** | Shows the sum of all Indexed Spans indexed over all hours in the current months for all organizations. | [optional] 
-**TwolIngestedEventsBytesAggSum** | Pointer to **int64** | Shows the sum of all tracing without limits bytes ingested over all hours in the current months for all organizations. | [optional] 
+**SyntheticsBrowserCheckCallsCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all Synthetic browser tests over all hours in the current months for all organizations. | [optional] 
+**SyntheticsCheckCallsCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all Synthetic API tests over all hours in the current months for all organizations. | [optional] 
+**TraceSearchIndexedEventsCountAggSum** | Pointer to **NullableInt64** | Shows the sum of all Indexed Spans indexed over all hours in the current months for all organizations. | [optional] 
+**TwolIngestedEventsBytesAggSum** | Pointer to **NullableInt64** | Shows the sum of all tracing without limits bytes ingested over all hours in the current months for all organizations. | [optional] 
 **Usage** | Pointer to [**[]UsageSummaryDate**](UsageSummaryDate.md) | An array of objects regarding hourly usage. | [optional] 
-**VsphereHostTop99pSum** | Pointer to **int64** | Shows the 99th percentile of all vSphere hosts over all hours in the current months for all organizations. | [optional] 
+**VsphereHostTop99pSum** | Pointer to **NullableInt64** | Shows the 99th percentile of all vSphere hosts over all hours in the current months for all organizations. | [optional] 
 
 ## Methods
 
@@ -96,6 +96,16 @@ SetAgentHostTop99pSum sets AgentHostTop99pSum field to given value.
 
 HasAgentHostTop99pSum returns a boolean if a field has been set.
 
+### SetAgentHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetAgentHostTop99pSumNil(b bool)`
+
+ SetAgentHostTop99pSumNil sets the value for AgentHostTop99pSum to be an explicit nil
+
+### UnsetAgentHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetAgentHostTop99pSum()`
+
+UnsetAgentHostTop99pSum ensures that no value is present for AgentHostTop99pSum, not even an explicit nil
 ### GetApmAzureAppServiceHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetApmAzureAppServiceHostTop99pSum() int64`
@@ -121,6 +131,16 @@ SetApmAzureAppServiceHostTop99pSum sets ApmAzureAppServiceHostTop99pSum field to
 
 HasApmAzureAppServiceHostTop99pSum returns a boolean if a field has been set.
 
+### SetApmAzureAppServiceHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetApmAzureAppServiceHostTop99pSumNil(b bool)`
+
+ SetApmAzureAppServiceHostTop99pSumNil sets the value for ApmAzureAppServiceHostTop99pSum to be an explicit nil
+
+### UnsetApmAzureAppServiceHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetApmAzureAppServiceHostTop99pSum()`
+
+UnsetApmAzureAppServiceHostTop99pSum ensures that no value is present for ApmAzureAppServiceHostTop99pSum, not even an explicit nil
 ### GetApmHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetApmHostTop99pSum() int64`
@@ -146,6 +166,16 @@ SetApmHostTop99pSum sets ApmHostTop99pSum field to given value.
 
 HasApmHostTop99pSum returns a boolean if a field has been set.
 
+### SetApmHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetApmHostTop99pSumNil(b bool)`
+
+ SetApmHostTop99pSumNil sets the value for ApmHostTop99pSum to be an explicit nil
+
+### UnsetApmHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetApmHostTop99pSum()`
+
+UnsetApmHostTop99pSum ensures that no value is present for ApmHostTop99pSum, not even an explicit nil
 ### GetAwsHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetAwsHostTop99pSum() int64`
@@ -171,6 +201,16 @@ SetAwsHostTop99pSum sets AwsHostTop99pSum field to given value.
 
 HasAwsHostTop99pSum returns a boolean if a field has been set.
 
+### SetAwsHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetAwsHostTop99pSumNil(b bool)`
+
+ SetAwsHostTop99pSumNil sets the value for AwsHostTop99pSum to be an explicit nil
+
+### UnsetAwsHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetAwsHostTop99pSum()`
+
+UnsetAwsHostTop99pSum ensures that no value is present for AwsHostTop99pSum, not even an explicit nil
 ### GetAwsLambdaFuncCount
 
 `func (o *UsageSummaryResponse) GetAwsLambdaFuncCount() int64`
@@ -196,6 +236,16 @@ SetAwsLambdaFuncCount sets AwsLambdaFuncCount field to given value.
 
 HasAwsLambdaFuncCount returns a boolean if a field has been set.
 
+### SetAwsLambdaFuncCountNil
+
+`func (o *UsageSummaryResponse) SetAwsLambdaFuncCountNil(b bool)`
+
+ SetAwsLambdaFuncCountNil sets the value for AwsLambdaFuncCount to be an explicit nil
+
+### UnsetAwsLambdaFuncCount
+`func (o *UsageSummaryResponse) UnsetAwsLambdaFuncCount()`
+
+UnsetAwsLambdaFuncCount ensures that no value is present for AwsLambdaFuncCount, not even an explicit nil
 ### GetAwsLambdaInvocationsSum
 
 `func (o *UsageSummaryResponse) GetAwsLambdaInvocationsSum() int64`
@@ -221,6 +271,16 @@ SetAwsLambdaInvocationsSum sets AwsLambdaInvocationsSum field to given value.
 
 HasAwsLambdaInvocationsSum returns a boolean if a field has been set.
 
+### SetAwsLambdaInvocationsSumNil
+
+`func (o *UsageSummaryResponse) SetAwsLambdaInvocationsSumNil(b bool)`
+
+ SetAwsLambdaInvocationsSumNil sets the value for AwsLambdaInvocationsSum to be an explicit nil
+
+### UnsetAwsLambdaInvocationsSum
+`func (o *UsageSummaryResponse) UnsetAwsLambdaInvocationsSum()`
+
+UnsetAwsLambdaInvocationsSum ensures that no value is present for AwsLambdaInvocationsSum, not even an explicit nil
 ### GetAzureAppServiceTop99pSum
 
 `func (o *UsageSummaryResponse) GetAzureAppServiceTop99pSum() int64`
@@ -246,6 +306,16 @@ SetAzureAppServiceTop99pSum sets AzureAppServiceTop99pSum field to given value.
 
 HasAzureAppServiceTop99pSum returns a boolean if a field has been set.
 
+### SetAzureAppServiceTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetAzureAppServiceTop99pSumNil(b bool)`
+
+ SetAzureAppServiceTop99pSumNil sets the value for AzureAppServiceTop99pSum to be an explicit nil
+
+### UnsetAzureAppServiceTop99pSum
+`func (o *UsageSummaryResponse) UnsetAzureAppServiceTop99pSum()`
+
+UnsetAzureAppServiceTop99pSum ensures that no value is present for AzureAppServiceTop99pSum, not even an explicit nil
 ### GetAzureHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetAzureHostTop99pSum() int64`
@@ -271,6 +341,16 @@ SetAzureHostTop99pSum sets AzureHostTop99pSum field to given value.
 
 HasAzureHostTop99pSum returns a boolean if a field has been set.
 
+### SetAzureHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetAzureHostTop99pSumNil(b bool)`
+
+ SetAzureHostTop99pSumNil sets the value for AzureHostTop99pSum to be an explicit nil
+
+### UnsetAzureHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetAzureHostTop99pSum()`
+
+UnsetAzureHostTop99pSum ensures that no value is present for AzureHostTop99pSum, not even an explicit nil
 ### GetBillableIngestedBytesAggSum
 
 `func (o *UsageSummaryResponse) GetBillableIngestedBytesAggSum() int64`
@@ -296,22 +376,32 @@ SetBillableIngestedBytesAggSum sets BillableIngestedBytesAggSum field to given v
 
 HasBillableIngestedBytesAggSum returns a boolean if a field has been set.
 
+### SetBillableIngestedBytesAggSumNil
+
+`func (o *UsageSummaryResponse) SetBillableIngestedBytesAggSumNil(b bool)`
+
+ SetBillableIngestedBytesAggSumNil sets the value for BillableIngestedBytesAggSum to be an explicit nil
+
+### UnsetBillableIngestedBytesAggSum
+`func (o *UsageSummaryResponse) UnsetBillableIngestedBytesAggSum()`
+
+UnsetBillableIngestedBytesAggSum ensures that no value is present for BillableIngestedBytesAggSum, not even an explicit nil
 ### GetComplianceContainerAggSum
 
-`func (o *UsageSummaryResponse) GetComplianceContainerAggSum() interface{}`
+`func (o *UsageSummaryResponse) GetComplianceContainerAggSum() int64`
 
 GetComplianceContainerAggSum returns the ComplianceContainerAggSum field if non-nil, zero value otherwise.
 
 ### GetComplianceContainerAggSumOk
 
-`func (o *UsageSummaryResponse) GetComplianceContainerAggSumOk() (*interface{}, bool)`
+`func (o *UsageSummaryResponse) GetComplianceContainerAggSumOk() (*int64, bool)`
 
 GetComplianceContainerAggSumOk returns a tuple with the ComplianceContainerAggSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComplianceContainerAggSum
 
-`func (o *UsageSummaryResponse) SetComplianceContainerAggSum(v interface{})`
+`func (o *UsageSummaryResponse) SetComplianceContainerAggSum(v int64)`
 
 SetComplianceContainerAggSum sets ComplianceContainerAggSum field to given value.
 
@@ -356,6 +446,16 @@ SetComplianceHostAggSum sets ComplianceHostAggSum field to given value.
 
 HasComplianceHostAggSum returns a boolean if a field has been set.
 
+### SetComplianceHostAggSumNil
+
+`func (o *UsageSummaryResponse) SetComplianceHostAggSumNil(b bool)`
+
+ SetComplianceHostAggSumNil sets the value for ComplianceHostAggSum to be an explicit nil
+
+### UnsetComplianceHostAggSum
+`func (o *UsageSummaryResponse) UnsetComplianceHostAggSum()`
+
+UnsetComplianceHostAggSum ensures that no value is present for ComplianceHostAggSum, not even an explicit nil
 ### GetContainerAvgSum
 
 `func (o *UsageSummaryResponse) GetContainerAvgSum() int64`
@@ -381,6 +481,16 @@ SetContainerAvgSum sets ContainerAvgSum field to given value.
 
 HasContainerAvgSum returns a boolean if a field has been set.
 
+### SetContainerAvgSumNil
+
+`func (o *UsageSummaryResponse) SetContainerAvgSumNil(b bool)`
+
+ SetContainerAvgSumNil sets the value for ContainerAvgSum to be an explicit nil
+
+### UnsetContainerAvgSum
+`func (o *UsageSummaryResponse) UnsetContainerAvgSum()`
+
+UnsetContainerAvgSum ensures that no value is present for ContainerAvgSum, not even an explicit nil
 ### GetContainerHwmSum
 
 `func (o *UsageSummaryResponse) GetContainerHwmSum() int64`
@@ -406,6 +516,16 @@ SetContainerHwmSum sets ContainerHwmSum field to given value.
 
 HasContainerHwmSum returns a boolean if a field has been set.
 
+### SetContainerHwmSumNil
+
+`func (o *UsageSummaryResponse) SetContainerHwmSumNil(b bool)`
+
+ SetContainerHwmSumNil sets the value for ContainerHwmSum to be an explicit nil
+
+### UnsetContainerHwmSum
+`func (o *UsageSummaryResponse) UnsetContainerHwmSum()`
+
+UnsetContainerHwmSum ensures that no value is present for ContainerHwmSum, not even an explicit nil
 ### GetCustomTsSum
 
 `func (o *UsageSummaryResponse) GetCustomTsSum() int64`
@@ -431,6 +551,16 @@ SetCustomTsSum sets CustomTsSum field to given value.
 
 HasCustomTsSum returns a boolean if a field has been set.
 
+### SetCustomTsSumNil
+
+`func (o *UsageSummaryResponse) SetCustomTsSumNil(b bool)`
+
+ SetCustomTsSumNil sets the value for CustomTsSum to be an explicit nil
+
+### UnsetCustomTsSum
+`func (o *UsageSummaryResponse) UnsetCustomTsSum()`
+
+UnsetCustomTsSum ensures that no value is present for CustomTsSum, not even an explicit nil
 ### GetEndDate
 
 `func (o *UsageSummaryResponse) GetEndDate() time.Time`
@@ -481,6 +611,16 @@ SetFargateTasksCountAvgSum sets FargateTasksCountAvgSum field to given value.
 
 HasFargateTasksCountAvgSum returns a boolean if a field has been set.
 
+### SetFargateTasksCountAvgSumNil
+
+`func (o *UsageSummaryResponse) SetFargateTasksCountAvgSumNil(b bool)`
+
+ SetFargateTasksCountAvgSumNil sets the value for FargateTasksCountAvgSum to be an explicit nil
+
+### UnsetFargateTasksCountAvgSum
+`func (o *UsageSummaryResponse) UnsetFargateTasksCountAvgSum()`
+
+UnsetFargateTasksCountAvgSum ensures that no value is present for FargateTasksCountAvgSum, not even an explicit nil
 ### GetFargateTasksCountHwmSum
 
 `func (o *UsageSummaryResponse) GetFargateTasksCountHwmSum() int64`
@@ -506,6 +646,16 @@ SetFargateTasksCountHwmSum sets FargateTasksCountHwmSum field to given value.
 
 HasFargateTasksCountHwmSum returns a boolean if a field has been set.
 
+### SetFargateTasksCountHwmSumNil
+
+`func (o *UsageSummaryResponse) SetFargateTasksCountHwmSumNil(b bool)`
+
+ SetFargateTasksCountHwmSumNil sets the value for FargateTasksCountHwmSum to be an explicit nil
+
+### UnsetFargateTasksCountHwmSum
+`func (o *UsageSummaryResponse) UnsetFargateTasksCountHwmSum()`
+
+UnsetFargateTasksCountHwmSum ensures that no value is present for FargateTasksCountHwmSum, not even an explicit nil
 ### GetGcpHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetGcpHostTop99pSum() int64`
@@ -531,6 +681,16 @@ SetGcpHostTop99pSum sets GcpHostTop99pSum field to given value.
 
 HasGcpHostTop99pSum returns a boolean if a field has been set.
 
+### SetGcpHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetGcpHostTop99pSumNil(b bool)`
+
+ SetGcpHostTop99pSumNil sets the value for GcpHostTop99pSum to be an explicit nil
+
+### UnsetGcpHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetGcpHostTop99pSum()`
+
+UnsetGcpHostTop99pSum ensures that no value is present for GcpHostTop99pSum, not even an explicit nil
 ### GetHerokuHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetHerokuHostTop99pSum() int64`
@@ -556,6 +716,16 @@ SetHerokuHostTop99pSum sets HerokuHostTop99pSum field to given value.
 
 HasHerokuHostTop99pSum returns a boolean if a field has been set.
 
+### SetHerokuHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetHerokuHostTop99pSumNil(b bool)`
+
+ SetHerokuHostTop99pSumNil sets the value for HerokuHostTop99pSum to be an explicit nil
+
+### UnsetHerokuHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetHerokuHostTop99pSum()`
+
+UnsetHerokuHostTop99pSum ensures that no value is present for HerokuHostTop99pSum, not even an explicit nil
 ### GetIncidentManagementMonthlyActiveUsersHwmSum
 
 `func (o *UsageSummaryResponse) GetIncidentManagementMonthlyActiveUsersHwmSum() int64`
@@ -581,6 +751,16 @@ SetIncidentManagementMonthlyActiveUsersHwmSum sets IncidentManagementMonthlyActi
 
 HasIncidentManagementMonthlyActiveUsersHwmSum returns a boolean if a field has been set.
 
+### SetIncidentManagementMonthlyActiveUsersHwmSumNil
+
+`func (o *UsageSummaryResponse) SetIncidentManagementMonthlyActiveUsersHwmSumNil(b bool)`
+
+ SetIncidentManagementMonthlyActiveUsersHwmSumNil sets the value for IncidentManagementMonthlyActiveUsersHwmSum to be an explicit nil
+
+### UnsetIncidentManagementMonthlyActiveUsersHwmSum
+`func (o *UsageSummaryResponse) UnsetIncidentManagementMonthlyActiveUsersHwmSum()`
+
+UnsetIncidentManagementMonthlyActiveUsersHwmSum ensures that no value is present for IncidentManagementMonthlyActiveUsersHwmSum, not even an explicit nil
 ### GetIndexedEventsCountAggSum
 
 `func (o *UsageSummaryResponse) GetIndexedEventsCountAggSum() int64`
@@ -606,6 +786,16 @@ SetIndexedEventsCountAggSum sets IndexedEventsCountAggSum field to given value.
 
 HasIndexedEventsCountAggSum returns a boolean if a field has been set.
 
+### SetIndexedEventsCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetIndexedEventsCountAggSumNil(b bool)`
+
+ SetIndexedEventsCountAggSumNil sets the value for IndexedEventsCountAggSum to be an explicit nil
+
+### UnsetIndexedEventsCountAggSum
+`func (o *UsageSummaryResponse) UnsetIndexedEventsCountAggSum()`
+
+UnsetIndexedEventsCountAggSum ensures that no value is present for IndexedEventsCountAggSum, not even an explicit nil
 ### GetInfraHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetInfraHostTop99pSum() int64`
@@ -631,6 +821,16 @@ SetInfraHostTop99pSum sets InfraHostTop99pSum field to given value.
 
 HasInfraHostTop99pSum returns a boolean if a field has been set.
 
+### SetInfraHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetInfraHostTop99pSumNil(b bool)`
+
+ SetInfraHostTop99pSumNil sets the value for InfraHostTop99pSum to be an explicit nil
+
+### UnsetInfraHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetInfraHostTop99pSum()`
+
+UnsetInfraHostTop99pSum ensures that no value is present for InfraHostTop99pSum, not even an explicit nil
 ### GetIngestedEventsBytesAggSum
 
 `func (o *UsageSummaryResponse) GetIngestedEventsBytesAggSum() int64`
@@ -656,6 +856,16 @@ SetIngestedEventsBytesAggSum sets IngestedEventsBytesAggSum field to given value
 
 HasIngestedEventsBytesAggSum returns a boolean if a field has been set.
 
+### SetIngestedEventsBytesAggSumNil
+
+`func (o *UsageSummaryResponse) SetIngestedEventsBytesAggSumNil(b bool)`
+
+ SetIngestedEventsBytesAggSumNil sets the value for IngestedEventsBytesAggSum to be an explicit nil
+
+### UnsetIngestedEventsBytesAggSum
+`func (o *UsageSummaryResponse) UnsetIngestedEventsBytesAggSum()`
+
+UnsetIngestedEventsBytesAggSum ensures that no value is present for IngestedEventsBytesAggSum, not even an explicit nil
 ### GetIotDeviceAggSum
 
 `func (o *UsageSummaryResponse) GetIotDeviceAggSum() int64`
@@ -681,6 +891,16 @@ SetIotDeviceAggSum sets IotDeviceAggSum field to given value.
 
 HasIotDeviceAggSum returns a boolean if a field has been set.
 
+### SetIotDeviceAggSumNil
+
+`func (o *UsageSummaryResponse) SetIotDeviceAggSumNil(b bool)`
+
+ SetIotDeviceAggSumNil sets the value for IotDeviceAggSum to be an explicit nil
+
+### UnsetIotDeviceAggSum
+`func (o *UsageSummaryResponse) UnsetIotDeviceAggSum()`
+
+UnsetIotDeviceAggSum ensures that no value is present for IotDeviceAggSum, not even an explicit nil
 ### GetIotDeviceTop99pSum
 
 `func (o *UsageSummaryResponse) GetIotDeviceTop99pSum() int64`
@@ -706,6 +926,16 @@ SetIotDeviceTop99pSum sets IotDeviceTop99pSum field to given value.
 
 HasIotDeviceTop99pSum returns a boolean if a field has been set.
 
+### SetIotDeviceTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetIotDeviceTop99pSumNil(b bool)`
+
+ SetIotDeviceTop99pSumNil sets the value for IotDeviceTop99pSum to be an explicit nil
+
+### UnsetIotDeviceTop99pSum
+`func (o *UsageSummaryResponse) UnsetIotDeviceTop99pSum()`
+
+UnsetIotDeviceTop99pSum ensures that no value is present for IotDeviceTop99pSum, not even an explicit nil
 ### GetLastUpdated
 
 `func (o *UsageSummaryResponse) GetLastUpdated() time.Time`
@@ -756,6 +986,16 @@ SetLiveIndexedEventsAggSum sets LiveIndexedEventsAggSum field to given value.
 
 HasLiveIndexedEventsAggSum returns a boolean if a field has been set.
 
+### SetLiveIndexedEventsAggSumNil
+
+`func (o *UsageSummaryResponse) SetLiveIndexedEventsAggSumNil(b bool)`
+
+ SetLiveIndexedEventsAggSumNil sets the value for LiveIndexedEventsAggSum to be an explicit nil
+
+### UnsetLiveIndexedEventsAggSum
+`func (o *UsageSummaryResponse) UnsetLiveIndexedEventsAggSum()`
+
+UnsetLiveIndexedEventsAggSum ensures that no value is present for LiveIndexedEventsAggSum, not even an explicit nil
 ### GetLiveIngestedBytesAggSum
 
 `func (o *UsageSummaryResponse) GetLiveIngestedBytesAggSum() int64`
@@ -781,6 +1021,16 @@ SetLiveIngestedBytesAggSum sets LiveIngestedBytesAggSum field to given value.
 
 HasLiveIngestedBytesAggSum returns a boolean if a field has been set.
 
+### SetLiveIngestedBytesAggSumNil
+
+`func (o *UsageSummaryResponse) SetLiveIngestedBytesAggSumNil(b bool)`
+
+ SetLiveIngestedBytesAggSumNil sets the value for LiveIngestedBytesAggSum to be an explicit nil
+
+### UnsetLiveIngestedBytesAggSum
+`func (o *UsageSummaryResponse) UnsetLiveIngestedBytesAggSum()`
+
+UnsetLiveIngestedBytesAggSum ensures that no value is present for LiveIngestedBytesAggSum, not even an explicit nil
 ### GetMobileRumSessionCountAggSum
 
 `func (o *UsageSummaryResponse) GetMobileRumSessionCountAggSum() int64`
@@ -806,6 +1056,16 @@ SetMobileRumSessionCountAggSum sets MobileRumSessionCountAggSum field to given v
 
 HasMobileRumSessionCountAggSum returns a boolean if a field has been set.
 
+### SetMobileRumSessionCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetMobileRumSessionCountAggSumNil(b bool)`
+
+ SetMobileRumSessionCountAggSumNil sets the value for MobileRumSessionCountAggSum to be an explicit nil
+
+### UnsetMobileRumSessionCountAggSum
+`func (o *UsageSummaryResponse) UnsetMobileRumSessionCountAggSum()`
+
+UnsetMobileRumSessionCountAggSum ensures that no value is present for MobileRumSessionCountAggSum, not even an explicit nil
 ### GetMobileRumSessionCountAndroidAggSum
 
 `func (o *UsageSummaryResponse) GetMobileRumSessionCountAndroidAggSum() int64`
@@ -831,6 +1091,16 @@ SetMobileRumSessionCountAndroidAggSum sets MobileRumSessionCountAndroidAggSum fi
 
 HasMobileRumSessionCountAndroidAggSum returns a boolean if a field has been set.
 
+### SetMobileRumSessionCountAndroidAggSumNil
+
+`func (o *UsageSummaryResponse) SetMobileRumSessionCountAndroidAggSumNil(b bool)`
+
+ SetMobileRumSessionCountAndroidAggSumNil sets the value for MobileRumSessionCountAndroidAggSum to be an explicit nil
+
+### UnsetMobileRumSessionCountAndroidAggSum
+`func (o *UsageSummaryResponse) UnsetMobileRumSessionCountAndroidAggSum()`
+
+UnsetMobileRumSessionCountAndroidAggSum ensures that no value is present for MobileRumSessionCountAndroidAggSum, not even an explicit nil
 ### GetMobileRumSessionCountIosAggSum
 
 `func (o *UsageSummaryResponse) GetMobileRumSessionCountIosAggSum() int64`
@@ -856,6 +1126,16 @@ SetMobileRumSessionCountIosAggSum sets MobileRumSessionCountIosAggSum field to g
 
 HasMobileRumSessionCountIosAggSum returns a boolean if a field has been set.
 
+### SetMobileRumSessionCountIosAggSumNil
+
+`func (o *UsageSummaryResponse) SetMobileRumSessionCountIosAggSumNil(b bool)`
+
+ SetMobileRumSessionCountIosAggSumNil sets the value for MobileRumSessionCountIosAggSum to be an explicit nil
+
+### UnsetMobileRumSessionCountIosAggSum
+`func (o *UsageSummaryResponse) UnsetMobileRumSessionCountIosAggSum()`
+
+UnsetMobileRumSessionCountIosAggSum ensures that no value is present for MobileRumSessionCountIosAggSum, not even an explicit nil
 ### GetNetflowIndexedEventsCountAggSum
 
 `func (o *UsageSummaryResponse) GetNetflowIndexedEventsCountAggSum() int64`
@@ -881,6 +1161,16 @@ SetNetflowIndexedEventsCountAggSum sets NetflowIndexedEventsCountAggSum field to
 
 HasNetflowIndexedEventsCountAggSum returns a boolean if a field has been set.
 
+### SetNetflowIndexedEventsCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetNetflowIndexedEventsCountAggSumNil(b bool)`
+
+ SetNetflowIndexedEventsCountAggSumNil sets the value for NetflowIndexedEventsCountAggSum to be an explicit nil
+
+### UnsetNetflowIndexedEventsCountAggSum
+`func (o *UsageSummaryResponse) UnsetNetflowIndexedEventsCountAggSum()`
+
+UnsetNetflowIndexedEventsCountAggSum ensures that no value is present for NetflowIndexedEventsCountAggSum, not even an explicit nil
 ### GetNpmHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetNpmHostTop99pSum() int64`
@@ -906,6 +1196,16 @@ SetNpmHostTop99pSum sets NpmHostTop99pSum field to given value.
 
 HasNpmHostTop99pSum returns a boolean if a field has been set.
 
+### SetNpmHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetNpmHostTop99pSumNil(b bool)`
+
+ SetNpmHostTop99pSumNil sets the value for NpmHostTop99pSum to be an explicit nil
+
+### UnsetNpmHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetNpmHostTop99pSum()`
+
+UnsetNpmHostTop99pSum ensures that no value is present for NpmHostTop99pSum, not even an explicit nil
 ### GetOpentelemetryHostTop99pSum
 
 `func (o *UsageSummaryResponse) GetOpentelemetryHostTop99pSum() int64`
@@ -931,6 +1231,16 @@ SetOpentelemetryHostTop99pSum sets OpentelemetryHostTop99pSum field to given val
 
 HasOpentelemetryHostTop99pSum returns a boolean if a field has been set.
 
+### SetOpentelemetryHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetOpentelemetryHostTop99pSumNil(b bool)`
+
+ SetOpentelemetryHostTop99pSumNil sets the value for OpentelemetryHostTop99pSum to be an explicit nil
+
+### UnsetOpentelemetryHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetOpentelemetryHostTop99pSum()`
+
+UnsetOpentelemetryHostTop99pSum ensures that no value is present for OpentelemetryHostTop99pSum, not even an explicit nil
 ### GetProfilingContainerAgentCountAvg
 
 `func (o *UsageSummaryResponse) GetProfilingContainerAgentCountAvg() int64`
@@ -956,6 +1266,16 @@ SetProfilingContainerAgentCountAvg sets ProfilingContainerAgentCountAvg field to
 
 HasProfilingContainerAgentCountAvg returns a boolean if a field has been set.
 
+### SetProfilingContainerAgentCountAvgNil
+
+`func (o *UsageSummaryResponse) SetProfilingContainerAgentCountAvgNil(b bool)`
+
+ SetProfilingContainerAgentCountAvgNil sets the value for ProfilingContainerAgentCountAvg to be an explicit nil
+
+### UnsetProfilingContainerAgentCountAvg
+`func (o *UsageSummaryResponse) UnsetProfilingContainerAgentCountAvg()`
+
+UnsetProfilingContainerAgentCountAvg ensures that no value is present for ProfilingContainerAgentCountAvg, not even an explicit nil
 ### GetProfilingHostCountTop99pSum
 
 `func (o *UsageSummaryResponse) GetProfilingHostCountTop99pSum() int64`
@@ -981,6 +1301,16 @@ SetProfilingHostCountTop99pSum sets ProfilingHostCountTop99pSum field to given v
 
 HasProfilingHostCountTop99pSum returns a boolean if a field has been set.
 
+### SetProfilingHostCountTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetProfilingHostCountTop99pSumNil(b bool)`
+
+ SetProfilingHostCountTop99pSumNil sets the value for ProfilingHostCountTop99pSum to be an explicit nil
+
+### UnsetProfilingHostCountTop99pSum
+`func (o *UsageSummaryResponse) UnsetProfilingHostCountTop99pSum()`
+
+UnsetProfilingHostCountTop99pSum ensures that no value is present for ProfilingHostCountTop99pSum, not even an explicit nil
 ### GetRehydratedIndexedEventsAggSum
 
 `func (o *UsageSummaryResponse) GetRehydratedIndexedEventsAggSum() int64`
@@ -1006,6 +1336,16 @@ SetRehydratedIndexedEventsAggSum sets RehydratedIndexedEventsAggSum field to giv
 
 HasRehydratedIndexedEventsAggSum returns a boolean if a field has been set.
 
+### SetRehydratedIndexedEventsAggSumNil
+
+`func (o *UsageSummaryResponse) SetRehydratedIndexedEventsAggSumNil(b bool)`
+
+ SetRehydratedIndexedEventsAggSumNil sets the value for RehydratedIndexedEventsAggSum to be an explicit nil
+
+### UnsetRehydratedIndexedEventsAggSum
+`func (o *UsageSummaryResponse) UnsetRehydratedIndexedEventsAggSum()`
+
+UnsetRehydratedIndexedEventsAggSum ensures that no value is present for RehydratedIndexedEventsAggSum, not even an explicit nil
 ### GetRehydratedIngestedBytesAggSum
 
 `func (o *UsageSummaryResponse) GetRehydratedIngestedBytesAggSum() int64`
@@ -1031,6 +1371,16 @@ SetRehydratedIngestedBytesAggSum sets RehydratedIngestedBytesAggSum field to giv
 
 HasRehydratedIngestedBytesAggSum returns a boolean if a field has been set.
 
+### SetRehydratedIngestedBytesAggSumNil
+
+`func (o *UsageSummaryResponse) SetRehydratedIngestedBytesAggSumNil(b bool)`
+
+ SetRehydratedIngestedBytesAggSumNil sets the value for RehydratedIngestedBytesAggSum to be an explicit nil
+
+### UnsetRehydratedIngestedBytesAggSum
+`func (o *UsageSummaryResponse) UnsetRehydratedIngestedBytesAggSum()`
+
+UnsetRehydratedIngestedBytesAggSum ensures that no value is present for RehydratedIngestedBytesAggSum, not even an explicit nil
 ### GetRumSessionCountAggSum
 
 `func (o *UsageSummaryResponse) GetRumSessionCountAggSum() int64`
@@ -1056,6 +1406,16 @@ SetRumSessionCountAggSum sets RumSessionCountAggSum field to given value.
 
 HasRumSessionCountAggSum returns a boolean if a field has been set.
 
+### SetRumSessionCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetRumSessionCountAggSumNil(b bool)`
+
+ SetRumSessionCountAggSumNil sets the value for RumSessionCountAggSum to be an explicit nil
+
+### UnsetRumSessionCountAggSum
+`func (o *UsageSummaryResponse) UnsetRumSessionCountAggSum()`
+
+UnsetRumSessionCountAggSum ensures that no value is present for RumSessionCountAggSum, not even an explicit nil
 ### GetRumTotalSessionCountAggSum
 
 `func (o *UsageSummaryResponse) GetRumTotalSessionCountAggSum() int64`
@@ -1081,6 +1441,16 @@ SetRumTotalSessionCountAggSum sets RumTotalSessionCountAggSum field to given val
 
 HasRumTotalSessionCountAggSum returns a boolean if a field has been set.
 
+### SetRumTotalSessionCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetRumTotalSessionCountAggSumNil(b bool)`
+
+ SetRumTotalSessionCountAggSumNil sets the value for RumTotalSessionCountAggSum to be an explicit nil
+
+### UnsetRumTotalSessionCountAggSum
+`func (o *UsageSummaryResponse) UnsetRumTotalSessionCountAggSum()`
+
+UnsetRumTotalSessionCountAggSum ensures that no value is present for RumTotalSessionCountAggSum, not even an explicit nil
 ### GetStartDate
 
 `func (o *UsageSummaryResponse) GetStartDate() time.Time`
@@ -1131,6 +1501,16 @@ SetSyntheticsBrowserCheckCallsCountAggSum sets SyntheticsBrowserCheckCallsCountA
 
 HasSyntheticsBrowserCheckCallsCountAggSum returns a boolean if a field has been set.
 
+### SetSyntheticsBrowserCheckCallsCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetSyntheticsBrowserCheckCallsCountAggSumNil(b bool)`
+
+ SetSyntheticsBrowserCheckCallsCountAggSumNil sets the value for SyntheticsBrowserCheckCallsCountAggSum to be an explicit nil
+
+### UnsetSyntheticsBrowserCheckCallsCountAggSum
+`func (o *UsageSummaryResponse) UnsetSyntheticsBrowserCheckCallsCountAggSum()`
+
+UnsetSyntheticsBrowserCheckCallsCountAggSum ensures that no value is present for SyntheticsBrowserCheckCallsCountAggSum, not even an explicit nil
 ### GetSyntheticsCheckCallsCountAggSum
 
 `func (o *UsageSummaryResponse) GetSyntheticsCheckCallsCountAggSum() int64`
@@ -1156,6 +1536,16 @@ SetSyntheticsCheckCallsCountAggSum sets SyntheticsCheckCallsCountAggSum field to
 
 HasSyntheticsCheckCallsCountAggSum returns a boolean if a field has been set.
 
+### SetSyntheticsCheckCallsCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetSyntheticsCheckCallsCountAggSumNil(b bool)`
+
+ SetSyntheticsCheckCallsCountAggSumNil sets the value for SyntheticsCheckCallsCountAggSum to be an explicit nil
+
+### UnsetSyntheticsCheckCallsCountAggSum
+`func (o *UsageSummaryResponse) UnsetSyntheticsCheckCallsCountAggSum()`
+
+UnsetSyntheticsCheckCallsCountAggSum ensures that no value is present for SyntheticsCheckCallsCountAggSum, not even an explicit nil
 ### GetTraceSearchIndexedEventsCountAggSum
 
 `func (o *UsageSummaryResponse) GetTraceSearchIndexedEventsCountAggSum() int64`
@@ -1181,6 +1571,16 @@ SetTraceSearchIndexedEventsCountAggSum sets TraceSearchIndexedEventsCountAggSum 
 
 HasTraceSearchIndexedEventsCountAggSum returns a boolean if a field has been set.
 
+### SetTraceSearchIndexedEventsCountAggSumNil
+
+`func (o *UsageSummaryResponse) SetTraceSearchIndexedEventsCountAggSumNil(b bool)`
+
+ SetTraceSearchIndexedEventsCountAggSumNil sets the value for TraceSearchIndexedEventsCountAggSum to be an explicit nil
+
+### UnsetTraceSearchIndexedEventsCountAggSum
+`func (o *UsageSummaryResponse) UnsetTraceSearchIndexedEventsCountAggSum()`
+
+UnsetTraceSearchIndexedEventsCountAggSum ensures that no value is present for TraceSearchIndexedEventsCountAggSum, not even an explicit nil
 ### GetTwolIngestedEventsBytesAggSum
 
 `func (o *UsageSummaryResponse) GetTwolIngestedEventsBytesAggSum() int64`
@@ -1206,6 +1606,16 @@ SetTwolIngestedEventsBytesAggSum sets TwolIngestedEventsBytesAggSum field to giv
 
 HasTwolIngestedEventsBytesAggSum returns a boolean if a field has been set.
 
+### SetTwolIngestedEventsBytesAggSumNil
+
+`func (o *UsageSummaryResponse) SetTwolIngestedEventsBytesAggSumNil(b bool)`
+
+ SetTwolIngestedEventsBytesAggSumNil sets the value for TwolIngestedEventsBytesAggSum to be an explicit nil
+
+### UnsetTwolIngestedEventsBytesAggSum
+`func (o *UsageSummaryResponse) UnsetTwolIngestedEventsBytesAggSum()`
+
+UnsetTwolIngestedEventsBytesAggSum ensures that no value is present for TwolIngestedEventsBytesAggSum, not even an explicit nil
 ### GetUsage
 
 `func (o *UsageSummaryResponse) GetUsage() []UsageSummaryDate`
@@ -1256,6 +1666,16 @@ SetVsphereHostTop99pSum sets VsphereHostTop99pSum field to given value.
 
 HasVsphereHostTop99pSum returns a boolean if a field has been set.
 
+### SetVsphereHostTop99pSumNil
+
+`func (o *UsageSummaryResponse) SetVsphereHostTop99pSumNil(b bool)`
+
+ SetVsphereHostTop99pSumNil sets the value for VsphereHostTop99pSum to be an explicit nil
+
+### UnsetVsphereHostTop99pSum
+`func (o *UsageSummaryResponse) UnsetVsphereHostTop99pSum()`
+
+UnsetVsphereHostTop99pSum ensures that no value is present for VsphereHostTop99pSum, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

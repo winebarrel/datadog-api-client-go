@@ -11,12 +11,18 @@ Name | Type | Description | Notes
 **InfraContainerSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **InfraHostSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **InfraHostTop99p** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**IotSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **IotTop99p** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **LambdaFunctionAverage** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **LogsIndexedSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **LogsIngestedSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**NetworkDeviceTop99p** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **NpmFlowSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**NpmHostSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **NpmHostTop99p** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**ProfContainerSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**ProfHostSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
+**ProfHostTop99p** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **RumSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **ServerlessInvocationSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
 **SiemSum** | Pointer to [**UsageBillableSummaryBody**](UsageBillableSummaryBody.md) |  | [optional] 
@@ -218,6 +224,31 @@ SetInfraHostTop99p sets InfraHostTop99p field to given value.
 
 HasInfraHostTop99p returns a boolean if a field has been set.
 
+### GetIotSum
+
+`func (o *UsageBillableSummaryKeys) GetIotSum() UsageBillableSummaryBody`
+
+GetIotSum returns the IotSum field if non-nil, zero value otherwise.
+
+### GetIotSumOk
+
+`func (o *UsageBillableSummaryKeys) GetIotSumOk() (*UsageBillableSummaryBody, bool)`
+
+GetIotSumOk returns a tuple with the IotSum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIotSum
+
+`func (o *UsageBillableSummaryKeys) SetIotSum(v UsageBillableSummaryBody)`
+
+SetIotSum sets IotSum field to given value.
+
+### HasIotSum
+
+`func (o *UsageBillableSummaryKeys) HasIotSum() bool`
+
+HasIotSum returns a boolean if a field has been set.
+
 ### GetIotTop99p
 
 `func (o *UsageBillableSummaryKeys) GetIotTop99p() UsageBillableSummaryBody`
@@ -318,6 +349,31 @@ SetLogsIngestedSum sets LogsIngestedSum field to given value.
 
 HasLogsIngestedSum returns a boolean if a field has been set.
 
+### GetNetworkDeviceTop99p
+
+`func (o *UsageBillableSummaryKeys) GetNetworkDeviceTop99p() UsageBillableSummaryBody`
+
+GetNetworkDeviceTop99p returns the NetworkDeviceTop99p field if non-nil, zero value otherwise.
+
+### GetNetworkDeviceTop99pOk
+
+`func (o *UsageBillableSummaryKeys) GetNetworkDeviceTop99pOk() (*UsageBillableSummaryBody, bool)`
+
+GetNetworkDeviceTop99pOk returns a tuple with the NetworkDeviceTop99p field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkDeviceTop99p
+
+`func (o *UsageBillableSummaryKeys) SetNetworkDeviceTop99p(v UsageBillableSummaryBody)`
+
+SetNetworkDeviceTop99p sets NetworkDeviceTop99p field to given value.
+
+### HasNetworkDeviceTop99p
+
+`func (o *UsageBillableSummaryKeys) HasNetworkDeviceTop99p() bool`
+
+HasNetworkDeviceTop99p returns a boolean if a field has been set.
+
 ### GetNpmFlowSum
 
 `func (o *UsageBillableSummaryKeys) GetNpmFlowSum() UsageBillableSummaryBody`
@@ -343,6 +399,31 @@ SetNpmFlowSum sets NpmFlowSum field to given value.
 
 HasNpmFlowSum returns a boolean if a field has been set.
 
+### GetNpmHostSum
+
+`func (o *UsageBillableSummaryKeys) GetNpmHostSum() UsageBillableSummaryBody`
+
+GetNpmHostSum returns the NpmHostSum field if non-nil, zero value otherwise.
+
+### GetNpmHostSumOk
+
+`func (o *UsageBillableSummaryKeys) GetNpmHostSumOk() (*UsageBillableSummaryBody, bool)`
+
+GetNpmHostSumOk returns a tuple with the NpmHostSum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNpmHostSum
+
+`func (o *UsageBillableSummaryKeys) SetNpmHostSum(v UsageBillableSummaryBody)`
+
+SetNpmHostSum sets NpmHostSum field to given value.
+
+### HasNpmHostSum
+
+`func (o *UsageBillableSummaryKeys) HasNpmHostSum() bool`
+
+HasNpmHostSum returns a boolean if a field has been set.
+
 ### GetNpmHostTop99p
 
 `func (o *UsageBillableSummaryKeys) GetNpmHostTop99p() UsageBillableSummaryBody`
@@ -367,6 +448,81 @@ SetNpmHostTop99p sets NpmHostTop99p field to given value.
 `func (o *UsageBillableSummaryKeys) HasNpmHostTop99p() bool`
 
 HasNpmHostTop99p returns a boolean if a field has been set.
+
+### GetProfContainerSum
+
+`func (o *UsageBillableSummaryKeys) GetProfContainerSum() UsageBillableSummaryBody`
+
+GetProfContainerSum returns the ProfContainerSum field if non-nil, zero value otherwise.
+
+### GetProfContainerSumOk
+
+`func (o *UsageBillableSummaryKeys) GetProfContainerSumOk() (*UsageBillableSummaryBody, bool)`
+
+GetProfContainerSumOk returns a tuple with the ProfContainerSum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfContainerSum
+
+`func (o *UsageBillableSummaryKeys) SetProfContainerSum(v UsageBillableSummaryBody)`
+
+SetProfContainerSum sets ProfContainerSum field to given value.
+
+### HasProfContainerSum
+
+`func (o *UsageBillableSummaryKeys) HasProfContainerSum() bool`
+
+HasProfContainerSum returns a boolean if a field has been set.
+
+### GetProfHostSum
+
+`func (o *UsageBillableSummaryKeys) GetProfHostSum() UsageBillableSummaryBody`
+
+GetProfHostSum returns the ProfHostSum field if non-nil, zero value otherwise.
+
+### GetProfHostSumOk
+
+`func (o *UsageBillableSummaryKeys) GetProfHostSumOk() (*UsageBillableSummaryBody, bool)`
+
+GetProfHostSumOk returns a tuple with the ProfHostSum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfHostSum
+
+`func (o *UsageBillableSummaryKeys) SetProfHostSum(v UsageBillableSummaryBody)`
+
+SetProfHostSum sets ProfHostSum field to given value.
+
+### HasProfHostSum
+
+`func (o *UsageBillableSummaryKeys) HasProfHostSum() bool`
+
+HasProfHostSum returns a boolean if a field has been set.
+
+### GetProfHostTop99p
+
+`func (o *UsageBillableSummaryKeys) GetProfHostTop99p() UsageBillableSummaryBody`
+
+GetProfHostTop99p returns the ProfHostTop99p field if non-nil, zero value otherwise.
+
+### GetProfHostTop99pOk
+
+`func (o *UsageBillableSummaryKeys) GetProfHostTop99pOk() (*UsageBillableSummaryBody, bool)`
+
+GetProfHostTop99pOk returns a tuple with the ProfHostTop99p field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfHostTop99p
+
+`func (o *UsageBillableSummaryKeys) SetProfHostTop99p(v UsageBillableSummaryBody)`
+
+SetProfHostTop99p sets ProfHostTop99p field to given value.
+
+### HasProfHostTop99p
+
+`func (o *UsageBillableSummaryKeys) HasProfHostTop99p() bool`
+
+HasProfHostTop99p returns a boolean if a field has been set.
 
 ### GetRumSum
 

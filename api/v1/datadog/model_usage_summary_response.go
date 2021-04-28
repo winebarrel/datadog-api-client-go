@@ -16,99 +16,99 @@ import (
 // UsageSummaryResponse Response with hourly report of all data billed by Datadog all organizations.
 type UsageSummaryResponse struct {
 	// Shows the 99th percentile of all agent hosts over all hours in the current months for all organizations.
-	AgentHostTop99pSum *int64 `json:"agent_host_top99p_sum,omitempty"`
+	AgentHostTop99pSum NullableInt64 `json:"agent_host_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all Azure app services using APM over all hours in the current months all organizations.
-	ApmAzureAppServiceHostTop99pSum *int64 `json:"apm_azure_app_service_host_top99p_sum,omitempty"`
+	ApmAzureAppServiceHostTop99pSum NullableInt64 `json:"apm_azure_app_service_host_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all distinct APM hosts over all hours in the current months for all organizations.
-	ApmHostTop99pSum *int64 `json:"apm_host_top99p_sum,omitempty"`
+	ApmHostTop99pSum NullableInt64 `json:"apm_host_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all AWS hosts over all hours in the current months for all organizations.
-	AwsHostTop99pSum *int64 `json:"aws_host_top99p_sum,omitempty"`
+	AwsHostTop99pSum NullableInt64 `json:"aws_host_top99p_sum,omitempty"`
 	// Shows the average of the number of functions that executed 1 or more times each hour in the current months for all organizations.
-	AwsLambdaFuncCount *int64 `json:"aws_lambda_func_count,omitempty"`
+	AwsLambdaFuncCount NullableInt64 `json:"aws_lambda_func_count,omitempty"`
 	// Shows the sum of all AWS Lambda invocations over all hours in the current months for all organizations.
-	AwsLambdaInvocationsSum *int64 `json:"aws_lambda_invocations_sum,omitempty"`
+	AwsLambdaInvocationsSum NullableInt64 `json:"aws_lambda_invocations_sum,omitempty"`
 	// Shows the 99th percentile of all Azure app services over all hours in the current months for all organizations.
-	AzureAppServiceTop99pSum *int64 `json:"azure_app_service_top99p_sum,omitempty"`
+	AzureAppServiceTop99pSum NullableInt64 `json:"azure_app_service_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all Azure hosts over all hours in the current months for all organizations.
-	AzureHostTop99pSum *int64 `json:"azure_host_top99p_sum,omitempty"`
+	AzureHostTop99pSum NullableInt64 `json:"azure_host_top99p_sum,omitempty"`
 	// Shows the sum of all log bytes ingested over all hours in the current months for all organizations.
-	BillableIngestedBytesAggSum *int64 `json:"billable_ingested_bytes_agg_sum,omitempty"`
+	BillableIngestedBytesAggSum NullableInt64 `json:"billable_ingested_bytes_agg_sum,omitempty"`
 	// Shows the sum of all compliance containers over all hours in the current months for all organizations.
-	ComplianceContainerAggSum interface{} `json:"compliance_container_agg_sum,omitempty"`
+	ComplianceContainerAggSum NullableInt64 `json:"compliance_container_agg_sum,omitempty"`
 	// Shows the sum of all compliance hosts over all hours in the current months for all organizations.
-	ComplianceHostAggSum *int64 `json:"compliance_host_agg_sum,omitempty"`
+	ComplianceHostAggSum NullableInt64 `json:"compliance_host_agg_sum,omitempty"`
 	// Shows the average of all distinct containers over all hours in the current months for all organizations.
-	ContainerAvgSum *int64 `json:"container_avg_sum,omitempty"`
+	ContainerAvgSum NullableInt64 `json:"container_avg_sum,omitempty"`
 	// Shows the sum of the high-water marks of all distinct containers over all hours in the current months for all organizations.
-	ContainerHwmSum *int64 `json:"container_hwm_sum,omitempty"`
+	ContainerHwmSum NullableInt64 `json:"container_hwm_sum,omitempty"`
 	// Shows the average number of distinct custom metrics over all hours in the current months for all organizations.
-	CustomTsSum *int64 `json:"custom_ts_sum,omitempty"`
+	CustomTsSum NullableInt64 `json:"custom_ts_sum,omitempty"`
 	// Shows the last date of usage in the current months for all organizations.
 	EndDate *time.Time `json:"end_date,omitempty"`
 	// Shows the average of all Fargate tasks over all hours in the current months for all organizations.
-	FargateTasksCountAvgSum *int64 `json:"fargate_tasks_count_avg_sum,omitempty"`
+	FargateTasksCountAvgSum NullableInt64 `json:"fargate_tasks_count_avg_sum,omitempty"`
 	// Shows the sum of the high-water marks of all Fargate tasks over all hours in the current months for all organizations.
-	FargateTasksCountHwmSum *int64 `json:"fargate_tasks_count_hwm_sum,omitempty"`
+	FargateTasksCountHwmSum NullableInt64 `json:"fargate_tasks_count_hwm_sum,omitempty"`
 	// Shows the 99th percentile of all GCP hosts over all hours in the current months for all organizations.
-	GcpHostTop99pSum *int64 `json:"gcp_host_top99p_sum,omitempty"`
+	GcpHostTop99pSum NullableInt64 `json:"gcp_host_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all Heroku dynos over all hours in the current months for all organizations.
-	HerokuHostTop99pSum *int64 `json:"heroku_host_top99p_sum,omitempty"`
+	HerokuHostTop99pSum NullableInt64 `json:"heroku_host_top99p_sum,omitempty"`
 	// Shows sum of the the high-water marks of incident management monthly active users in the current months for all organizations.
-	IncidentManagementMonthlyActiveUsersHwmSum *int64 `json:"incident_management_monthly_active_users_hwm_sum,omitempty"`
+	IncidentManagementMonthlyActiveUsersHwmSum NullableInt64 `json:"incident_management_monthly_active_users_hwm_sum,omitempty"`
 	// Shows the sum of all log events indexed over all hours in the current months for all organizations.
-	IndexedEventsCountAggSum *int64 `json:"indexed_events_count_agg_sum,omitempty"`
+	IndexedEventsCountAggSum NullableInt64 `json:"indexed_events_count_agg_sum,omitempty"`
 	// Shows the 99th percentile of all distinct infrastructure hosts over all hours in the current months for all organizations.
-	InfraHostTop99pSum *int64 `json:"infra_host_top99p_sum,omitempty"`
+	InfraHostTop99pSum NullableInt64 `json:"infra_host_top99p_sum,omitempty"`
 	// Shows the sum of all log bytes ingested over all hours in the current months for all organizations.
-	IngestedEventsBytesAggSum *int64 `json:"ingested_events_bytes_agg_sum,omitempty"`
+	IngestedEventsBytesAggSum NullableInt64 `json:"ingested_events_bytes_agg_sum,omitempty"`
 	// Shows the sum of all IoT devices over all hours in the current months for all organizations.
-	IotDeviceAggSum *int64 `json:"iot_device_agg_sum,omitempty"`
+	IotDeviceAggSum NullableInt64 `json:"iot_device_agg_sum,omitempty"`
 	// Shows the 99th percentile of all IoT devices over all hours in the current months of all organizations.
-	IotDeviceTop99pSum *int64 `json:"iot_device_top99p_sum,omitempty"`
+	IotDeviceTop99pSum NullableInt64 `json:"iot_device_top99p_sum,omitempty"`
 	// Shows the the most recent hour in the current months for all organizations for which all usages were calculated.
 	LastUpdated *time.Time `json:"last_updated,omitempty"`
 	// Shows the sum of all live logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020).
-	LiveIndexedEventsAggSum *int64 `json:"live_indexed_events_agg_sum,omitempty"`
+	LiveIndexedEventsAggSum NullableInt64 `json:"live_indexed_events_agg_sum,omitempty"`
 	// Shows the sum of all live logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020).
-	LiveIngestedBytesAggSum *int64 `json:"live_ingested_bytes_agg_sum,omitempty"`
+	LiveIngestedBytesAggSum NullableInt64 `json:"live_ingested_bytes_agg_sum,omitempty"`
 	// Shows the sum of all mobile RUM Sessions over all hours in the current months for all organizations.
-	MobileRumSessionCountAggSum *int64 `json:"mobile_rum_session_count_agg_sum,omitempty"`
+	MobileRumSessionCountAggSum NullableInt64 `json:"mobile_rum_session_count_agg_sum,omitempty"`
 	// Shows the sum of all mobile RUM Sessions on Android over all hours in the current months for all organizations.
-	MobileRumSessionCountAndroidAggSum *int64 `json:"mobile_rum_session_count_android_agg_sum,omitempty"`
+	MobileRumSessionCountAndroidAggSum NullableInt64 `json:"mobile_rum_session_count_android_agg_sum,omitempty"`
 	// Shows the sum of all mobile RUM Sessions on iOS over all hours in the current months for all organizations.
-	MobileRumSessionCountIosAggSum *int64 `json:"mobile_rum_session_count_ios_agg_sum,omitempty"`
+	MobileRumSessionCountIosAggSum NullableInt64 `json:"mobile_rum_session_count_ios_agg_sum,omitempty"`
 	// Shows the sum of all Network flows indexed over all hours in the current months for all organizations.
-	NetflowIndexedEventsCountAggSum *int64 `json:"netflow_indexed_events_count_agg_sum,omitempty"`
+	NetflowIndexedEventsCountAggSum NullableInt64 `json:"netflow_indexed_events_count_agg_sum,omitempty"`
 	// Shows the 99th percentile of all distinct Networks hosts over all hours in the current months for all organizations.
-	NpmHostTop99pSum *int64 `json:"npm_host_top99p_sum,omitempty"`
+	NpmHostTop99pSum NullableInt64 `json:"npm_host_top99p_sum,omitempty"`
 	// Shows the 99th percentile of all hosts reported by the Datadog exporter for the OpenTelemetry Collector over all hours in the current months for all organizations.
-	OpentelemetryHostTop99pSum *int64 `json:"opentelemetry_host_top99p_sum,omitempty"`
+	OpentelemetryHostTop99pSum NullableInt64 `json:"opentelemetry_host_top99p_sum,omitempty"`
 	// Shows the average number of profiled containers over all hours in the current months for all organizations.
-	ProfilingContainerAgentCountAvg *int64 `json:"profiling_container_agent_count_avg,omitempty"`
+	ProfilingContainerAgentCountAvg NullableInt64 `json:"profiling_container_agent_count_avg,omitempty"`
 	// Shows the 99th percentile of all profiled hosts over all hours in the current months for all organizations.
-	ProfilingHostCountTop99pSum *int64 `json:"profiling_host_count_top99p_sum,omitempty"`
+	ProfilingHostCountTop99pSum NullableInt64 `json:"profiling_host_count_top99p_sum,omitempty"`
 	// Shows the sum of all rehydrated logs indexed over all hours in the current months for all organizations (data available as of December 1, 2020).
-	RehydratedIndexedEventsAggSum *int64 `json:"rehydrated_indexed_events_agg_sum,omitempty"`
+	RehydratedIndexedEventsAggSum NullableInt64 `json:"rehydrated_indexed_events_agg_sum,omitempty"`
 	// Shows the sum of all rehydrated logs bytes ingested over all hours in the current months for all organizations (data available as of December 1, 2020).
-	RehydratedIngestedBytesAggSum *int64 `json:"rehydrated_ingested_bytes_agg_sum,omitempty"`
+	RehydratedIngestedBytesAggSum NullableInt64 `json:"rehydrated_ingested_bytes_agg_sum,omitempty"`
 	// Shows the sum of all browser RUM Sessions over all hours in the current months for all organizations.
-	RumSessionCountAggSum *int64 `json:"rum_session_count_agg_sum,omitempty"`
+	RumSessionCountAggSum NullableInt64 `json:"rum_session_count_agg_sum,omitempty"`
 	// Shows the sum of RUM Sessions (browser and mobile) over all hours in the current months for all organizations.
-	RumTotalSessionCountAggSum *int64 `json:"rum_total_session_count_agg_sum,omitempty"`
+	RumTotalSessionCountAggSum NullableInt64 `json:"rum_total_session_count_agg_sum,omitempty"`
 	// Shows the first date of usage in the current months for all organizations.
 	StartDate *time.Time `json:"start_date,omitempty"`
 	// Shows the sum of all Synthetic browser tests over all hours in the current months for all organizations.
-	SyntheticsBrowserCheckCallsCountAggSum *int64 `json:"synthetics_browser_check_calls_count_agg_sum,omitempty"`
+	SyntheticsBrowserCheckCallsCountAggSum NullableInt64 `json:"synthetics_browser_check_calls_count_agg_sum,omitempty"`
 	// Shows the sum of all Synthetic API tests over all hours in the current months for all organizations.
-	SyntheticsCheckCallsCountAggSum *int64 `json:"synthetics_check_calls_count_agg_sum,omitempty"`
+	SyntheticsCheckCallsCountAggSum NullableInt64 `json:"synthetics_check_calls_count_agg_sum,omitempty"`
 	// Shows the sum of all Indexed Spans indexed over all hours in the current months for all organizations.
-	TraceSearchIndexedEventsCountAggSum *int64 `json:"trace_search_indexed_events_count_agg_sum,omitempty"`
+	TraceSearchIndexedEventsCountAggSum NullableInt64 `json:"trace_search_indexed_events_count_agg_sum,omitempty"`
 	// Shows the sum of all tracing without limits bytes ingested over all hours in the current months for all organizations.
-	TwolIngestedEventsBytesAggSum *int64 `json:"twol_ingested_events_bytes_agg_sum,omitempty"`
+	TwolIngestedEventsBytesAggSum NullableInt64 `json:"twol_ingested_events_bytes_agg_sum,omitempty"`
 	// An array of objects regarding hourly usage.
 	Usage *[]UsageSummaryDate `json:"usage,omitempty"`
 	// Shows the 99th percentile of all vSphere hosts over all hours in the current months for all organizations.
-	VsphereHostTop99pSum *int64 `json:"vsphere_host_top99p_sum,omitempty"`
+	VsphereHostTop99pSum NullableInt64 `json:"vsphere_host_top99p_sum,omitempty"`
 }
 
 // NewUsageSummaryResponse instantiates a new UsageSummaryResponse object
@@ -128,453 +128,606 @@ func NewUsageSummaryResponseWithDefaults() *UsageSummaryResponse {
 	return &this
 }
 
-// GetAgentHostTop99pSum returns the AgentHostTop99pSum field value if set, zero value otherwise.
+// GetAgentHostTop99pSum returns the AgentHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAgentHostTop99pSum() int64 {
-	if o == nil || o.AgentHostTop99pSum == nil {
+	if o == nil || o.AgentHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AgentHostTop99pSum
+	return *o.AgentHostTop99pSum.Get()
 }
 
 // GetAgentHostTop99pSumOk returns a tuple with the AgentHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAgentHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.AgentHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AgentHostTop99pSum, true
+	return o.AgentHostTop99pSum.Get(), o.AgentHostTop99pSum.IsSet()
 }
 
 // HasAgentHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAgentHostTop99pSum() bool {
-	if o != nil && o.AgentHostTop99pSum != nil {
+	if o != nil && o.AgentHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAgentHostTop99pSum gets a reference to the given int64 and assigns it to the AgentHostTop99pSum field.
+// SetAgentHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the AgentHostTop99pSum field.
 func (o *UsageSummaryResponse) SetAgentHostTop99pSum(v int64) {
-	o.AgentHostTop99pSum = &v
+	o.AgentHostTop99pSum.Set(&v)
 }
 
-// GetApmAzureAppServiceHostTop99pSum returns the ApmAzureAppServiceHostTop99pSum field value if set, zero value otherwise.
+// SetAgentHostTop99pSumNil sets the value for AgentHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetAgentHostTop99pSumNil() {
+	o.AgentHostTop99pSum.Set(nil)
+}
+
+// UnsetAgentHostTop99pSum ensures that no value is present for AgentHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAgentHostTop99pSum() {
+	o.AgentHostTop99pSum.Unset()
+}
+
+// GetApmAzureAppServiceHostTop99pSum returns the ApmAzureAppServiceHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetApmAzureAppServiceHostTop99pSum() int64 {
-	if o == nil || o.ApmAzureAppServiceHostTop99pSum == nil {
+	if o == nil || o.ApmAzureAppServiceHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ApmAzureAppServiceHostTop99pSum
+	return *o.ApmAzureAppServiceHostTop99pSum.Get()
 }
 
 // GetApmAzureAppServiceHostTop99pSumOk returns a tuple with the ApmAzureAppServiceHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetApmAzureAppServiceHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.ApmAzureAppServiceHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApmAzureAppServiceHostTop99pSum, true
+	return o.ApmAzureAppServiceHostTop99pSum.Get(), o.ApmAzureAppServiceHostTop99pSum.IsSet()
 }
 
 // HasApmAzureAppServiceHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasApmAzureAppServiceHostTop99pSum() bool {
-	if o != nil && o.ApmAzureAppServiceHostTop99pSum != nil {
+	if o != nil && o.ApmAzureAppServiceHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApmAzureAppServiceHostTop99pSum gets a reference to the given int64 and assigns it to the ApmAzureAppServiceHostTop99pSum field.
+// SetApmAzureAppServiceHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the ApmAzureAppServiceHostTop99pSum field.
 func (o *UsageSummaryResponse) SetApmAzureAppServiceHostTop99pSum(v int64) {
-	o.ApmAzureAppServiceHostTop99pSum = &v
+	o.ApmAzureAppServiceHostTop99pSum.Set(&v)
 }
 
-// GetApmHostTop99pSum returns the ApmHostTop99pSum field value if set, zero value otherwise.
+// SetApmAzureAppServiceHostTop99pSumNil sets the value for ApmAzureAppServiceHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetApmAzureAppServiceHostTop99pSumNil() {
+	o.ApmAzureAppServiceHostTop99pSum.Set(nil)
+}
+
+// UnsetApmAzureAppServiceHostTop99pSum ensures that no value is present for ApmAzureAppServiceHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetApmAzureAppServiceHostTop99pSum() {
+	o.ApmAzureAppServiceHostTop99pSum.Unset()
+}
+
+// GetApmHostTop99pSum returns the ApmHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetApmHostTop99pSum() int64 {
-	if o == nil || o.ApmHostTop99pSum == nil {
+	if o == nil || o.ApmHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ApmHostTop99pSum
+	return *o.ApmHostTop99pSum.Get()
 }
 
 // GetApmHostTop99pSumOk returns a tuple with the ApmHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetApmHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.ApmHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApmHostTop99pSum, true
+	return o.ApmHostTop99pSum.Get(), o.ApmHostTop99pSum.IsSet()
 }
 
 // HasApmHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasApmHostTop99pSum() bool {
-	if o != nil && o.ApmHostTop99pSum != nil {
+	if o != nil && o.ApmHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApmHostTop99pSum gets a reference to the given int64 and assigns it to the ApmHostTop99pSum field.
+// SetApmHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the ApmHostTop99pSum field.
 func (o *UsageSummaryResponse) SetApmHostTop99pSum(v int64) {
-	o.ApmHostTop99pSum = &v
+	o.ApmHostTop99pSum.Set(&v)
 }
 
-// GetAwsHostTop99pSum returns the AwsHostTop99pSum field value if set, zero value otherwise.
+// SetApmHostTop99pSumNil sets the value for ApmHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetApmHostTop99pSumNil() {
+	o.ApmHostTop99pSum.Set(nil)
+}
+
+// UnsetApmHostTop99pSum ensures that no value is present for ApmHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetApmHostTop99pSum() {
+	o.ApmHostTop99pSum.Unset()
+}
+
+// GetAwsHostTop99pSum returns the AwsHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAwsHostTop99pSum() int64 {
-	if o == nil || o.AwsHostTop99pSum == nil {
+	if o == nil || o.AwsHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AwsHostTop99pSum
+	return *o.AwsHostTop99pSum.Get()
 }
 
 // GetAwsHostTop99pSumOk returns a tuple with the AwsHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAwsHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.AwsHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AwsHostTop99pSum, true
+	return o.AwsHostTop99pSum.Get(), o.AwsHostTop99pSum.IsSet()
 }
 
 // HasAwsHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAwsHostTop99pSum() bool {
-	if o != nil && o.AwsHostTop99pSum != nil {
+	if o != nil && o.AwsHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsHostTop99pSum gets a reference to the given int64 and assigns it to the AwsHostTop99pSum field.
+// SetAwsHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the AwsHostTop99pSum field.
 func (o *UsageSummaryResponse) SetAwsHostTop99pSum(v int64) {
-	o.AwsHostTop99pSum = &v
+	o.AwsHostTop99pSum.Set(&v)
 }
 
-// GetAwsLambdaFuncCount returns the AwsLambdaFuncCount field value if set, zero value otherwise.
+// SetAwsHostTop99pSumNil sets the value for AwsHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetAwsHostTop99pSumNil() {
+	o.AwsHostTop99pSum.Set(nil)
+}
+
+// UnsetAwsHostTop99pSum ensures that no value is present for AwsHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAwsHostTop99pSum() {
+	o.AwsHostTop99pSum.Unset()
+}
+
+// GetAwsLambdaFuncCount returns the AwsLambdaFuncCount field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAwsLambdaFuncCount() int64 {
-	if o == nil || o.AwsLambdaFuncCount == nil {
+	if o == nil || o.AwsLambdaFuncCount.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AwsLambdaFuncCount
+	return *o.AwsLambdaFuncCount.Get()
 }
 
 // GetAwsLambdaFuncCountOk returns a tuple with the AwsLambdaFuncCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAwsLambdaFuncCountOk() (*int64, bool) {
-	if o == nil || o.AwsLambdaFuncCount == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AwsLambdaFuncCount, true
+	return o.AwsLambdaFuncCount.Get(), o.AwsLambdaFuncCount.IsSet()
 }
 
 // HasAwsLambdaFuncCount returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAwsLambdaFuncCount() bool {
-	if o != nil && o.AwsLambdaFuncCount != nil {
+	if o != nil && o.AwsLambdaFuncCount.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsLambdaFuncCount gets a reference to the given int64 and assigns it to the AwsLambdaFuncCount field.
+// SetAwsLambdaFuncCount gets a reference to the given NullableInt64 and assigns it to the AwsLambdaFuncCount field.
 func (o *UsageSummaryResponse) SetAwsLambdaFuncCount(v int64) {
-	o.AwsLambdaFuncCount = &v
+	o.AwsLambdaFuncCount.Set(&v)
 }
 
-// GetAwsLambdaInvocationsSum returns the AwsLambdaInvocationsSum field value if set, zero value otherwise.
+// SetAwsLambdaFuncCountNil sets the value for AwsLambdaFuncCount to be an explicit nil
+func (o *UsageSummaryResponse) SetAwsLambdaFuncCountNil() {
+	o.AwsLambdaFuncCount.Set(nil)
+}
+
+// UnsetAwsLambdaFuncCount ensures that no value is present for AwsLambdaFuncCount, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAwsLambdaFuncCount() {
+	o.AwsLambdaFuncCount.Unset()
+}
+
+// GetAwsLambdaInvocationsSum returns the AwsLambdaInvocationsSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAwsLambdaInvocationsSum() int64 {
-	if o == nil || o.AwsLambdaInvocationsSum == nil {
+	if o == nil || o.AwsLambdaInvocationsSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AwsLambdaInvocationsSum
+	return *o.AwsLambdaInvocationsSum.Get()
 }
 
 // GetAwsLambdaInvocationsSumOk returns a tuple with the AwsLambdaInvocationsSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAwsLambdaInvocationsSumOk() (*int64, bool) {
-	if o == nil || o.AwsLambdaInvocationsSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AwsLambdaInvocationsSum, true
+	return o.AwsLambdaInvocationsSum.Get(), o.AwsLambdaInvocationsSum.IsSet()
 }
 
 // HasAwsLambdaInvocationsSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAwsLambdaInvocationsSum() bool {
-	if o != nil && o.AwsLambdaInvocationsSum != nil {
+	if o != nil && o.AwsLambdaInvocationsSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsLambdaInvocationsSum gets a reference to the given int64 and assigns it to the AwsLambdaInvocationsSum field.
+// SetAwsLambdaInvocationsSum gets a reference to the given NullableInt64 and assigns it to the AwsLambdaInvocationsSum field.
 func (o *UsageSummaryResponse) SetAwsLambdaInvocationsSum(v int64) {
-	o.AwsLambdaInvocationsSum = &v
+	o.AwsLambdaInvocationsSum.Set(&v)
 }
 
-// GetAzureAppServiceTop99pSum returns the AzureAppServiceTop99pSum field value if set, zero value otherwise.
+// SetAwsLambdaInvocationsSumNil sets the value for AwsLambdaInvocationsSum to be an explicit nil
+func (o *UsageSummaryResponse) SetAwsLambdaInvocationsSumNil() {
+	o.AwsLambdaInvocationsSum.Set(nil)
+}
+
+// UnsetAwsLambdaInvocationsSum ensures that no value is present for AwsLambdaInvocationsSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAwsLambdaInvocationsSum() {
+	o.AwsLambdaInvocationsSum.Unset()
+}
+
+// GetAzureAppServiceTop99pSum returns the AzureAppServiceTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAzureAppServiceTop99pSum() int64 {
-	if o == nil || o.AzureAppServiceTop99pSum == nil {
+	if o == nil || o.AzureAppServiceTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AzureAppServiceTop99pSum
+	return *o.AzureAppServiceTop99pSum.Get()
 }
 
 // GetAzureAppServiceTop99pSumOk returns a tuple with the AzureAppServiceTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAzureAppServiceTop99pSumOk() (*int64, bool) {
-	if o == nil || o.AzureAppServiceTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AzureAppServiceTop99pSum, true
+	return o.AzureAppServiceTop99pSum.Get(), o.AzureAppServiceTop99pSum.IsSet()
 }
 
 // HasAzureAppServiceTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAzureAppServiceTop99pSum() bool {
-	if o != nil && o.AzureAppServiceTop99pSum != nil {
+	if o != nil && o.AzureAppServiceTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureAppServiceTop99pSum gets a reference to the given int64 and assigns it to the AzureAppServiceTop99pSum field.
+// SetAzureAppServiceTop99pSum gets a reference to the given NullableInt64 and assigns it to the AzureAppServiceTop99pSum field.
 func (o *UsageSummaryResponse) SetAzureAppServiceTop99pSum(v int64) {
-	o.AzureAppServiceTop99pSum = &v
+	o.AzureAppServiceTop99pSum.Set(&v)
 }
 
-// GetAzureHostTop99pSum returns the AzureHostTop99pSum field value if set, zero value otherwise.
+// SetAzureAppServiceTop99pSumNil sets the value for AzureAppServiceTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetAzureAppServiceTop99pSumNil() {
+	o.AzureAppServiceTop99pSum.Set(nil)
+}
+
+// UnsetAzureAppServiceTop99pSum ensures that no value is present for AzureAppServiceTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAzureAppServiceTop99pSum() {
+	o.AzureAppServiceTop99pSum.Unset()
+}
+
+// GetAzureHostTop99pSum returns the AzureHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetAzureHostTop99pSum() int64 {
-	if o == nil || o.AzureHostTop99pSum == nil {
+	if o == nil || o.AzureHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.AzureHostTop99pSum
+	return *o.AzureHostTop99pSum.Get()
 }
 
 // GetAzureHostTop99pSumOk returns a tuple with the AzureHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetAzureHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.AzureHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.AzureHostTop99pSum, true
+	return o.AzureHostTop99pSum.Get(), o.AzureHostTop99pSum.IsSet()
 }
 
 // HasAzureHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasAzureHostTop99pSum() bool {
-	if o != nil && o.AzureHostTop99pSum != nil {
+	if o != nil && o.AzureHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureHostTop99pSum gets a reference to the given int64 and assigns it to the AzureHostTop99pSum field.
+// SetAzureHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the AzureHostTop99pSum field.
 func (o *UsageSummaryResponse) SetAzureHostTop99pSum(v int64) {
-	o.AzureHostTop99pSum = &v
+	o.AzureHostTop99pSum.Set(&v)
 }
 
-// GetBillableIngestedBytesAggSum returns the BillableIngestedBytesAggSum field value if set, zero value otherwise.
+// SetAzureHostTop99pSumNil sets the value for AzureHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetAzureHostTop99pSumNil() {
+	o.AzureHostTop99pSum.Set(nil)
+}
+
+// UnsetAzureHostTop99pSum ensures that no value is present for AzureHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetAzureHostTop99pSum() {
+	o.AzureHostTop99pSum.Unset()
+}
+
+// GetBillableIngestedBytesAggSum returns the BillableIngestedBytesAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetBillableIngestedBytesAggSum() int64 {
-	if o == nil || o.BillableIngestedBytesAggSum == nil {
+	if o == nil || o.BillableIngestedBytesAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.BillableIngestedBytesAggSum
+	return *o.BillableIngestedBytesAggSum.Get()
 }
 
 // GetBillableIngestedBytesAggSumOk returns a tuple with the BillableIngestedBytesAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetBillableIngestedBytesAggSumOk() (*int64, bool) {
-	if o == nil || o.BillableIngestedBytesAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.BillableIngestedBytesAggSum, true
+	return o.BillableIngestedBytesAggSum.Get(), o.BillableIngestedBytesAggSum.IsSet()
 }
 
 // HasBillableIngestedBytesAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasBillableIngestedBytesAggSum() bool {
-	if o != nil && o.BillableIngestedBytesAggSum != nil {
+	if o != nil && o.BillableIngestedBytesAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillableIngestedBytesAggSum gets a reference to the given int64 and assigns it to the BillableIngestedBytesAggSum field.
+// SetBillableIngestedBytesAggSum gets a reference to the given NullableInt64 and assigns it to the BillableIngestedBytesAggSum field.
 func (o *UsageSummaryResponse) SetBillableIngestedBytesAggSum(v int64) {
-	o.BillableIngestedBytesAggSum = &v
+	o.BillableIngestedBytesAggSum.Set(&v)
+}
+
+// SetBillableIngestedBytesAggSumNil sets the value for BillableIngestedBytesAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetBillableIngestedBytesAggSumNil() {
+	o.BillableIngestedBytesAggSum.Set(nil)
+}
+
+// UnsetBillableIngestedBytesAggSum ensures that no value is present for BillableIngestedBytesAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetBillableIngestedBytesAggSum() {
+	o.BillableIngestedBytesAggSum.Unset()
 }
 
 // GetComplianceContainerAggSum returns the ComplianceContainerAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UsageSummaryResponse) GetComplianceContainerAggSum() interface{} {
-	if o == nil {
-		var ret interface{}
+func (o *UsageSummaryResponse) GetComplianceContainerAggSum() int64 {
+	if o == nil || o.ComplianceContainerAggSum.Get() == nil {
+		var ret int64
 		return ret
 	}
-	return o.ComplianceContainerAggSum
+	return *o.ComplianceContainerAggSum.Get()
 }
 
 // GetComplianceContainerAggSumOk returns a tuple with the ComplianceContainerAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UsageSummaryResponse) GetComplianceContainerAggSumOk() (*interface{}, bool) {
-	if o == nil || o.ComplianceContainerAggSum == nil {
+func (o *UsageSummaryResponse) GetComplianceContainerAggSumOk() (*int64, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return &o.ComplianceContainerAggSum, true
+	return o.ComplianceContainerAggSum.Get(), o.ComplianceContainerAggSum.IsSet()
 }
 
 // HasComplianceContainerAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasComplianceContainerAggSum() bool {
-	if o != nil && o.ComplianceContainerAggSum != nil {
+	if o != nil && o.ComplianceContainerAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComplianceContainerAggSum gets a reference to the given interface{} and assigns it to the ComplianceContainerAggSum field.
-func (o *UsageSummaryResponse) SetComplianceContainerAggSum(v interface{}) {
-	o.ComplianceContainerAggSum = v
+// SetComplianceContainerAggSum gets a reference to the given NullableInt64 and assigns it to the ComplianceContainerAggSum field.
+func (o *UsageSummaryResponse) SetComplianceContainerAggSum(v int64) {
+	o.ComplianceContainerAggSum.Set(&v)
 }
 
-// GetComplianceHostAggSum returns the ComplianceHostAggSum field value if set, zero value otherwise.
+// SetComplianceContainerAggSumNil sets the value for ComplianceContainerAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetComplianceContainerAggSumNil() {
+	o.ComplianceContainerAggSum.Set(nil)
+}
+
+// UnsetComplianceContainerAggSum ensures that no value is present for ComplianceContainerAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetComplianceContainerAggSum() {
+	o.ComplianceContainerAggSum.Unset()
+}
+
+// GetComplianceHostAggSum returns the ComplianceHostAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetComplianceHostAggSum() int64 {
-	if o == nil || o.ComplianceHostAggSum == nil {
+	if o == nil || o.ComplianceHostAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ComplianceHostAggSum
+	return *o.ComplianceHostAggSum.Get()
 }
 
 // GetComplianceHostAggSumOk returns a tuple with the ComplianceHostAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetComplianceHostAggSumOk() (*int64, bool) {
-	if o == nil || o.ComplianceHostAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ComplianceHostAggSum, true
+	return o.ComplianceHostAggSum.Get(), o.ComplianceHostAggSum.IsSet()
 }
 
 // HasComplianceHostAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasComplianceHostAggSum() bool {
-	if o != nil && o.ComplianceHostAggSum != nil {
+	if o != nil && o.ComplianceHostAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComplianceHostAggSum gets a reference to the given int64 and assigns it to the ComplianceHostAggSum field.
+// SetComplianceHostAggSum gets a reference to the given NullableInt64 and assigns it to the ComplianceHostAggSum field.
 func (o *UsageSummaryResponse) SetComplianceHostAggSum(v int64) {
-	o.ComplianceHostAggSum = &v
+	o.ComplianceHostAggSum.Set(&v)
 }
 
-// GetContainerAvgSum returns the ContainerAvgSum field value if set, zero value otherwise.
+// SetComplianceHostAggSumNil sets the value for ComplianceHostAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetComplianceHostAggSumNil() {
+	o.ComplianceHostAggSum.Set(nil)
+}
+
+// UnsetComplianceHostAggSum ensures that no value is present for ComplianceHostAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetComplianceHostAggSum() {
+	o.ComplianceHostAggSum.Unset()
+}
+
+// GetContainerAvgSum returns the ContainerAvgSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetContainerAvgSum() int64 {
-	if o == nil || o.ContainerAvgSum == nil {
+	if o == nil || o.ContainerAvgSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ContainerAvgSum
+	return *o.ContainerAvgSum.Get()
 }
 
 // GetContainerAvgSumOk returns a tuple with the ContainerAvgSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetContainerAvgSumOk() (*int64, bool) {
-	if o == nil || o.ContainerAvgSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ContainerAvgSum, true
+	return o.ContainerAvgSum.Get(), o.ContainerAvgSum.IsSet()
 }
 
 // HasContainerAvgSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasContainerAvgSum() bool {
-	if o != nil && o.ContainerAvgSum != nil {
+	if o != nil && o.ContainerAvgSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContainerAvgSum gets a reference to the given int64 and assigns it to the ContainerAvgSum field.
+// SetContainerAvgSum gets a reference to the given NullableInt64 and assigns it to the ContainerAvgSum field.
 func (o *UsageSummaryResponse) SetContainerAvgSum(v int64) {
-	o.ContainerAvgSum = &v
+	o.ContainerAvgSum.Set(&v)
 }
 
-// GetContainerHwmSum returns the ContainerHwmSum field value if set, zero value otherwise.
+// SetContainerAvgSumNil sets the value for ContainerAvgSum to be an explicit nil
+func (o *UsageSummaryResponse) SetContainerAvgSumNil() {
+	o.ContainerAvgSum.Set(nil)
+}
+
+// UnsetContainerAvgSum ensures that no value is present for ContainerAvgSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetContainerAvgSum() {
+	o.ContainerAvgSum.Unset()
+}
+
+// GetContainerHwmSum returns the ContainerHwmSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetContainerHwmSum() int64 {
-	if o == nil || o.ContainerHwmSum == nil {
+	if o == nil || o.ContainerHwmSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ContainerHwmSum
+	return *o.ContainerHwmSum.Get()
 }
 
 // GetContainerHwmSumOk returns a tuple with the ContainerHwmSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetContainerHwmSumOk() (*int64, bool) {
-	if o == nil || o.ContainerHwmSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ContainerHwmSum, true
+	return o.ContainerHwmSum.Get(), o.ContainerHwmSum.IsSet()
 }
 
 // HasContainerHwmSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasContainerHwmSum() bool {
-	if o != nil && o.ContainerHwmSum != nil {
+	if o != nil && o.ContainerHwmSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContainerHwmSum gets a reference to the given int64 and assigns it to the ContainerHwmSum field.
+// SetContainerHwmSum gets a reference to the given NullableInt64 and assigns it to the ContainerHwmSum field.
 func (o *UsageSummaryResponse) SetContainerHwmSum(v int64) {
-	o.ContainerHwmSum = &v
+	o.ContainerHwmSum.Set(&v)
 }
 
-// GetCustomTsSum returns the CustomTsSum field value if set, zero value otherwise.
+// SetContainerHwmSumNil sets the value for ContainerHwmSum to be an explicit nil
+func (o *UsageSummaryResponse) SetContainerHwmSumNil() {
+	o.ContainerHwmSum.Set(nil)
+}
+
+// UnsetContainerHwmSum ensures that no value is present for ContainerHwmSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetContainerHwmSum() {
+	o.ContainerHwmSum.Unset()
+}
+
+// GetCustomTsSum returns the CustomTsSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetCustomTsSum() int64 {
-	if o == nil || o.CustomTsSum == nil {
+	if o == nil || o.CustomTsSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.CustomTsSum
+	return *o.CustomTsSum.Get()
 }
 
 // GetCustomTsSumOk returns a tuple with the CustomTsSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetCustomTsSumOk() (*int64, bool) {
-	if o == nil || o.CustomTsSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.CustomTsSum, true
+	return o.CustomTsSum.Get(), o.CustomTsSum.IsSet()
 }
 
 // HasCustomTsSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasCustomTsSum() bool {
-	if o != nil && o.CustomTsSum != nil {
+	if o != nil && o.CustomTsSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomTsSum gets a reference to the given int64 and assigns it to the CustomTsSum field.
+// SetCustomTsSum gets a reference to the given NullableInt64 and assigns it to the CustomTsSum field.
 func (o *UsageSummaryResponse) SetCustomTsSum(v int64) {
-	o.CustomTsSum = &v
+	o.CustomTsSum.Set(&v)
+}
+
+// SetCustomTsSumNil sets the value for CustomTsSum to be an explicit nil
+func (o *UsageSummaryResponse) SetCustomTsSumNil() {
+	o.CustomTsSum.Set(nil)
+}
+
+// UnsetCustomTsSum ensures that no value is present for CustomTsSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetCustomTsSum() {
+	o.CustomTsSum.Unset()
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise.
@@ -609,324 +762,434 @@ func (o *UsageSummaryResponse) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
-// GetFargateTasksCountAvgSum returns the FargateTasksCountAvgSum field value if set, zero value otherwise.
+// GetFargateTasksCountAvgSum returns the FargateTasksCountAvgSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetFargateTasksCountAvgSum() int64 {
-	if o == nil || o.FargateTasksCountAvgSum == nil {
+	if o == nil || o.FargateTasksCountAvgSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.FargateTasksCountAvgSum
+	return *o.FargateTasksCountAvgSum.Get()
 }
 
 // GetFargateTasksCountAvgSumOk returns a tuple with the FargateTasksCountAvgSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetFargateTasksCountAvgSumOk() (*int64, bool) {
-	if o == nil || o.FargateTasksCountAvgSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.FargateTasksCountAvgSum, true
+	return o.FargateTasksCountAvgSum.Get(), o.FargateTasksCountAvgSum.IsSet()
 }
 
 // HasFargateTasksCountAvgSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasFargateTasksCountAvgSum() bool {
-	if o != nil && o.FargateTasksCountAvgSum != nil {
+	if o != nil && o.FargateTasksCountAvgSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFargateTasksCountAvgSum gets a reference to the given int64 and assigns it to the FargateTasksCountAvgSum field.
+// SetFargateTasksCountAvgSum gets a reference to the given NullableInt64 and assigns it to the FargateTasksCountAvgSum field.
 func (o *UsageSummaryResponse) SetFargateTasksCountAvgSum(v int64) {
-	o.FargateTasksCountAvgSum = &v
+	o.FargateTasksCountAvgSum.Set(&v)
 }
 
-// GetFargateTasksCountHwmSum returns the FargateTasksCountHwmSum field value if set, zero value otherwise.
+// SetFargateTasksCountAvgSumNil sets the value for FargateTasksCountAvgSum to be an explicit nil
+func (o *UsageSummaryResponse) SetFargateTasksCountAvgSumNil() {
+	o.FargateTasksCountAvgSum.Set(nil)
+}
+
+// UnsetFargateTasksCountAvgSum ensures that no value is present for FargateTasksCountAvgSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetFargateTasksCountAvgSum() {
+	o.FargateTasksCountAvgSum.Unset()
+}
+
+// GetFargateTasksCountHwmSum returns the FargateTasksCountHwmSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetFargateTasksCountHwmSum() int64 {
-	if o == nil || o.FargateTasksCountHwmSum == nil {
+	if o == nil || o.FargateTasksCountHwmSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.FargateTasksCountHwmSum
+	return *o.FargateTasksCountHwmSum.Get()
 }
 
 // GetFargateTasksCountHwmSumOk returns a tuple with the FargateTasksCountHwmSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetFargateTasksCountHwmSumOk() (*int64, bool) {
-	if o == nil || o.FargateTasksCountHwmSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.FargateTasksCountHwmSum, true
+	return o.FargateTasksCountHwmSum.Get(), o.FargateTasksCountHwmSum.IsSet()
 }
 
 // HasFargateTasksCountHwmSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasFargateTasksCountHwmSum() bool {
-	if o != nil && o.FargateTasksCountHwmSum != nil {
+	if o != nil && o.FargateTasksCountHwmSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFargateTasksCountHwmSum gets a reference to the given int64 and assigns it to the FargateTasksCountHwmSum field.
+// SetFargateTasksCountHwmSum gets a reference to the given NullableInt64 and assigns it to the FargateTasksCountHwmSum field.
 func (o *UsageSummaryResponse) SetFargateTasksCountHwmSum(v int64) {
-	o.FargateTasksCountHwmSum = &v
+	o.FargateTasksCountHwmSum.Set(&v)
 }
 
-// GetGcpHostTop99pSum returns the GcpHostTop99pSum field value if set, zero value otherwise.
+// SetFargateTasksCountHwmSumNil sets the value for FargateTasksCountHwmSum to be an explicit nil
+func (o *UsageSummaryResponse) SetFargateTasksCountHwmSumNil() {
+	o.FargateTasksCountHwmSum.Set(nil)
+}
+
+// UnsetFargateTasksCountHwmSum ensures that no value is present for FargateTasksCountHwmSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetFargateTasksCountHwmSum() {
+	o.FargateTasksCountHwmSum.Unset()
+}
+
+// GetGcpHostTop99pSum returns the GcpHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetGcpHostTop99pSum() int64 {
-	if o == nil || o.GcpHostTop99pSum == nil {
+	if o == nil || o.GcpHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.GcpHostTop99pSum
+	return *o.GcpHostTop99pSum.Get()
 }
 
 // GetGcpHostTop99pSumOk returns a tuple with the GcpHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetGcpHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.GcpHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.GcpHostTop99pSum, true
+	return o.GcpHostTop99pSum.Get(), o.GcpHostTop99pSum.IsSet()
 }
 
 // HasGcpHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasGcpHostTop99pSum() bool {
-	if o != nil && o.GcpHostTop99pSum != nil {
+	if o != nil && o.GcpHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGcpHostTop99pSum gets a reference to the given int64 and assigns it to the GcpHostTop99pSum field.
+// SetGcpHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the GcpHostTop99pSum field.
 func (o *UsageSummaryResponse) SetGcpHostTop99pSum(v int64) {
-	o.GcpHostTop99pSum = &v
+	o.GcpHostTop99pSum.Set(&v)
 }
 
-// GetHerokuHostTop99pSum returns the HerokuHostTop99pSum field value if set, zero value otherwise.
+// SetGcpHostTop99pSumNil sets the value for GcpHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetGcpHostTop99pSumNil() {
+	o.GcpHostTop99pSum.Set(nil)
+}
+
+// UnsetGcpHostTop99pSum ensures that no value is present for GcpHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetGcpHostTop99pSum() {
+	o.GcpHostTop99pSum.Unset()
+}
+
+// GetHerokuHostTop99pSum returns the HerokuHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetHerokuHostTop99pSum() int64 {
-	if o == nil || o.HerokuHostTop99pSum == nil {
+	if o == nil || o.HerokuHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.HerokuHostTop99pSum
+	return *o.HerokuHostTop99pSum.Get()
 }
 
 // GetHerokuHostTop99pSumOk returns a tuple with the HerokuHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetHerokuHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.HerokuHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.HerokuHostTop99pSum, true
+	return o.HerokuHostTop99pSum.Get(), o.HerokuHostTop99pSum.IsSet()
 }
 
 // HasHerokuHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasHerokuHostTop99pSum() bool {
-	if o != nil && o.HerokuHostTop99pSum != nil {
+	if o != nil && o.HerokuHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHerokuHostTop99pSum gets a reference to the given int64 and assigns it to the HerokuHostTop99pSum field.
+// SetHerokuHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the HerokuHostTop99pSum field.
 func (o *UsageSummaryResponse) SetHerokuHostTop99pSum(v int64) {
-	o.HerokuHostTop99pSum = &v
+	o.HerokuHostTop99pSum.Set(&v)
 }
 
-// GetIncidentManagementMonthlyActiveUsersHwmSum returns the IncidentManagementMonthlyActiveUsersHwmSum field value if set, zero value otherwise.
+// SetHerokuHostTop99pSumNil sets the value for HerokuHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetHerokuHostTop99pSumNil() {
+	o.HerokuHostTop99pSum.Set(nil)
+}
+
+// UnsetHerokuHostTop99pSum ensures that no value is present for HerokuHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetHerokuHostTop99pSum() {
+	o.HerokuHostTop99pSum.Unset()
+}
+
+// GetIncidentManagementMonthlyActiveUsersHwmSum returns the IncidentManagementMonthlyActiveUsersHwmSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetIncidentManagementMonthlyActiveUsersHwmSum() int64 {
-	if o == nil || o.IncidentManagementMonthlyActiveUsersHwmSum == nil {
+	if o == nil || o.IncidentManagementMonthlyActiveUsersHwmSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.IncidentManagementMonthlyActiveUsersHwmSum
+	return *o.IncidentManagementMonthlyActiveUsersHwmSum.Get()
 }
 
 // GetIncidentManagementMonthlyActiveUsersHwmSumOk returns a tuple with the IncidentManagementMonthlyActiveUsersHwmSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetIncidentManagementMonthlyActiveUsersHwmSumOk() (*int64, bool) {
-	if o == nil || o.IncidentManagementMonthlyActiveUsersHwmSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IncidentManagementMonthlyActiveUsersHwmSum, true
+	return o.IncidentManagementMonthlyActiveUsersHwmSum.Get(), o.IncidentManagementMonthlyActiveUsersHwmSum.IsSet()
 }
 
 // HasIncidentManagementMonthlyActiveUsersHwmSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasIncidentManagementMonthlyActiveUsersHwmSum() bool {
-	if o != nil && o.IncidentManagementMonthlyActiveUsersHwmSum != nil {
+	if o != nil && o.IncidentManagementMonthlyActiveUsersHwmSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIncidentManagementMonthlyActiveUsersHwmSum gets a reference to the given int64 and assigns it to the IncidentManagementMonthlyActiveUsersHwmSum field.
+// SetIncidentManagementMonthlyActiveUsersHwmSum gets a reference to the given NullableInt64 and assigns it to the IncidentManagementMonthlyActiveUsersHwmSum field.
 func (o *UsageSummaryResponse) SetIncidentManagementMonthlyActiveUsersHwmSum(v int64) {
-	o.IncidentManagementMonthlyActiveUsersHwmSum = &v
+	o.IncidentManagementMonthlyActiveUsersHwmSum.Set(&v)
 }
 
-// GetIndexedEventsCountAggSum returns the IndexedEventsCountAggSum field value if set, zero value otherwise.
+// SetIncidentManagementMonthlyActiveUsersHwmSumNil sets the value for IncidentManagementMonthlyActiveUsersHwmSum to be an explicit nil
+func (o *UsageSummaryResponse) SetIncidentManagementMonthlyActiveUsersHwmSumNil() {
+	o.IncidentManagementMonthlyActiveUsersHwmSum.Set(nil)
+}
+
+// UnsetIncidentManagementMonthlyActiveUsersHwmSum ensures that no value is present for IncidentManagementMonthlyActiveUsersHwmSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetIncidentManagementMonthlyActiveUsersHwmSum() {
+	o.IncidentManagementMonthlyActiveUsersHwmSum.Unset()
+}
+
+// GetIndexedEventsCountAggSum returns the IndexedEventsCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetIndexedEventsCountAggSum() int64 {
-	if o == nil || o.IndexedEventsCountAggSum == nil {
+	if o == nil || o.IndexedEventsCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.IndexedEventsCountAggSum
+	return *o.IndexedEventsCountAggSum.Get()
 }
 
 // GetIndexedEventsCountAggSumOk returns a tuple with the IndexedEventsCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetIndexedEventsCountAggSumOk() (*int64, bool) {
-	if o == nil || o.IndexedEventsCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IndexedEventsCountAggSum, true
+	return o.IndexedEventsCountAggSum.Get(), o.IndexedEventsCountAggSum.IsSet()
 }
 
 // HasIndexedEventsCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasIndexedEventsCountAggSum() bool {
-	if o != nil && o.IndexedEventsCountAggSum != nil {
+	if o != nil && o.IndexedEventsCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIndexedEventsCountAggSum gets a reference to the given int64 and assigns it to the IndexedEventsCountAggSum field.
+// SetIndexedEventsCountAggSum gets a reference to the given NullableInt64 and assigns it to the IndexedEventsCountAggSum field.
 func (o *UsageSummaryResponse) SetIndexedEventsCountAggSum(v int64) {
-	o.IndexedEventsCountAggSum = &v
+	o.IndexedEventsCountAggSum.Set(&v)
 }
 
-// GetInfraHostTop99pSum returns the InfraHostTop99pSum field value if set, zero value otherwise.
+// SetIndexedEventsCountAggSumNil sets the value for IndexedEventsCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetIndexedEventsCountAggSumNil() {
+	o.IndexedEventsCountAggSum.Set(nil)
+}
+
+// UnsetIndexedEventsCountAggSum ensures that no value is present for IndexedEventsCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetIndexedEventsCountAggSum() {
+	o.IndexedEventsCountAggSum.Unset()
+}
+
+// GetInfraHostTop99pSum returns the InfraHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetInfraHostTop99pSum() int64 {
-	if o == nil || o.InfraHostTop99pSum == nil {
+	if o == nil || o.InfraHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.InfraHostTop99pSum
+	return *o.InfraHostTop99pSum.Get()
 }
 
 // GetInfraHostTop99pSumOk returns a tuple with the InfraHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetInfraHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.InfraHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.InfraHostTop99pSum, true
+	return o.InfraHostTop99pSum.Get(), o.InfraHostTop99pSum.IsSet()
 }
 
 // HasInfraHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasInfraHostTop99pSum() bool {
-	if o != nil && o.InfraHostTop99pSum != nil {
+	if o != nil && o.InfraHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInfraHostTop99pSum gets a reference to the given int64 and assigns it to the InfraHostTop99pSum field.
+// SetInfraHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the InfraHostTop99pSum field.
 func (o *UsageSummaryResponse) SetInfraHostTop99pSum(v int64) {
-	o.InfraHostTop99pSum = &v
+	o.InfraHostTop99pSum.Set(&v)
 }
 
-// GetIngestedEventsBytesAggSum returns the IngestedEventsBytesAggSum field value if set, zero value otherwise.
+// SetInfraHostTop99pSumNil sets the value for InfraHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetInfraHostTop99pSumNil() {
+	o.InfraHostTop99pSum.Set(nil)
+}
+
+// UnsetInfraHostTop99pSum ensures that no value is present for InfraHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetInfraHostTop99pSum() {
+	o.InfraHostTop99pSum.Unset()
+}
+
+// GetIngestedEventsBytesAggSum returns the IngestedEventsBytesAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetIngestedEventsBytesAggSum() int64 {
-	if o == nil || o.IngestedEventsBytesAggSum == nil {
+	if o == nil || o.IngestedEventsBytesAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.IngestedEventsBytesAggSum
+	return *o.IngestedEventsBytesAggSum.Get()
 }
 
 // GetIngestedEventsBytesAggSumOk returns a tuple with the IngestedEventsBytesAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetIngestedEventsBytesAggSumOk() (*int64, bool) {
-	if o == nil || o.IngestedEventsBytesAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IngestedEventsBytesAggSum, true
+	return o.IngestedEventsBytesAggSum.Get(), o.IngestedEventsBytesAggSum.IsSet()
 }
 
 // HasIngestedEventsBytesAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasIngestedEventsBytesAggSum() bool {
-	if o != nil && o.IngestedEventsBytesAggSum != nil {
+	if o != nil && o.IngestedEventsBytesAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIngestedEventsBytesAggSum gets a reference to the given int64 and assigns it to the IngestedEventsBytesAggSum field.
+// SetIngestedEventsBytesAggSum gets a reference to the given NullableInt64 and assigns it to the IngestedEventsBytesAggSum field.
 func (o *UsageSummaryResponse) SetIngestedEventsBytesAggSum(v int64) {
-	o.IngestedEventsBytesAggSum = &v
+	o.IngestedEventsBytesAggSum.Set(&v)
 }
 
-// GetIotDeviceAggSum returns the IotDeviceAggSum field value if set, zero value otherwise.
+// SetIngestedEventsBytesAggSumNil sets the value for IngestedEventsBytesAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetIngestedEventsBytesAggSumNil() {
+	o.IngestedEventsBytesAggSum.Set(nil)
+}
+
+// UnsetIngestedEventsBytesAggSum ensures that no value is present for IngestedEventsBytesAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetIngestedEventsBytesAggSum() {
+	o.IngestedEventsBytesAggSum.Unset()
+}
+
+// GetIotDeviceAggSum returns the IotDeviceAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetIotDeviceAggSum() int64 {
-	if o == nil || o.IotDeviceAggSum == nil {
+	if o == nil || o.IotDeviceAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.IotDeviceAggSum
+	return *o.IotDeviceAggSum.Get()
 }
 
 // GetIotDeviceAggSumOk returns a tuple with the IotDeviceAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetIotDeviceAggSumOk() (*int64, bool) {
-	if o == nil || o.IotDeviceAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IotDeviceAggSum, true
+	return o.IotDeviceAggSum.Get(), o.IotDeviceAggSum.IsSet()
 }
 
 // HasIotDeviceAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasIotDeviceAggSum() bool {
-	if o != nil && o.IotDeviceAggSum != nil {
+	if o != nil && o.IotDeviceAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIotDeviceAggSum gets a reference to the given int64 and assigns it to the IotDeviceAggSum field.
+// SetIotDeviceAggSum gets a reference to the given NullableInt64 and assigns it to the IotDeviceAggSum field.
 func (o *UsageSummaryResponse) SetIotDeviceAggSum(v int64) {
-	o.IotDeviceAggSum = &v
+	o.IotDeviceAggSum.Set(&v)
 }
 
-// GetIotDeviceTop99pSum returns the IotDeviceTop99pSum field value if set, zero value otherwise.
+// SetIotDeviceAggSumNil sets the value for IotDeviceAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetIotDeviceAggSumNil() {
+	o.IotDeviceAggSum.Set(nil)
+}
+
+// UnsetIotDeviceAggSum ensures that no value is present for IotDeviceAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetIotDeviceAggSum() {
+	o.IotDeviceAggSum.Unset()
+}
+
+// GetIotDeviceTop99pSum returns the IotDeviceTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetIotDeviceTop99pSum() int64 {
-	if o == nil || o.IotDeviceTop99pSum == nil {
+	if o == nil || o.IotDeviceTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.IotDeviceTop99pSum
+	return *o.IotDeviceTop99pSum.Get()
 }
 
 // GetIotDeviceTop99pSumOk returns a tuple with the IotDeviceTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetIotDeviceTop99pSumOk() (*int64, bool) {
-	if o == nil || o.IotDeviceTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.IotDeviceTop99pSum, true
+	return o.IotDeviceTop99pSum.Get(), o.IotDeviceTop99pSum.IsSet()
 }
 
 // HasIotDeviceTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasIotDeviceTop99pSum() bool {
-	if o != nil && o.IotDeviceTop99pSum != nil {
+	if o != nil && o.IotDeviceTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIotDeviceTop99pSum gets a reference to the given int64 and assigns it to the IotDeviceTop99pSum field.
+// SetIotDeviceTop99pSum gets a reference to the given NullableInt64 and assigns it to the IotDeviceTop99pSum field.
 func (o *UsageSummaryResponse) SetIotDeviceTop99pSum(v int64) {
-	o.IotDeviceTop99pSum = &v
+	o.IotDeviceTop99pSum.Set(&v)
+}
+
+// SetIotDeviceTop99pSumNil sets the value for IotDeviceTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetIotDeviceTop99pSumNil() {
+	o.IotDeviceTop99pSum.Set(nil)
+}
+
+// UnsetIotDeviceTop99pSum ensures that no value is present for IotDeviceTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetIotDeviceTop99pSum() {
+	o.IotDeviceTop99pSum.Unset()
 }
 
 // GetLastUpdated returns the LastUpdated field value if set, zero value otherwise.
@@ -961,452 +1224,606 @@ func (o *UsageSummaryResponse) SetLastUpdated(v time.Time) {
 	o.LastUpdated = &v
 }
 
-// GetLiveIndexedEventsAggSum returns the LiveIndexedEventsAggSum field value if set, zero value otherwise.
+// GetLiveIndexedEventsAggSum returns the LiveIndexedEventsAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetLiveIndexedEventsAggSum() int64 {
-	if o == nil || o.LiveIndexedEventsAggSum == nil {
+	if o == nil || o.LiveIndexedEventsAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.LiveIndexedEventsAggSum
+	return *o.LiveIndexedEventsAggSum.Get()
 }
 
 // GetLiveIndexedEventsAggSumOk returns a tuple with the LiveIndexedEventsAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetLiveIndexedEventsAggSumOk() (*int64, bool) {
-	if o == nil || o.LiveIndexedEventsAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LiveIndexedEventsAggSum, true
+	return o.LiveIndexedEventsAggSum.Get(), o.LiveIndexedEventsAggSum.IsSet()
 }
 
 // HasLiveIndexedEventsAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasLiveIndexedEventsAggSum() bool {
-	if o != nil && o.LiveIndexedEventsAggSum != nil {
+	if o != nil && o.LiveIndexedEventsAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLiveIndexedEventsAggSum gets a reference to the given int64 and assigns it to the LiveIndexedEventsAggSum field.
+// SetLiveIndexedEventsAggSum gets a reference to the given NullableInt64 and assigns it to the LiveIndexedEventsAggSum field.
 func (o *UsageSummaryResponse) SetLiveIndexedEventsAggSum(v int64) {
-	o.LiveIndexedEventsAggSum = &v
+	o.LiveIndexedEventsAggSum.Set(&v)
 }
 
-// GetLiveIngestedBytesAggSum returns the LiveIngestedBytesAggSum field value if set, zero value otherwise.
+// SetLiveIndexedEventsAggSumNil sets the value for LiveIndexedEventsAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetLiveIndexedEventsAggSumNil() {
+	o.LiveIndexedEventsAggSum.Set(nil)
+}
+
+// UnsetLiveIndexedEventsAggSum ensures that no value is present for LiveIndexedEventsAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetLiveIndexedEventsAggSum() {
+	o.LiveIndexedEventsAggSum.Unset()
+}
+
+// GetLiveIngestedBytesAggSum returns the LiveIngestedBytesAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetLiveIngestedBytesAggSum() int64 {
-	if o == nil || o.LiveIngestedBytesAggSum == nil {
+	if o == nil || o.LiveIngestedBytesAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.LiveIngestedBytesAggSum
+	return *o.LiveIngestedBytesAggSum.Get()
 }
 
 // GetLiveIngestedBytesAggSumOk returns a tuple with the LiveIngestedBytesAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetLiveIngestedBytesAggSumOk() (*int64, bool) {
-	if o == nil || o.LiveIngestedBytesAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.LiveIngestedBytesAggSum, true
+	return o.LiveIngestedBytesAggSum.Get(), o.LiveIngestedBytesAggSum.IsSet()
 }
 
 // HasLiveIngestedBytesAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasLiveIngestedBytesAggSum() bool {
-	if o != nil && o.LiveIngestedBytesAggSum != nil {
+	if o != nil && o.LiveIngestedBytesAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLiveIngestedBytesAggSum gets a reference to the given int64 and assigns it to the LiveIngestedBytesAggSum field.
+// SetLiveIngestedBytesAggSum gets a reference to the given NullableInt64 and assigns it to the LiveIngestedBytesAggSum field.
 func (o *UsageSummaryResponse) SetLiveIngestedBytesAggSum(v int64) {
-	o.LiveIngestedBytesAggSum = &v
+	o.LiveIngestedBytesAggSum.Set(&v)
 }
 
-// GetMobileRumSessionCountAggSum returns the MobileRumSessionCountAggSum field value if set, zero value otherwise.
+// SetLiveIngestedBytesAggSumNil sets the value for LiveIngestedBytesAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetLiveIngestedBytesAggSumNil() {
+	o.LiveIngestedBytesAggSum.Set(nil)
+}
+
+// UnsetLiveIngestedBytesAggSum ensures that no value is present for LiveIngestedBytesAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetLiveIngestedBytesAggSum() {
+	o.LiveIngestedBytesAggSum.Unset()
+}
+
+// GetMobileRumSessionCountAggSum returns the MobileRumSessionCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetMobileRumSessionCountAggSum() int64 {
-	if o == nil || o.MobileRumSessionCountAggSum == nil {
+	if o == nil || o.MobileRumSessionCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.MobileRumSessionCountAggSum
+	return *o.MobileRumSessionCountAggSum.Get()
 }
 
 // GetMobileRumSessionCountAggSumOk returns a tuple with the MobileRumSessionCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetMobileRumSessionCountAggSumOk() (*int64, bool) {
-	if o == nil || o.MobileRumSessionCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MobileRumSessionCountAggSum, true
+	return o.MobileRumSessionCountAggSum.Get(), o.MobileRumSessionCountAggSum.IsSet()
 }
 
 // HasMobileRumSessionCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasMobileRumSessionCountAggSum() bool {
-	if o != nil && o.MobileRumSessionCountAggSum != nil {
+	if o != nil && o.MobileRumSessionCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMobileRumSessionCountAggSum gets a reference to the given int64 and assigns it to the MobileRumSessionCountAggSum field.
+// SetMobileRumSessionCountAggSum gets a reference to the given NullableInt64 and assigns it to the MobileRumSessionCountAggSum field.
 func (o *UsageSummaryResponse) SetMobileRumSessionCountAggSum(v int64) {
-	o.MobileRumSessionCountAggSum = &v
+	o.MobileRumSessionCountAggSum.Set(&v)
 }
 
-// GetMobileRumSessionCountAndroidAggSum returns the MobileRumSessionCountAndroidAggSum field value if set, zero value otherwise.
+// SetMobileRumSessionCountAggSumNil sets the value for MobileRumSessionCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetMobileRumSessionCountAggSumNil() {
+	o.MobileRumSessionCountAggSum.Set(nil)
+}
+
+// UnsetMobileRumSessionCountAggSum ensures that no value is present for MobileRumSessionCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetMobileRumSessionCountAggSum() {
+	o.MobileRumSessionCountAggSum.Unset()
+}
+
+// GetMobileRumSessionCountAndroidAggSum returns the MobileRumSessionCountAndroidAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetMobileRumSessionCountAndroidAggSum() int64 {
-	if o == nil || o.MobileRumSessionCountAndroidAggSum == nil {
+	if o == nil || o.MobileRumSessionCountAndroidAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.MobileRumSessionCountAndroidAggSum
+	return *o.MobileRumSessionCountAndroidAggSum.Get()
 }
 
 // GetMobileRumSessionCountAndroidAggSumOk returns a tuple with the MobileRumSessionCountAndroidAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetMobileRumSessionCountAndroidAggSumOk() (*int64, bool) {
-	if o == nil || o.MobileRumSessionCountAndroidAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MobileRumSessionCountAndroidAggSum, true
+	return o.MobileRumSessionCountAndroidAggSum.Get(), o.MobileRumSessionCountAndroidAggSum.IsSet()
 }
 
 // HasMobileRumSessionCountAndroidAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasMobileRumSessionCountAndroidAggSum() bool {
-	if o != nil && o.MobileRumSessionCountAndroidAggSum != nil {
+	if o != nil && o.MobileRumSessionCountAndroidAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMobileRumSessionCountAndroidAggSum gets a reference to the given int64 and assigns it to the MobileRumSessionCountAndroidAggSum field.
+// SetMobileRumSessionCountAndroidAggSum gets a reference to the given NullableInt64 and assigns it to the MobileRumSessionCountAndroidAggSum field.
 func (o *UsageSummaryResponse) SetMobileRumSessionCountAndroidAggSum(v int64) {
-	o.MobileRumSessionCountAndroidAggSum = &v
+	o.MobileRumSessionCountAndroidAggSum.Set(&v)
 }
 
-// GetMobileRumSessionCountIosAggSum returns the MobileRumSessionCountIosAggSum field value if set, zero value otherwise.
+// SetMobileRumSessionCountAndroidAggSumNil sets the value for MobileRumSessionCountAndroidAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetMobileRumSessionCountAndroidAggSumNil() {
+	o.MobileRumSessionCountAndroidAggSum.Set(nil)
+}
+
+// UnsetMobileRumSessionCountAndroidAggSum ensures that no value is present for MobileRumSessionCountAndroidAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetMobileRumSessionCountAndroidAggSum() {
+	o.MobileRumSessionCountAndroidAggSum.Unset()
+}
+
+// GetMobileRumSessionCountIosAggSum returns the MobileRumSessionCountIosAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetMobileRumSessionCountIosAggSum() int64 {
-	if o == nil || o.MobileRumSessionCountIosAggSum == nil {
+	if o == nil || o.MobileRumSessionCountIosAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.MobileRumSessionCountIosAggSum
+	return *o.MobileRumSessionCountIosAggSum.Get()
 }
 
 // GetMobileRumSessionCountIosAggSumOk returns a tuple with the MobileRumSessionCountIosAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetMobileRumSessionCountIosAggSumOk() (*int64, bool) {
-	if o == nil || o.MobileRumSessionCountIosAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MobileRumSessionCountIosAggSum, true
+	return o.MobileRumSessionCountIosAggSum.Get(), o.MobileRumSessionCountIosAggSum.IsSet()
 }
 
 // HasMobileRumSessionCountIosAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasMobileRumSessionCountIosAggSum() bool {
-	if o != nil && o.MobileRumSessionCountIosAggSum != nil {
+	if o != nil && o.MobileRumSessionCountIosAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMobileRumSessionCountIosAggSum gets a reference to the given int64 and assigns it to the MobileRumSessionCountIosAggSum field.
+// SetMobileRumSessionCountIosAggSum gets a reference to the given NullableInt64 and assigns it to the MobileRumSessionCountIosAggSum field.
 func (o *UsageSummaryResponse) SetMobileRumSessionCountIosAggSum(v int64) {
-	o.MobileRumSessionCountIosAggSum = &v
+	o.MobileRumSessionCountIosAggSum.Set(&v)
 }
 
-// GetNetflowIndexedEventsCountAggSum returns the NetflowIndexedEventsCountAggSum field value if set, zero value otherwise.
+// SetMobileRumSessionCountIosAggSumNil sets the value for MobileRumSessionCountIosAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetMobileRumSessionCountIosAggSumNil() {
+	o.MobileRumSessionCountIosAggSum.Set(nil)
+}
+
+// UnsetMobileRumSessionCountIosAggSum ensures that no value is present for MobileRumSessionCountIosAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetMobileRumSessionCountIosAggSum() {
+	o.MobileRumSessionCountIosAggSum.Unset()
+}
+
+// GetNetflowIndexedEventsCountAggSum returns the NetflowIndexedEventsCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetNetflowIndexedEventsCountAggSum() int64 {
-	if o == nil || o.NetflowIndexedEventsCountAggSum == nil {
+	if o == nil || o.NetflowIndexedEventsCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.NetflowIndexedEventsCountAggSum
+	return *o.NetflowIndexedEventsCountAggSum.Get()
 }
 
 // GetNetflowIndexedEventsCountAggSumOk returns a tuple with the NetflowIndexedEventsCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetNetflowIndexedEventsCountAggSumOk() (*int64, bool) {
-	if o == nil || o.NetflowIndexedEventsCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.NetflowIndexedEventsCountAggSum, true
+	return o.NetflowIndexedEventsCountAggSum.Get(), o.NetflowIndexedEventsCountAggSum.IsSet()
 }
 
 // HasNetflowIndexedEventsCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasNetflowIndexedEventsCountAggSum() bool {
-	if o != nil && o.NetflowIndexedEventsCountAggSum != nil {
+	if o != nil && o.NetflowIndexedEventsCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNetflowIndexedEventsCountAggSum gets a reference to the given int64 and assigns it to the NetflowIndexedEventsCountAggSum field.
+// SetNetflowIndexedEventsCountAggSum gets a reference to the given NullableInt64 and assigns it to the NetflowIndexedEventsCountAggSum field.
 func (o *UsageSummaryResponse) SetNetflowIndexedEventsCountAggSum(v int64) {
-	o.NetflowIndexedEventsCountAggSum = &v
+	o.NetflowIndexedEventsCountAggSum.Set(&v)
 }
 
-// GetNpmHostTop99pSum returns the NpmHostTop99pSum field value if set, zero value otherwise.
+// SetNetflowIndexedEventsCountAggSumNil sets the value for NetflowIndexedEventsCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetNetflowIndexedEventsCountAggSumNil() {
+	o.NetflowIndexedEventsCountAggSum.Set(nil)
+}
+
+// UnsetNetflowIndexedEventsCountAggSum ensures that no value is present for NetflowIndexedEventsCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetNetflowIndexedEventsCountAggSum() {
+	o.NetflowIndexedEventsCountAggSum.Unset()
+}
+
+// GetNpmHostTop99pSum returns the NpmHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetNpmHostTop99pSum() int64 {
-	if o == nil || o.NpmHostTop99pSum == nil {
+	if o == nil || o.NpmHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.NpmHostTop99pSum
+	return *o.NpmHostTop99pSum.Get()
 }
 
 // GetNpmHostTop99pSumOk returns a tuple with the NpmHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetNpmHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.NpmHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.NpmHostTop99pSum, true
+	return o.NpmHostTop99pSum.Get(), o.NpmHostTop99pSum.IsSet()
 }
 
 // HasNpmHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasNpmHostTop99pSum() bool {
-	if o != nil && o.NpmHostTop99pSum != nil {
+	if o != nil && o.NpmHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNpmHostTop99pSum gets a reference to the given int64 and assigns it to the NpmHostTop99pSum field.
+// SetNpmHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the NpmHostTop99pSum field.
 func (o *UsageSummaryResponse) SetNpmHostTop99pSum(v int64) {
-	o.NpmHostTop99pSum = &v
+	o.NpmHostTop99pSum.Set(&v)
 }
 
-// GetOpentelemetryHostTop99pSum returns the OpentelemetryHostTop99pSum field value if set, zero value otherwise.
+// SetNpmHostTop99pSumNil sets the value for NpmHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetNpmHostTop99pSumNil() {
+	o.NpmHostTop99pSum.Set(nil)
+}
+
+// UnsetNpmHostTop99pSum ensures that no value is present for NpmHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetNpmHostTop99pSum() {
+	o.NpmHostTop99pSum.Unset()
+}
+
+// GetOpentelemetryHostTop99pSum returns the OpentelemetryHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetOpentelemetryHostTop99pSum() int64 {
-	if o == nil || o.OpentelemetryHostTop99pSum == nil {
+	if o == nil || o.OpentelemetryHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.OpentelemetryHostTop99pSum
+	return *o.OpentelemetryHostTop99pSum.Get()
 }
 
 // GetOpentelemetryHostTop99pSumOk returns a tuple with the OpentelemetryHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetOpentelemetryHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.OpentelemetryHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.OpentelemetryHostTop99pSum, true
+	return o.OpentelemetryHostTop99pSum.Get(), o.OpentelemetryHostTop99pSum.IsSet()
 }
 
 // HasOpentelemetryHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasOpentelemetryHostTop99pSum() bool {
-	if o != nil && o.OpentelemetryHostTop99pSum != nil {
+	if o != nil && o.OpentelemetryHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOpentelemetryHostTop99pSum gets a reference to the given int64 and assigns it to the OpentelemetryHostTop99pSum field.
+// SetOpentelemetryHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the OpentelemetryHostTop99pSum field.
 func (o *UsageSummaryResponse) SetOpentelemetryHostTop99pSum(v int64) {
-	o.OpentelemetryHostTop99pSum = &v
+	o.OpentelemetryHostTop99pSum.Set(&v)
 }
 
-// GetProfilingContainerAgentCountAvg returns the ProfilingContainerAgentCountAvg field value if set, zero value otherwise.
+// SetOpentelemetryHostTop99pSumNil sets the value for OpentelemetryHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetOpentelemetryHostTop99pSumNil() {
+	o.OpentelemetryHostTop99pSum.Set(nil)
+}
+
+// UnsetOpentelemetryHostTop99pSum ensures that no value is present for OpentelemetryHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetOpentelemetryHostTop99pSum() {
+	o.OpentelemetryHostTop99pSum.Unset()
+}
+
+// GetProfilingContainerAgentCountAvg returns the ProfilingContainerAgentCountAvg field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetProfilingContainerAgentCountAvg() int64 {
-	if o == nil || o.ProfilingContainerAgentCountAvg == nil {
+	if o == nil || o.ProfilingContainerAgentCountAvg.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ProfilingContainerAgentCountAvg
+	return *o.ProfilingContainerAgentCountAvg.Get()
 }
 
 // GetProfilingContainerAgentCountAvgOk returns a tuple with the ProfilingContainerAgentCountAvg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetProfilingContainerAgentCountAvgOk() (*int64, bool) {
-	if o == nil || o.ProfilingContainerAgentCountAvg == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProfilingContainerAgentCountAvg, true
+	return o.ProfilingContainerAgentCountAvg.Get(), o.ProfilingContainerAgentCountAvg.IsSet()
 }
 
 // HasProfilingContainerAgentCountAvg returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasProfilingContainerAgentCountAvg() bool {
-	if o != nil && o.ProfilingContainerAgentCountAvg != nil {
+	if o != nil && o.ProfilingContainerAgentCountAvg.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProfilingContainerAgentCountAvg gets a reference to the given int64 and assigns it to the ProfilingContainerAgentCountAvg field.
+// SetProfilingContainerAgentCountAvg gets a reference to the given NullableInt64 and assigns it to the ProfilingContainerAgentCountAvg field.
 func (o *UsageSummaryResponse) SetProfilingContainerAgentCountAvg(v int64) {
-	o.ProfilingContainerAgentCountAvg = &v
+	o.ProfilingContainerAgentCountAvg.Set(&v)
 }
 
-// GetProfilingHostCountTop99pSum returns the ProfilingHostCountTop99pSum field value if set, zero value otherwise.
+// SetProfilingContainerAgentCountAvgNil sets the value for ProfilingContainerAgentCountAvg to be an explicit nil
+func (o *UsageSummaryResponse) SetProfilingContainerAgentCountAvgNil() {
+	o.ProfilingContainerAgentCountAvg.Set(nil)
+}
+
+// UnsetProfilingContainerAgentCountAvg ensures that no value is present for ProfilingContainerAgentCountAvg, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetProfilingContainerAgentCountAvg() {
+	o.ProfilingContainerAgentCountAvg.Unset()
+}
+
+// GetProfilingHostCountTop99pSum returns the ProfilingHostCountTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetProfilingHostCountTop99pSum() int64 {
-	if o == nil || o.ProfilingHostCountTop99pSum == nil {
+	if o == nil || o.ProfilingHostCountTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.ProfilingHostCountTop99pSum
+	return *o.ProfilingHostCountTop99pSum.Get()
 }
 
 // GetProfilingHostCountTop99pSumOk returns a tuple with the ProfilingHostCountTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetProfilingHostCountTop99pSumOk() (*int64, bool) {
-	if o == nil || o.ProfilingHostCountTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProfilingHostCountTop99pSum, true
+	return o.ProfilingHostCountTop99pSum.Get(), o.ProfilingHostCountTop99pSum.IsSet()
 }
 
 // HasProfilingHostCountTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasProfilingHostCountTop99pSum() bool {
-	if o != nil && o.ProfilingHostCountTop99pSum != nil {
+	if o != nil && o.ProfilingHostCountTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProfilingHostCountTop99pSum gets a reference to the given int64 and assigns it to the ProfilingHostCountTop99pSum field.
+// SetProfilingHostCountTop99pSum gets a reference to the given NullableInt64 and assigns it to the ProfilingHostCountTop99pSum field.
 func (o *UsageSummaryResponse) SetProfilingHostCountTop99pSum(v int64) {
-	o.ProfilingHostCountTop99pSum = &v
+	o.ProfilingHostCountTop99pSum.Set(&v)
 }
 
-// GetRehydratedIndexedEventsAggSum returns the RehydratedIndexedEventsAggSum field value if set, zero value otherwise.
+// SetProfilingHostCountTop99pSumNil sets the value for ProfilingHostCountTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetProfilingHostCountTop99pSumNil() {
+	o.ProfilingHostCountTop99pSum.Set(nil)
+}
+
+// UnsetProfilingHostCountTop99pSum ensures that no value is present for ProfilingHostCountTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetProfilingHostCountTop99pSum() {
+	o.ProfilingHostCountTop99pSum.Unset()
+}
+
+// GetRehydratedIndexedEventsAggSum returns the RehydratedIndexedEventsAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetRehydratedIndexedEventsAggSum() int64 {
-	if o == nil || o.RehydratedIndexedEventsAggSum == nil {
+	if o == nil || o.RehydratedIndexedEventsAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RehydratedIndexedEventsAggSum
+	return *o.RehydratedIndexedEventsAggSum.Get()
 }
 
 // GetRehydratedIndexedEventsAggSumOk returns a tuple with the RehydratedIndexedEventsAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetRehydratedIndexedEventsAggSumOk() (*int64, bool) {
-	if o == nil || o.RehydratedIndexedEventsAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RehydratedIndexedEventsAggSum, true
+	return o.RehydratedIndexedEventsAggSum.Get(), o.RehydratedIndexedEventsAggSum.IsSet()
 }
 
 // HasRehydratedIndexedEventsAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasRehydratedIndexedEventsAggSum() bool {
-	if o != nil && o.RehydratedIndexedEventsAggSum != nil {
+	if o != nil && o.RehydratedIndexedEventsAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRehydratedIndexedEventsAggSum gets a reference to the given int64 and assigns it to the RehydratedIndexedEventsAggSum field.
+// SetRehydratedIndexedEventsAggSum gets a reference to the given NullableInt64 and assigns it to the RehydratedIndexedEventsAggSum field.
 func (o *UsageSummaryResponse) SetRehydratedIndexedEventsAggSum(v int64) {
-	o.RehydratedIndexedEventsAggSum = &v
+	o.RehydratedIndexedEventsAggSum.Set(&v)
 }
 
-// GetRehydratedIngestedBytesAggSum returns the RehydratedIngestedBytesAggSum field value if set, zero value otherwise.
+// SetRehydratedIndexedEventsAggSumNil sets the value for RehydratedIndexedEventsAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetRehydratedIndexedEventsAggSumNil() {
+	o.RehydratedIndexedEventsAggSum.Set(nil)
+}
+
+// UnsetRehydratedIndexedEventsAggSum ensures that no value is present for RehydratedIndexedEventsAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetRehydratedIndexedEventsAggSum() {
+	o.RehydratedIndexedEventsAggSum.Unset()
+}
+
+// GetRehydratedIngestedBytesAggSum returns the RehydratedIngestedBytesAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetRehydratedIngestedBytesAggSum() int64 {
-	if o == nil || o.RehydratedIngestedBytesAggSum == nil {
+	if o == nil || o.RehydratedIngestedBytesAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RehydratedIngestedBytesAggSum
+	return *o.RehydratedIngestedBytesAggSum.Get()
 }
 
 // GetRehydratedIngestedBytesAggSumOk returns a tuple with the RehydratedIngestedBytesAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetRehydratedIngestedBytesAggSumOk() (*int64, bool) {
-	if o == nil || o.RehydratedIngestedBytesAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RehydratedIngestedBytesAggSum, true
+	return o.RehydratedIngestedBytesAggSum.Get(), o.RehydratedIngestedBytesAggSum.IsSet()
 }
 
 // HasRehydratedIngestedBytesAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasRehydratedIngestedBytesAggSum() bool {
-	if o != nil && o.RehydratedIngestedBytesAggSum != nil {
+	if o != nil && o.RehydratedIngestedBytesAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRehydratedIngestedBytesAggSum gets a reference to the given int64 and assigns it to the RehydratedIngestedBytesAggSum field.
+// SetRehydratedIngestedBytesAggSum gets a reference to the given NullableInt64 and assigns it to the RehydratedIngestedBytesAggSum field.
 func (o *UsageSummaryResponse) SetRehydratedIngestedBytesAggSum(v int64) {
-	o.RehydratedIngestedBytesAggSum = &v
+	o.RehydratedIngestedBytesAggSum.Set(&v)
 }
 
-// GetRumSessionCountAggSum returns the RumSessionCountAggSum field value if set, zero value otherwise.
+// SetRehydratedIngestedBytesAggSumNil sets the value for RehydratedIngestedBytesAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetRehydratedIngestedBytesAggSumNil() {
+	o.RehydratedIngestedBytesAggSum.Set(nil)
+}
+
+// UnsetRehydratedIngestedBytesAggSum ensures that no value is present for RehydratedIngestedBytesAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetRehydratedIngestedBytesAggSum() {
+	o.RehydratedIngestedBytesAggSum.Unset()
+}
+
+// GetRumSessionCountAggSum returns the RumSessionCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetRumSessionCountAggSum() int64 {
-	if o == nil || o.RumSessionCountAggSum == nil {
+	if o == nil || o.RumSessionCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RumSessionCountAggSum
+	return *o.RumSessionCountAggSum.Get()
 }
 
 // GetRumSessionCountAggSumOk returns a tuple with the RumSessionCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetRumSessionCountAggSumOk() (*int64, bool) {
-	if o == nil || o.RumSessionCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RumSessionCountAggSum, true
+	return o.RumSessionCountAggSum.Get(), o.RumSessionCountAggSum.IsSet()
 }
 
 // HasRumSessionCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasRumSessionCountAggSum() bool {
-	if o != nil && o.RumSessionCountAggSum != nil {
+	if o != nil && o.RumSessionCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRumSessionCountAggSum gets a reference to the given int64 and assigns it to the RumSessionCountAggSum field.
+// SetRumSessionCountAggSum gets a reference to the given NullableInt64 and assigns it to the RumSessionCountAggSum field.
 func (o *UsageSummaryResponse) SetRumSessionCountAggSum(v int64) {
-	o.RumSessionCountAggSum = &v
+	o.RumSessionCountAggSum.Set(&v)
 }
 
-// GetRumTotalSessionCountAggSum returns the RumTotalSessionCountAggSum field value if set, zero value otherwise.
+// SetRumSessionCountAggSumNil sets the value for RumSessionCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetRumSessionCountAggSumNil() {
+	o.RumSessionCountAggSum.Set(nil)
+}
+
+// UnsetRumSessionCountAggSum ensures that no value is present for RumSessionCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetRumSessionCountAggSum() {
+	o.RumSessionCountAggSum.Unset()
+}
+
+// GetRumTotalSessionCountAggSum returns the RumTotalSessionCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetRumTotalSessionCountAggSum() int64 {
-	if o == nil || o.RumTotalSessionCountAggSum == nil {
+	if o == nil || o.RumTotalSessionCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RumTotalSessionCountAggSum
+	return *o.RumTotalSessionCountAggSum.Get()
 }
 
 // GetRumTotalSessionCountAggSumOk returns a tuple with the RumTotalSessionCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetRumTotalSessionCountAggSumOk() (*int64, bool) {
-	if o == nil || o.RumTotalSessionCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.RumTotalSessionCountAggSum, true
+	return o.RumTotalSessionCountAggSum.Get(), o.RumTotalSessionCountAggSum.IsSet()
 }
 
 // HasRumTotalSessionCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasRumTotalSessionCountAggSum() bool {
-	if o != nil && o.RumTotalSessionCountAggSum != nil {
+	if o != nil && o.RumTotalSessionCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRumTotalSessionCountAggSum gets a reference to the given int64 and assigns it to the RumTotalSessionCountAggSum field.
+// SetRumTotalSessionCountAggSum gets a reference to the given NullableInt64 and assigns it to the RumTotalSessionCountAggSum field.
 func (o *UsageSummaryResponse) SetRumTotalSessionCountAggSum(v int64) {
-	o.RumTotalSessionCountAggSum = &v
+	o.RumTotalSessionCountAggSum.Set(&v)
+}
+
+// SetRumTotalSessionCountAggSumNil sets the value for RumTotalSessionCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetRumTotalSessionCountAggSumNil() {
+	o.RumTotalSessionCountAggSum.Set(nil)
+}
+
+// UnsetRumTotalSessionCountAggSum ensures that no value is present for RumTotalSessionCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetRumTotalSessionCountAggSum() {
+	o.RumTotalSessionCountAggSum.Unset()
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise.
@@ -1441,132 +1858,176 @@ func (o *UsageSummaryResponse) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetSyntheticsBrowserCheckCallsCountAggSum returns the SyntheticsBrowserCheckCallsCountAggSum field value if set, zero value otherwise.
+// GetSyntheticsBrowserCheckCallsCountAggSum returns the SyntheticsBrowserCheckCallsCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetSyntheticsBrowserCheckCallsCountAggSum() int64 {
-	if o == nil || o.SyntheticsBrowserCheckCallsCountAggSum == nil {
+	if o == nil || o.SyntheticsBrowserCheckCallsCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.SyntheticsBrowserCheckCallsCountAggSum
+	return *o.SyntheticsBrowserCheckCallsCountAggSum.Get()
 }
 
 // GetSyntheticsBrowserCheckCallsCountAggSumOk returns a tuple with the SyntheticsBrowserCheckCallsCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetSyntheticsBrowserCheckCallsCountAggSumOk() (*int64, bool) {
-	if o == nil || o.SyntheticsBrowserCheckCallsCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SyntheticsBrowserCheckCallsCountAggSum, true
+	return o.SyntheticsBrowserCheckCallsCountAggSum.Get(), o.SyntheticsBrowserCheckCallsCountAggSum.IsSet()
 }
 
 // HasSyntheticsBrowserCheckCallsCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasSyntheticsBrowserCheckCallsCountAggSum() bool {
-	if o != nil && o.SyntheticsBrowserCheckCallsCountAggSum != nil {
+	if o != nil && o.SyntheticsBrowserCheckCallsCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSyntheticsBrowserCheckCallsCountAggSum gets a reference to the given int64 and assigns it to the SyntheticsBrowserCheckCallsCountAggSum field.
+// SetSyntheticsBrowserCheckCallsCountAggSum gets a reference to the given NullableInt64 and assigns it to the SyntheticsBrowserCheckCallsCountAggSum field.
 func (o *UsageSummaryResponse) SetSyntheticsBrowserCheckCallsCountAggSum(v int64) {
-	o.SyntheticsBrowserCheckCallsCountAggSum = &v
+	o.SyntheticsBrowserCheckCallsCountAggSum.Set(&v)
 }
 
-// GetSyntheticsCheckCallsCountAggSum returns the SyntheticsCheckCallsCountAggSum field value if set, zero value otherwise.
+// SetSyntheticsBrowserCheckCallsCountAggSumNil sets the value for SyntheticsBrowserCheckCallsCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetSyntheticsBrowserCheckCallsCountAggSumNil() {
+	o.SyntheticsBrowserCheckCallsCountAggSum.Set(nil)
+}
+
+// UnsetSyntheticsBrowserCheckCallsCountAggSum ensures that no value is present for SyntheticsBrowserCheckCallsCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetSyntheticsBrowserCheckCallsCountAggSum() {
+	o.SyntheticsBrowserCheckCallsCountAggSum.Unset()
+}
+
+// GetSyntheticsCheckCallsCountAggSum returns the SyntheticsCheckCallsCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetSyntheticsCheckCallsCountAggSum() int64 {
-	if o == nil || o.SyntheticsCheckCallsCountAggSum == nil {
+	if o == nil || o.SyntheticsCheckCallsCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.SyntheticsCheckCallsCountAggSum
+	return *o.SyntheticsCheckCallsCountAggSum.Get()
 }
 
 // GetSyntheticsCheckCallsCountAggSumOk returns a tuple with the SyntheticsCheckCallsCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetSyntheticsCheckCallsCountAggSumOk() (*int64, bool) {
-	if o == nil || o.SyntheticsCheckCallsCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SyntheticsCheckCallsCountAggSum, true
+	return o.SyntheticsCheckCallsCountAggSum.Get(), o.SyntheticsCheckCallsCountAggSum.IsSet()
 }
 
 // HasSyntheticsCheckCallsCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasSyntheticsCheckCallsCountAggSum() bool {
-	if o != nil && o.SyntheticsCheckCallsCountAggSum != nil {
+	if o != nil && o.SyntheticsCheckCallsCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSyntheticsCheckCallsCountAggSum gets a reference to the given int64 and assigns it to the SyntheticsCheckCallsCountAggSum field.
+// SetSyntheticsCheckCallsCountAggSum gets a reference to the given NullableInt64 and assigns it to the SyntheticsCheckCallsCountAggSum field.
 func (o *UsageSummaryResponse) SetSyntheticsCheckCallsCountAggSum(v int64) {
-	o.SyntheticsCheckCallsCountAggSum = &v
+	o.SyntheticsCheckCallsCountAggSum.Set(&v)
 }
 
-// GetTraceSearchIndexedEventsCountAggSum returns the TraceSearchIndexedEventsCountAggSum field value if set, zero value otherwise.
+// SetSyntheticsCheckCallsCountAggSumNil sets the value for SyntheticsCheckCallsCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetSyntheticsCheckCallsCountAggSumNil() {
+	o.SyntheticsCheckCallsCountAggSum.Set(nil)
+}
+
+// UnsetSyntheticsCheckCallsCountAggSum ensures that no value is present for SyntheticsCheckCallsCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetSyntheticsCheckCallsCountAggSum() {
+	o.SyntheticsCheckCallsCountAggSum.Unset()
+}
+
+// GetTraceSearchIndexedEventsCountAggSum returns the TraceSearchIndexedEventsCountAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetTraceSearchIndexedEventsCountAggSum() int64 {
-	if o == nil || o.TraceSearchIndexedEventsCountAggSum == nil {
+	if o == nil || o.TraceSearchIndexedEventsCountAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.TraceSearchIndexedEventsCountAggSum
+	return *o.TraceSearchIndexedEventsCountAggSum.Get()
 }
 
 // GetTraceSearchIndexedEventsCountAggSumOk returns a tuple with the TraceSearchIndexedEventsCountAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetTraceSearchIndexedEventsCountAggSumOk() (*int64, bool) {
-	if o == nil || o.TraceSearchIndexedEventsCountAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.TraceSearchIndexedEventsCountAggSum, true
+	return o.TraceSearchIndexedEventsCountAggSum.Get(), o.TraceSearchIndexedEventsCountAggSum.IsSet()
 }
 
 // HasTraceSearchIndexedEventsCountAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasTraceSearchIndexedEventsCountAggSum() bool {
-	if o != nil && o.TraceSearchIndexedEventsCountAggSum != nil {
+	if o != nil && o.TraceSearchIndexedEventsCountAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTraceSearchIndexedEventsCountAggSum gets a reference to the given int64 and assigns it to the TraceSearchIndexedEventsCountAggSum field.
+// SetTraceSearchIndexedEventsCountAggSum gets a reference to the given NullableInt64 and assigns it to the TraceSearchIndexedEventsCountAggSum field.
 func (o *UsageSummaryResponse) SetTraceSearchIndexedEventsCountAggSum(v int64) {
-	o.TraceSearchIndexedEventsCountAggSum = &v
+	o.TraceSearchIndexedEventsCountAggSum.Set(&v)
 }
 
-// GetTwolIngestedEventsBytesAggSum returns the TwolIngestedEventsBytesAggSum field value if set, zero value otherwise.
+// SetTraceSearchIndexedEventsCountAggSumNil sets the value for TraceSearchIndexedEventsCountAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetTraceSearchIndexedEventsCountAggSumNil() {
+	o.TraceSearchIndexedEventsCountAggSum.Set(nil)
+}
+
+// UnsetTraceSearchIndexedEventsCountAggSum ensures that no value is present for TraceSearchIndexedEventsCountAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetTraceSearchIndexedEventsCountAggSum() {
+	o.TraceSearchIndexedEventsCountAggSum.Unset()
+}
+
+// GetTwolIngestedEventsBytesAggSum returns the TwolIngestedEventsBytesAggSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetTwolIngestedEventsBytesAggSum() int64 {
-	if o == nil || o.TwolIngestedEventsBytesAggSum == nil {
+	if o == nil || o.TwolIngestedEventsBytesAggSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.TwolIngestedEventsBytesAggSum
+	return *o.TwolIngestedEventsBytesAggSum.Get()
 }
 
 // GetTwolIngestedEventsBytesAggSumOk returns a tuple with the TwolIngestedEventsBytesAggSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetTwolIngestedEventsBytesAggSumOk() (*int64, bool) {
-	if o == nil || o.TwolIngestedEventsBytesAggSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.TwolIngestedEventsBytesAggSum, true
+	return o.TwolIngestedEventsBytesAggSum.Get(), o.TwolIngestedEventsBytesAggSum.IsSet()
 }
 
 // HasTwolIngestedEventsBytesAggSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasTwolIngestedEventsBytesAggSum() bool {
-	if o != nil && o.TwolIngestedEventsBytesAggSum != nil {
+	if o != nil && o.TwolIngestedEventsBytesAggSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTwolIngestedEventsBytesAggSum gets a reference to the given int64 and assigns it to the TwolIngestedEventsBytesAggSum field.
+// SetTwolIngestedEventsBytesAggSum gets a reference to the given NullableInt64 and assigns it to the TwolIngestedEventsBytesAggSum field.
 func (o *UsageSummaryResponse) SetTwolIngestedEventsBytesAggSum(v int64) {
-	o.TwolIngestedEventsBytesAggSum = &v
+	o.TwolIngestedEventsBytesAggSum.Set(&v)
+}
+
+// SetTwolIngestedEventsBytesAggSumNil sets the value for TwolIngestedEventsBytesAggSum to be an explicit nil
+func (o *UsageSummaryResponse) SetTwolIngestedEventsBytesAggSumNil() {
+	o.TwolIngestedEventsBytesAggSum.Set(nil)
+}
+
+// UnsetTwolIngestedEventsBytesAggSum ensures that no value is present for TwolIngestedEventsBytesAggSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetTwolIngestedEventsBytesAggSum() {
+	o.TwolIngestedEventsBytesAggSum.Unset()
 }
 
 // GetUsage returns the Usage field value if set, zero value otherwise.
@@ -1601,180 +2062,191 @@ func (o *UsageSummaryResponse) SetUsage(v []UsageSummaryDate) {
 	o.Usage = &v
 }
 
-// GetVsphereHostTop99pSum returns the VsphereHostTop99pSum field value if set, zero value otherwise.
+// GetVsphereHostTop99pSum returns the VsphereHostTop99pSum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UsageSummaryResponse) GetVsphereHostTop99pSum() int64 {
-	if o == nil || o.VsphereHostTop99pSum == nil {
+	if o == nil || o.VsphereHostTop99pSum.Get() == nil {
 		var ret int64
 		return ret
 	}
-	return *o.VsphereHostTop99pSum
+	return *o.VsphereHostTop99pSum.Get()
 }
 
 // GetVsphereHostTop99pSumOk returns a tuple with the VsphereHostTop99pSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UsageSummaryResponse) GetVsphereHostTop99pSumOk() (*int64, bool) {
-	if o == nil || o.VsphereHostTop99pSum == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.VsphereHostTop99pSum, true
+	return o.VsphereHostTop99pSum.Get(), o.VsphereHostTop99pSum.IsSet()
 }
 
 // HasVsphereHostTop99pSum returns a boolean if a field has been set.
 func (o *UsageSummaryResponse) HasVsphereHostTop99pSum() bool {
-	if o != nil && o.VsphereHostTop99pSum != nil {
+	if o != nil && o.VsphereHostTop99pSum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVsphereHostTop99pSum gets a reference to the given int64 and assigns it to the VsphereHostTop99pSum field.
+// SetVsphereHostTop99pSum gets a reference to the given NullableInt64 and assigns it to the VsphereHostTop99pSum field.
 func (o *UsageSummaryResponse) SetVsphereHostTop99pSum(v int64) {
-	o.VsphereHostTop99pSum = &v
+	o.VsphereHostTop99pSum.Set(&v)
+}
+
+// SetVsphereHostTop99pSumNil sets the value for VsphereHostTop99pSum to be an explicit nil
+func (o *UsageSummaryResponse) SetVsphereHostTop99pSumNil() {
+	o.VsphereHostTop99pSum.Set(nil)
+}
+
+// UnsetVsphereHostTop99pSum ensures that no value is present for VsphereHostTop99pSum, not even an explicit nil
+func (o *UsageSummaryResponse) UnsetVsphereHostTop99pSum() {
+	o.VsphereHostTop99pSum.Unset()
 }
 
 func (o UsageSummaryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AgentHostTop99pSum != nil {
-		toSerialize["agent_host_top99p_sum"] = o.AgentHostTop99pSum
+	if o.AgentHostTop99pSum.IsSet() {
+		toSerialize["agent_host_top99p_sum"] = o.AgentHostTop99pSum.Get()
 	}
-	if o.ApmAzureAppServiceHostTop99pSum != nil {
-		toSerialize["apm_azure_app_service_host_top99p_sum"] = o.ApmAzureAppServiceHostTop99pSum
+	if o.ApmAzureAppServiceHostTop99pSum.IsSet() {
+		toSerialize["apm_azure_app_service_host_top99p_sum"] = o.ApmAzureAppServiceHostTop99pSum.Get()
 	}
-	if o.ApmHostTop99pSum != nil {
-		toSerialize["apm_host_top99p_sum"] = o.ApmHostTop99pSum
+	if o.ApmHostTop99pSum.IsSet() {
+		toSerialize["apm_host_top99p_sum"] = o.ApmHostTop99pSum.Get()
 	}
-	if o.AwsHostTop99pSum != nil {
-		toSerialize["aws_host_top99p_sum"] = o.AwsHostTop99pSum
+	if o.AwsHostTop99pSum.IsSet() {
+		toSerialize["aws_host_top99p_sum"] = o.AwsHostTop99pSum.Get()
 	}
-	if o.AwsLambdaFuncCount != nil {
-		toSerialize["aws_lambda_func_count"] = o.AwsLambdaFuncCount
+	if o.AwsLambdaFuncCount.IsSet() {
+		toSerialize["aws_lambda_func_count"] = o.AwsLambdaFuncCount.Get()
 	}
-	if o.AwsLambdaInvocationsSum != nil {
-		toSerialize["aws_lambda_invocations_sum"] = o.AwsLambdaInvocationsSum
+	if o.AwsLambdaInvocationsSum.IsSet() {
+		toSerialize["aws_lambda_invocations_sum"] = o.AwsLambdaInvocationsSum.Get()
 	}
-	if o.AzureAppServiceTop99pSum != nil {
-		toSerialize["azure_app_service_top99p_sum"] = o.AzureAppServiceTop99pSum
+	if o.AzureAppServiceTop99pSum.IsSet() {
+		toSerialize["azure_app_service_top99p_sum"] = o.AzureAppServiceTop99pSum.Get()
 	}
-	if o.AzureHostTop99pSum != nil {
-		toSerialize["azure_host_top99p_sum"] = o.AzureHostTop99pSum
+	if o.AzureHostTop99pSum.IsSet() {
+		toSerialize["azure_host_top99p_sum"] = o.AzureHostTop99pSum.Get()
 	}
-	if o.BillableIngestedBytesAggSum != nil {
-		toSerialize["billable_ingested_bytes_agg_sum"] = o.BillableIngestedBytesAggSum
+	if o.BillableIngestedBytesAggSum.IsSet() {
+		toSerialize["billable_ingested_bytes_agg_sum"] = o.BillableIngestedBytesAggSum.Get()
 	}
-	if o.ComplianceContainerAggSum != nil {
-		toSerialize["compliance_container_agg_sum"] = o.ComplianceContainerAggSum
+	if o.ComplianceContainerAggSum.IsSet() {
+		toSerialize["compliance_container_agg_sum"] = o.ComplianceContainerAggSum.Get()
 	}
-	if o.ComplianceHostAggSum != nil {
-		toSerialize["compliance_host_agg_sum"] = o.ComplianceHostAggSum
+	if o.ComplianceHostAggSum.IsSet() {
+		toSerialize["compliance_host_agg_sum"] = o.ComplianceHostAggSum.Get()
 	}
-	if o.ContainerAvgSum != nil {
-		toSerialize["container_avg_sum"] = o.ContainerAvgSum
+	if o.ContainerAvgSum.IsSet() {
+		toSerialize["container_avg_sum"] = o.ContainerAvgSum.Get()
 	}
-	if o.ContainerHwmSum != nil {
-		toSerialize["container_hwm_sum"] = o.ContainerHwmSum
+	if o.ContainerHwmSum.IsSet() {
+		toSerialize["container_hwm_sum"] = o.ContainerHwmSum.Get()
 	}
-	if o.CustomTsSum != nil {
-		toSerialize["custom_ts_sum"] = o.CustomTsSum
+	if o.CustomTsSum.IsSet() {
+		toSerialize["custom_ts_sum"] = o.CustomTsSum.Get()
 	}
 	if o.EndDate != nil {
 		toSerialize["end_date"] = o.EndDate
 	}
-	if o.FargateTasksCountAvgSum != nil {
-		toSerialize["fargate_tasks_count_avg_sum"] = o.FargateTasksCountAvgSum
+	if o.FargateTasksCountAvgSum.IsSet() {
+		toSerialize["fargate_tasks_count_avg_sum"] = o.FargateTasksCountAvgSum.Get()
 	}
-	if o.FargateTasksCountHwmSum != nil {
-		toSerialize["fargate_tasks_count_hwm_sum"] = o.FargateTasksCountHwmSum
+	if o.FargateTasksCountHwmSum.IsSet() {
+		toSerialize["fargate_tasks_count_hwm_sum"] = o.FargateTasksCountHwmSum.Get()
 	}
-	if o.GcpHostTop99pSum != nil {
-		toSerialize["gcp_host_top99p_sum"] = o.GcpHostTop99pSum
+	if o.GcpHostTop99pSum.IsSet() {
+		toSerialize["gcp_host_top99p_sum"] = o.GcpHostTop99pSum.Get()
 	}
-	if o.HerokuHostTop99pSum != nil {
-		toSerialize["heroku_host_top99p_sum"] = o.HerokuHostTop99pSum
+	if o.HerokuHostTop99pSum.IsSet() {
+		toSerialize["heroku_host_top99p_sum"] = o.HerokuHostTop99pSum.Get()
 	}
-	if o.IncidentManagementMonthlyActiveUsersHwmSum != nil {
-		toSerialize["incident_management_monthly_active_users_hwm_sum"] = o.IncidentManagementMonthlyActiveUsersHwmSum
+	if o.IncidentManagementMonthlyActiveUsersHwmSum.IsSet() {
+		toSerialize["incident_management_monthly_active_users_hwm_sum"] = o.IncidentManagementMonthlyActiveUsersHwmSum.Get()
 	}
-	if o.IndexedEventsCountAggSum != nil {
-		toSerialize["indexed_events_count_agg_sum"] = o.IndexedEventsCountAggSum
+	if o.IndexedEventsCountAggSum.IsSet() {
+		toSerialize["indexed_events_count_agg_sum"] = o.IndexedEventsCountAggSum.Get()
 	}
-	if o.InfraHostTop99pSum != nil {
-		toSerialize["infra_host_top99p_sum"] = o.InfraHostTop99pSum
+	if o.InfraHostTop99pSum.IsSet() {
+		toSerialize["infra_host_top99p_sum"] = o.InfraHostTop99pSum.Get()
 	}
-	if o.IngestedEventsBytesAggSum != nil {
-		toSerialize["ingested_events_bytes_agg_sum"] = o.IngestedEventsBytesAggSum
+	if o.IngestedEventsBytesAggSum.IsSet() {
+		toSerialize["ingested_events_bytes_agg_sum"] = o.IngestedEventsBytesAggSum.Get()
 	}
-	if o.IotDeviceAggSum != nil {
-		toSerialize["iot_device_agg_sum"] = o.IotDeviceAggSum
+	if o.IotDeviceAggSum.IsSet() {
+		toSerialize["iot_device_agg_sum"] = o.IotDeviceAggSum.Get()
 	}
-	if o.IotDeviceTop99pSum != nil {
-		toSerialize["iot_device_top99p_sum"] = o.IotDeviceTop99pSum
+	if o.IotDeviceTop99pSum.IsSet() {
+		toSerialize["iot_device_top99p_sum"] = o.IotDeviceTop99pSum.Get()
 	}
 	if o.LastUpdated != nil {
 		toSerialize["last_updated"] = o.LastUpdated
 	}
-	if o.LiveIndexedEventsAggSum != nil {
-		toSerialize["live_indexed_events_agg_sum"] = o.LiveIndexedEventsAggSum
+	if o.LiveIndexedEventsAggSum.IsSet() {
+		toSerialize["live_indexed_events_agg_sum"] = o.LiveIndexedEventsAggSum.Get()
 	}
-	if o.LiveIngestedBytesAggSum != nil {
-		toSerialize["live_ingested_bytes_agg_sum"] = o.LiveIngestedBytesAggSum
+	if o.LiveIngestedBytesAggSum.IsSet() {
+		toSerialize["live_ingested_bytes_agg_sum"] = o.LiveIngestedBytesAggSum.Get()
 	}
-	if o.MobileRumSessionCountAggSum != nil {
-		toSerialize["mobile_rum_session_count_agg_sum"] = o.MobileRumSessionCountAggSum
+	if o.MobileRumSessionCountAggSum.IsSet() {
+		toSerialize["mobile_rum_session_count_agg_sum"] = o.MobileRumSessionCountAggSum.Get()
 	}
-	if o.MobileRumSessionCountAndroidAggSum != nil {
-		toSerialize["mobile_rum_session_count_android_agg_sum"] = o.MobileRumSessionCountAndroidAggSum
+	if o.MobileRumSessionCountAndroidAggSum.IsSet() {
+		toSerialize["mobile_rum_session_count_android_agg_sum"] = o.MobileRumSessionCountAndroidAggSum.Get()
 	}
-	if o.MobileRumSessionCountIosAggSum != nil {
-		toSerialize["mobile_rum_session_count_ios_agg_sum"] = o.MobileRumSessionCountIosAggSum
+	if o.MobileRumSessionCountIosAggSum.IsSet() {
+		toSerialize["mobile_rum_session_count_ios_agg_sum"] = o.MobileRumSessionCountIosAggSum.Get()
 	}
-	if o.NetflowIndexedEventsCountAggSum != nil {
-		toSerialize["netflow_indexed_events_count_agg_sum"] = o.NetflowIndexedEventsCountAggSum
+	if o.NetflowIndexedEventsCountAggSum.IsSet() {
+		toSerialize["netflow_indexed_events_count_agg_sum"] = o.NetflowIndexedEventsCountAggSum.Get()
 	}
-	if o.NpmHostTop99pSum != nil {
-		toSerialize["npm_host_top99p_sum"] = o.NpmHostTop99pSum
+	if o.NpmHostTop99pSum.IsSet() {
+		toSerialize["npm_host_top99p_sum"] = o.NpmHostTop99pSum.Get()
 	}
-	if o.OpentelemetryHostTop99pSum != nil {
-		toSerialize["opentelemetry_host_top99p_sum"] = o.OpentelemetryHostTop99pSum
+	if o.OpentelemetryHostTop99pSum.IsSet() {
+		toSerialize["opentelemetry_host_top99p_sum"] = o.OpentelemetryHostTop99pSum.Get()
 	}
-	if o.ProfilingContainerAgentCountAvg != nil {
-		toSerialize["profiling_container_agent_count_avg"] = o.ProfilingContainerAgentCountAvg
+	if o.ProfilingContainerAgentCountAvg.IsSet() {
+		toSerialize["profiling_container_agent_count_avg"] = o.ProfilingContainerAgentCountAvg.Get()
 	}
-	if o.ProfilingHostCountTop99pSum != nil {
-		toSerialize["profiling_host_count_top99p_sum"] = o.ProfilingHostCountTop99pSum
+	if o.ProfilingHostCountTop99pSum.IsSet() {
+		toSerialize["profiling_host_count_top99p_sum"] = o.ProfilingHostCountTop99pSum.Get()
 	}
-	if o.RehydratedIndexedEventsAggSum != nil {
-		toSerialize["rehydrated_indexed_events_agg_sum"] = o.RehydratedIndexedEventsAggSum
+	if o.RehydratedIndexedEventsAggSum.IsSet() {
+		toSerialize["rehydrated_indexed_events_agg_sum"] = o.RehydratedIndexedEventsAggSum.Get()
 	}
-	if o.RehydratedIngestedBytesAggSum != nil {
-		toSerialize["rehydrated_ingested_bytes_agg_sum"] = o.RehydratedIngestedBytesAggSum
+	if o.RehydratedIngestedBytesAggSum.IsSet() {
+		toSerialize["rehydrated_ingested_bytes_agg_sum"] = o.RehydratedIngestedBytesAggSum.Get()
 	}
-	if o.RumSessionCountAggSum != nil {
-		toSerialize["rum_session_count_agg_sum"] = o.RumSessionCountAggSum
+	if o.RumSessionCountAggSum.IsSet() {
+		toSerialize["rum_session_count_agg_sum"] = o.RumSessionCountAggSum.Get()
 	}
-	if o.RumTotalSessionCountAggSum != nil {
-		toSerialize["rum_total_session_count_agg_sum"] = o.RumTotalSessionCountAggSum
+	if o.RumTotalSessionCountAggSum.IsSet() {
+		toSerialize["rum_total_session_count_agg_sum"] = o.RumTotalSessionCountAggSum.Get()
 	}
 	if o.StartDate != nil {
 		toSerialize["start_date"] = o.StartDate
 	}
-	if o.SyntheticsBrowserCheckCallsCountAggSum != nil {
-		toSerialize["synthetics_browser_check_calls_count_agg_sum"] = o.SyntheticsBrowserCheckCallsCountAggSum
+	if o.SyntheticsBrowserCheckCallsCountAggSum.IsSet() {
+		toSerialize["synthetics_browser_check_calls_count_agg_sum"] = o.SyntheticsBrowserCheckCallsCountAggSum.Get()
 	}
-	if o.SyntheticsCheckCallsCountAggSum != nil {
-		toSerialize["synthetics_check_calls_count_agg_sum"] = o.SyntheticsCheckCallsCountAggSum
+	if o.SyntheticsCheckCallsCountAggSum.IsSet() {
+		toSerialize["synthetics_check_calls_count_agg_sum"] = o.SyntheticsCheckCallsCountAggSum.Get()
 	}
-	if o.TraceSearchIndexedEventsCountAggSum != nil {
-		toSerialize["trace_search_indexed_events_count_agg_sum"] = o.TraceSearchIndexedEventsCountAggSum
+	if o.TraceSearchIndexedEventsCountAggSum.IsSet() {
+		toSerialize["trace_search_indexed_events_count_agg_sum"] = o.TraceSearchIndexedEventsCountAggSum.Get()
 	}
-	if o.TwolIngestedEventsBytesAggSum != nil {
-		toSerialize["twol_ingested_events_bytes_agg_sum"] = o.TwolIngestedEventsBytesAggSum
+	if o.TwolIngestedEventsBytesAggSum.IsSet() {
+		toSerialize["twol_ingested_events_bytes_agg_sum"] = o.TwolIngestedEventsBytesAggSum.Get()
 	}
 	if o.Usage != nil {
 		toSerialize["usage"] = o.Usage
 	}
-	if o.VsphereHostTop99pSum != nil {
-		toSerialize["vsphere_host_top99p_sum"] = o.VsphereHostTop99pSum
+	if o.VsphereHostTop99pSum.IsSet() {
+		toSerialize["vsphere_host_top99p_sum"] = o.VsphereHostTop99pSum.Get()
 	}
 	return json.Marshal(toSerialize)
 }

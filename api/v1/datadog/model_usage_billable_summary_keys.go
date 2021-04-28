@@ -21,12 +21,18 @@ type UsageBillableSummaryKeys struct {
 	InfraContainerSum          *UsageBillableSummaryBody `json:"infra_container_sum,omitempty"`
 	InfraHostSum               *UsageBillableSummaryBody `json:"infra_host_sum,omitempty"`
 	InfraHostTop99p            *UsageBillableSummaryBody `json:"infra_host_top99p,omitempty"`
+	IotSum                     *UsageBillableSummaryBody `json:"iot_sum,omitempty"`
 	IotTop99p                  *UsageBillableSummaryBody `json:"iot_top99p,omitempty"`
 	LambdaFunctionAverage      *UsageBillableSummaryBody `json:"lambda_function_average,omitempty"`
 	LogsIndexedSum             *UsageBillableSummaryBody `json:"logs_indexed_sum,omitempty"`
 	LogsIngestedSum            *UsageBillableSummaryBody `json:"logs_ingested_sum,omitempty"`
+	NetworkDeviceTop99p        *UsageBillableSummaryBody `json:"network_device_top99p,omitempty"`
 	NpmFlowSum                 *UsageBillableSummaryBody `json:"npm_flow_sum,omitempty"`
+	NpmHostSum                 *UsageBillableSummaryBody `json:"npm_host_sum,omitempty"`
 	NpmHostTop99p              *UsageBillableSummaryBody `json:"npm_host_top99p,omitempty"`
+	ProfContainerSum           *UsageBillableSummaryBody `json:"prof_container_sum,omitempty"`
+	ProfHostSum                *UsageBillableSummaryBody `json:"prof_host_sum,omitempty"`
+	ProfHostTop99p             *UsageBillableSummaryBody `json:"prof_host_top99p,omitempty"`
 	RumSum                     *UsageBillableSummaryBody `json:"rum_sum,omitempty"`
 	ServerlessInvocationSum    *UsageBillableSummaryBody `json:"serverless_invocation_sum,omitempty"`
 	SiemSum                    *UsageBillableSummaryBody `json:"siem_sum,omitempty"`
@@ -276,6 +282,38 @@ func (o *UsageBillableSummaryKeys) SetInfraHostTop99p(v UsageBillableSummaryBody
 	o.InfraHostTop99p = &v
 }
 
+// GetIotSum returns the IotSum field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetIotSum() UsageBillableSummaryBody {
+	if o == nil || o.IotSum == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.IotSum
+}
+
+// GetIotSumOk returns a tuple with the IotSum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetIotSumOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.IotSum == nil {
+		return nil, false
+	}
+	return o.IotSum, true
+}
+
+// HasIotSum returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasIotSum() bool {
+	if o != nil && o.IotSum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIotSum gets a reference to the given UsageBillableSummaryBody and assigns it to the IotSum field.
+func (o *UsageBillableSummaryKeys) SetIotSum(v UsageBillableSummaryBody) {
+	o.IotSum = &v
+}
+
 // GetIotTop99p returns the IotTop99p field value if set, zero value otherwise.
 func (o *UsageBillableSummaryKeys) GetIotTop99p() UsageBillableSummaryBody {
 	if o == nil || o.IotTop99p == nil {
@@ -404,6 +442,38 @@ func (o *UsageBillableSummaryKeys) SetLogsIngestedSum(v UsageBillableSummaryBody
 	o.LogsIngestedSum = &v
 }
 
+// GetNetworkDeviceTop99p returns the NetworkDeviceTop99p field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetNetworkDeviceTop99p() UsageBillableSummaryBody {
+	if o == nil || o.NetworkDeviceTop99p == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.NetworkDeviceTop99p
+}
+
+// GetNetworkDeviceTop99pOk returns a tuple with the NetworkDeviceTop99p field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetNetworkDeviceTop99pOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.NetworkDeviceTop99p == nil {
+		return nil, false
+	}
+	return o.NetworkDeviceTop99p, true
+}
+
+// HasNetworkDeviceTop99p returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasNetworkDeviceTop99p() bool {
+	if o != nil && o.NetworkDeviceTop99p != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkDeviceTop99p gets a reference to the given UsageBillableSummaryBody and assigns it to the NetworkDeviceTop99p field.
+func (o *UsageBillableSummaryKeys) SetNetworkDeviceTop99p(v UsageBillableSummaryBody) {
+	o.NetworkDeviceTop99p = &v
+}
+
 // GetNpmFlowSum returns the NpmFlowSum field value if set, zero value otherwise.
 func (o *UsageBillableSummaryKeys) GetNpmFlowSum() UsageBillableSummaryBody {
 	if o == nil || o.NpmFlowSum == nil {
@@ -436,6 +506,38 @@ func (o *UsageBillableSummaryKeys) SetNpmFlowSum(v UsageBillableSummaryBody) {
 	o.NpmFlowSum = &v
 }
 
+// GetNpmHostSum returns the NpmHostSum field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetNpmHostSum() UsageBillableSummaryBody {
+	if o == nil || o.NpmHostSum == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.NpmHostSum
+}
+
+// GetNpmHostSumOk returns a tuple with the NpmHostSum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetNpmHostSumOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.NpmHostSum == nil {
+		return nil, false
+	}
+	return o.NpmHostSum, true
+}
+
+// HasNpmHostSum returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasNpmHostSum() bool {
+	if o != nil && o.NpmHostSum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNpmHostSum gets a reference to the given UsageBillableSummaryBody and assigns it to the NpmHostSum field.
+func (o *UsageBillableSummaryKeys) SetNpmHostSum(v UsageBillableSummaryBody) {
+	o.NpmHostSum = &v
+}
+
 // GetNpmHostTop99p returns the NpmHostTop99p field value if set, zero value otherwise.
 func (o *UsageBillableSummaryKeys) GetNpmHostTop99p() UsageBillableSummaryBody {
 	if o == nil || o.NpmHostTop99p == nil {
@@ -466,6 +568,102 @@ func (o *UsageBillableSummaryKeys) HasNpmHostTop99p() bool {
 // SetNpmHostTop99p gets a reference to the given UsageBillableSummaryBody and assigns it to the NpmHostTop99p field.
 func (o *UsageBillableSummaryKeys) SetNpmHostTop99p(v UsageBillableSummaryBody) {
 	o.NpmHostTop99p = &v
+}
+
+// GetProfContainerSum returns the ProfContainerSum field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetProfContainerSum() UsageBillableSummaryBody {
+	if o == nil || o.ProfContainerSum == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.ProfContainerSum
+}
+
+// GetProfContainerSumOk returns a tuple with the ProfContainerSum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetProfContainerSumOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.ProfContainerSum == nil {
+		return nil, false
+	}
+	return o.ProfContainerSum, true
+}
+
+// HasProfContainerSum returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasProfContainerSum() bool {
+	if o != nil && o.ProfContainerSum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProfContainerSum gets a reference to the given UsageBillableSummaryBody and assigns it to the ProfContainerSum field.
+func (o *UsageBillableSummaryKeys) SetProfContainerSum(v UsageBillableSummaryBody) {
+	o.ProfContainerSum = &v
+}
+
+// GetProfHostSum returns the ProfHostSum field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetProfHostSum() UsageBillableSummaryBody {
+	if o == nil || o.ProfHostSum == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.ProfHostSum
+}
+
+// GetProfHostSumOk returns a tuple with the ProfHostSum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetProfHostSumOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.ProfHostSum == nil {
+		return nil, false
+	}
+	return o.ProfHostSum, true
+}
+
+// HasProfHostSum returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasProfHostSum() bool {
+	if o != nil && o.ProfHostSum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProfHostSum gets a reference to the given UsageBillableSummaryBody and assigns it to the ProfHostSum field.
+func (o *UsageBillableSummaryKeys) SetProfHostSum(v UsageBillableSummaryBody) {
+	o.ProfHostSum = &v
+}
+
+// GetProfHostTop99p returns the ProfHostTop99p field value if set, zero value otherwise.
+func (o *UsageBillableSummaryKeys) GetProfHostTop99p() UsageBillableSummaryBody {
+	if o == nil || o.ProfHostTop99p == nil {
+		var ret UsageBillableSummaryBody
+		return ret
+	}
+	return *o.ProfHostTop99p
+}
+
+// GetProfHostTop99pOk returns a tuple with the ProfHostTop99p field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UsageBillableSummaryKeys) GetProfHostTop99pOk() (*UsageBillableSummaryBody, bool) {
+	if o == nil || o.ProfHostTop99p == nil {
+		return nil, false
+	}
+	return o.ProfHostTop99p, true
+}
+
+// HasProfHostTop99p returns a boolean if a field has been set.
+func (o *UsageBillableSummaryKeys) HasProfHostTop99p() bool {
+	if o != nil && o.ProfHostTop99p != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProfHostTop99p gets a reference to the given UsageBillableSummaryBody and assigns it to the ProfHostTop99p field.
+func (o *UsageBillableSummaryKeys) SetProfHostTop99p(v UsageBillableSummaryBody) {
+	o.ProfHostTop99p = &v
 }
 
 // GetRumSum returns the RumSum field value if set, zero value otherwise.
@@ -683,6 +881,9 @@ func (o UsageBillableSummaryKeys) MarshalJSON() ([]byte, error) {
 	if o.InfraHostTop99p != nil {
 		toSerialize["infra_host_top99p"] = o.InfraHostTop99p
 	}
+	if o.IotSum != nil {
+		toSerialize["iot_sum"] = o.IotSum
+	}
 	if o.IotTop99p != nil {
 		toSerialize["iot_top99p"] = o.IotTop99p
 	}
@@ -695,11 +896,26 @@ func (o UsageBillableSummaryKeys) MarshalJSON() ([]byte, error) {
 	if o.LogsIngestedSum != nil {
 		toSerialize["logs_ingested_sum"] = o.LogsIngestedSum
 	}
+	if o.NetworkDeviceTop99p != nil {
+		toSerialize["network_device_top99p"] = o.NetworkDeviceTop99p
+	}
 	if o.NpmFlowSum != nil {
 		toSerialize["npm_flow_sum"] = o.NpmFlowSum
 	}
+	if o.NpmHostSum != nil {
+		toSerialize["npm_host_sum"] = o.NpmHostSum
+	}
 	if o.NpmHostTop99p != nil {
 		toSerialize["npm_host_top99p"] = o.NpmHostTop99p
+	}
+	if o.ProfContainerSum != nil {
+		toSerialize["prof_container_sum"] = o.ProfContainerSum
+	}
+	if o.ProfHostSum != nil {
+		toSerialize["prof_host_sum"] = o.ProfHostSum
+	}
+	if o.ProfHostTop99p != nil {
+		toSerialize["prof_host_top99p"] = o.ProfHostTop99p
 	}
 	if o.RumSum != nil {
 		toSerialize["rum_sum"] = o.RumSum
