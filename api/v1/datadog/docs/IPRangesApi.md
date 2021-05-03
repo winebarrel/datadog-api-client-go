@@ -28,7 +28,7 @@ import (
 )
 
 func main() {
-    ctx := context.Background()
+    ctx := context.Background() err
 
 
     configuration := datadog.NewConfiguration()
