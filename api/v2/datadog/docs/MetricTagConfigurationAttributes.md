@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **CreatedAt** | Pointer to **time.Time** | Timestamp when the tag configuration was created. | [optional] 
 **IncludePercentiles** | Pointer to **bool** | Toggle to turn on/off percentile aggregations for distribution metrics. Only present when the &#x60;metric_type&#x60; is &#x60;distribution&#x60;. | [optional] 
 **MetricType** | Pointer to [**MetricTagConfigurationMetricTypes**](MetricTagConfigurationMetricTypes.md) |  | [optional] [default to METRICTAGCONFIGURATIONMETRICTYPES_GAUGE]
-**ModifiedAt** | Pointer to **time.Time** | Timestamp when the tag configuration was last modified. | [optional] 
 **Tags** | Pointer to **[]string** | List of tag keys on which to group. | [optional] 
+**UpdatedAt** | Pointer to **time.Time** | Timestamp when the tag configuration was last updated. | [optional] 
 
 ## Methods
 
@@ -104,31 +104,6 @@ SetMetricType sets MetricType field to given value.
 
 HasMetricType returns a boolean if a field has been set.
 
-### GetModifiedAt
-
-`func (o *MetricTagConfigurationAttributes) GetModifiedAt() time.Time`
-
-GetModifiedAt returns the ModifiedAt field if non-nil, zero value otherwise.
-
-### GetModifiedAtOk
-
-`func (o *MetricTagConfigurationAttributes) GetModifiedAtOk() (*time.Time, bool)`
-
-GetModifiedAtOk returns a tuple with the ModifiedAt field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModifiedAt
-
-`func (o *MetricTagConfigurationAttributes) SetModifiedAt(v time.Time)`
-
-SetModifiedAt sets ModifiedAt field to given value.
-
-### HasModifiedAt
-
-`func (o *MetricTagConfigurationAttributes) HasModifiedAt() bool`
-
-HasModifiedAt returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *MetricTagConfigurationAttributes) GetTags() []string`
@@ -153,6 +128,31 @@ SetTags sets Tags field to given value.
 `func (o *MetricTagConfigurationAttributes) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetUpdatedAt
+
+`func (o *MetricTagConfigurationAttributes) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *MetricTagConfigurationAttributes) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *MetricTagConfigurationAttributes) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *MetricTagConfigurationAttributes) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -20,10 +20,10 @@ type MetricTagConfigurationAttributes struct {
 	// Toggle to turn on/off percentile aggregations for distribution metrics. Only present when the `metric_type` is `distribution`.
 	IncludePercentiles *bool                              `json:"include_percentiles,omitempty"`
 	MetricType         *MetricTagConfigurationMetricTypes `json:"metric_type,omitempty"`
-	// Timestamp when the tag configuration was last modified.
-	ModifiedAt *time.Time `json:"modified_at,omitempty"`
 	// List of tag keys on which to group.
 	Tags *[]string `json:"tags,omitempty"`
+	// Timestamp when the tag configuration was last updated.
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 }
 
 // NewMetricTagConfigurationAttributes instantiates a new MetricTagConfigurationAttributes object
@@ -143,38 +143,6 @@ func (o *MetricTagConfigurationAttributes) SetMetricType(v MetricTagConfiguratio
 	o.MetricType = &v
 }
 
-// GetModifiedAt returns the ModifiedAt field value if set, zero value otherwise.
-func (o *MetricTagConfigurationAttributes) GetModifiedAt() time.Time {
-	if o == nil || o.ModifiedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.ModifiedAt
-}
-
-// GetModifiedAtOk returns a tuple with the ModifiedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MetricTagConfigurationAttributes) GetModifiedAtOk() (*time.Time, bool) {
-	if o == nil || o.ModifiedAt == nil {
-		return nil, false
-	}
-	return o.ModifiedAt, true
-}
-
-// HasModifiedAt returns a boolean if a field has been set.
-func (o *MetricTagConfigurationAttributes) HasModifiedAt() bool {
-	if o != nil && o.ModifiedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetModifiedAt gets a reference to the given time.Time and assigns it to the ModifiedAt field.
-func (o *MetricTagConfigurationAttributes) SetModifiedAt(v time.Time) {
-	o.ModifiedAt = &v
-}
-
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *MetricTagConfigurationAttributes) GetTags() []string {
 	if o == nil || o.Tags == nil {
@@ -207,6 +175,38 @@ func (o *MetricTagConfigurationAttributes) SetTags(v []string) {
 	o.Tags = &v
 }
 
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *MetricTagConfigurationAttributes) GetUpdatedAt() time.Time {
+	if o == nil || o.UpdatedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricTagConfigurationAttributes) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || o.UpdatedAt == nil {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *MetricTagConfigurationAttributes) HasUpdatedAt() bool {
+	if o != nil && o.UpdatedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *MetricTagConfigurationAttributes) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
+}
+
 func (o MetricTagConfigurationAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CreatedAt != nil {
@@ -218,11 +218,11 @@ func (o MetricTagConfigurationAttributes) MarshalJSON() ([]byte, error) {
 	if o.MetricType != nil {
 		toSerialize["metric_type"] = o.MetricType
 	}
-	if o.ModifiedAt != nil {
-		toSerialize["modified_at"] = o.ModifiedAt
-	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
+	}
+	if o.UpdatedAt != nil {
+		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	return json.Marshal(toSerialize)
 }
