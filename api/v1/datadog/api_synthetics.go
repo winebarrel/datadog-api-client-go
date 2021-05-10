@@ -96,7 +96,9 @@ func (a *SyntheticsApiService) createGlobalVariableExecute(r apiCreateGlobalVari
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateGlobalVariable"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -251,7 +253,9 @@ func (a *SyntheticsApiService) createPrivateLocationExecute(r apiCreatePrivateLo
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreatePrivateLocation"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -406,7 +410,9 @@ func (a *SyntheticsApiService) createSyntheticsAPITestExecute(r apiCreateSynthet
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSyntheticsAPITest"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -571,7 +577,9 @@ func (a *SyntheticsApiService) createSyntheticsBrowserTestExecute(r apiCreateSyn
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSyntheticsBrowserTest"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1016,7 +1024,9 @@ func (a *SyntheticsApiService) deleteTestsExecute(r apiDeleteTestsRequest) (Synt
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteTests"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1184,7 +1194,9 @@ func (a *SyntheticsApiService) editGlobalVariableExecute(r apiEditGlobalVariable
 	localVarHeaderParams["DD-OPERATION-ID"] = "EditGlobalVariable"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -3082,7 +3094,9 @@ func (a *SyntheticsApiService) triggerCITestsExecute(r apiTriggerCITestsRequest)
 	localVarHeaderParams["DD-OPERATION-ID"] = "TriggerCITests"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -3230,7 +3244,9 @@ func (a *SyntheticsApiService) updateAPITestExecute(r apiUpdateAPITestRequest) (
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateAPITest"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -3398,7 +3414,9 @@ func (a *SyntheticsApiService) updateBrowserTestExecute(r apiUpdateBrowserTestRe
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateBrowserTest"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -3566,7 +3584,9 @@ func (a *SyntheticsApiService) updatePrivateLocationExecute(r apiUpdatePrivateLo
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdatePrivateLocation"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -3714,7 +3734,9 @@ func (a *SyntheticsApiService) updateTestPauseStatusExecute(r apiUpdateTestPause
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateTestPauseStatus"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

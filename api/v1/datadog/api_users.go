@@ -98,7 +98,9 @@ func (a *UsersApiService) createUserExecute(r apiCreateUserRequest) (UserRespons
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateUser"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -721,7 +723,9 @@ func (a *UsersApiService) updateUserExecute(r apiUpdateUserRequest) (UserRespons
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateUser"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

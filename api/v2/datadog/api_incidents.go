@@ -104,7 +104,9 @@ func (a *IncidentsApiService) createIncidentExecute(r apiCreateIncidentRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateIncident"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -881,7 +883,9 @@ func (a *IncidentsApiService) updateIncidentExecute(r apiUpdateIncidentRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateIncident"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

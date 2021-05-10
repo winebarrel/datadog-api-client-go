@@ -98,7 +98,9 @@ func (a *SecurityMonitoringApiService) createSecurityMonitoringRuleExecute(r api
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSecurityMonitoringRule"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -968,7 +970,9 @@ func (a *SecurityMonitoringApiService) searchSecurityMonitoringSignalsExecute(r 
 	localVarHeaderParams["DD-OPERATION-ID"] = "SearchSecurityMonitoringSignals"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1128,7 +1132,9 @@ func (a *SecurityMonitoringApiService) updateSecurityMonitoringRuleExecute(r api
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateSecurityMonitoringRule"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -95,7 +95,9 @@ func (a *LogsApiService) aggregateLogsExecute(r apiAggregateLogsRequest) (LogsAg
 	localVarHeaderParams["DD-OPERATION-ID"] = "AggregateLogs"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -278,7 +280,9 @@ func (a *LogsApiService) listLogsExecute(r apiListLogsRequest) (LogsListResponse
 	localVarHeaderParams["DD-OPERATION-ID"] = "ListLogs"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

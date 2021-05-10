@@ -96,7 +96,9 @@ func (a *LogsArchivesApiService) addReadRoleToArchiveExecute(r apiAddReadRoleToA
 	localVarHeaderParams["DD-OPERATION-ID"] = "AddReadRoleToArchive"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -252,7 +254,9 @@ func (a *LogsArchivesApiService) createLogsArchiveExecute(r apiCreateLogsArchive
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateLogsArchive"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1157,7 +1161,9 @@ func (a *LogsArchivesApiService) removeRoleFromArchiveExecute(r apiRemoveRoleFro
 	localVarHeaderParams["DD-OPERATION-ID"] = "RemoveRoleFromArchive"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1319,7 +1325,9 @@ func (a *LogsArchivesApiService) updateLogsArchiveExecute(r apiUpdateLogsArchive
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsArchive"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1488,7 +1496,9 @@ func (a *LogsArchivesApiService) updateLogsArchiveOrderExecute(r apiUpdateLogsAr
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsArchiveOrder"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

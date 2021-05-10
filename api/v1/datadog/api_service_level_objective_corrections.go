@@ -104,7 +104,9 @@ func (a *ServiceLevelObjectiveCorrectionsApiService) createSLOCorrectionExecute(
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSLOCorrection"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -729,7 +731,9 @@ func (a *ServiceLevelObjectiveCorrectionsApiService) updateSLOCorrectionExecute(
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateSLOCorrection"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

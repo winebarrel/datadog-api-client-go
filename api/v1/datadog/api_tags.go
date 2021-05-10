@@ -125,7 +125,9 @@ func (a *TagsApiService) createHostTagsExecute(r apiCreateHostTagsRequest) (Host
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateHostTags"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -827,7 +829,9 @@ func (a *TagsApiService) updateHostTagsExecute(r apiUpdateHostTagsRequest) (Host
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateHostTags"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

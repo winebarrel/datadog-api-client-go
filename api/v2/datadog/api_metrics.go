@@ -108,7 +108,9 @@ func (a *MetricsApiService) createTagConfigurationExecute(r apiCreateTagConfigur
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateTagConfiguration"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1208,7 +1210,9 @@ func (a *MetricsApiService) updateTagConfigurationExecute(r apiUpdateTagConfigur
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateTagConfiguration"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

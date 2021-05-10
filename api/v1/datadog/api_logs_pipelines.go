@@ -95,7 +95,9 @@ func (a *LogsPipelinesApiService) createLogsPipelineExecute(r apiCreateLogsPipel
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateLogsPipeline"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -827,7 +829,9 @@ func (a *LogsPipelinesApiService) updateLogsPipelineExecute(r apiUpdateLogsPipel
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsPipeline"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -986,7 +990,9 @@ func (a *LogsPipelinesApiService) updateLogsPipelineOrderExecute(r apiUpdateLogs
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsPipelineOrder"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -96,7 +96,9 @@ func (a *LogsMetricsApiService) createLogsMetricExecute(r apiCreateLogsMetricReq
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateLogsMetric"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -734,7 +736,9 @@ func (a *LogsMetricsApiService) updateLogsMetricExecute(r apiUpdateLogsMetricReq
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsMetric"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

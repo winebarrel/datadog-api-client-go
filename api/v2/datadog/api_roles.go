@@ -98,7 +98,9 @@ func (a *RolesApiService) addPermissionToRoleExecute(r apiAddPermissionToRoleReq
 	localVarHeaderParams["DD-OPERATION-ID"] = "AddPermissionToRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -266,7 +268,9 @@ func (a *RolesApiService) addUserToRoleExecute(r apiAddUserToRoleRequest) (Users
 	localVarHeaderParams["DD-OPERATION-ID"] = "AddUserToRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -431,7 +435,9 @@ func (a *RolesApiService) createRoleExecute(r apiCreateRoleRequest) (RoleCreateR
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1580,7 +1586,9 @@ func (a *RolesApiService) removePermissionFromRoleExecute(r apiRemovePermissionF
 	localVarHeaderParams["DD-OPERATION-ID"] = "RemovePermissionFromRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1748,7 +1756,9 @@ func (a *RolesApiService) removeUserFromRoleExecute(r apiRemoveUserFromRoleReque
 	localVarHeaderParams["DD-OPERATION-ID"] = "RemoveUserFromRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1916,7 +1926,9 @@ func (a *RolesApiService) updateRoleExecute(r apiUpdateRoleRequest) (RoleUpdateR
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateRole"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

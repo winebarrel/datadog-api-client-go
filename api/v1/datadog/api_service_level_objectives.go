@@ -262,7 +262,9 @@ func (a *ServiceLevelObjectivesApiService) createSLOExecute(r apiCreateSLOReques
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSLO"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -611,7 +613,9 @@ func (a *ServiceLevelObjectivesApiService) deleteSLOTimeframeInBulkExecute(r api
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteSLOTimeframeInBulk"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1373,7 +1377,9 @@ func (a *ServiceLevelObjectivesApiService) updateSLOExecute(r apiUpdateSLOReques
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateSLO"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

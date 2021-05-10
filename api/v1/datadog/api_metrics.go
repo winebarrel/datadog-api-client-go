@@ -766,7 +766,9 @@ func (a *MetricsApiService) submitMetricsExecute(r apiSubmitMetricsRequest) (Int
 	localVarHeaderParams["DD-OPERATION-ID"] = "SubmitMetrics"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -930,7 +932,9 @@ func (a *MetricsApiService) updateMetricMetadataExecute(r apiUpdateMetricMetadat
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateMetricMetadata"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

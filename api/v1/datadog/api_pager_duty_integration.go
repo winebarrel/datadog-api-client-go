@@ -95,7 +95,9 @@ func (a *PagerDutyIntegrationApiService) createPagerDutyIntegrationServiceExecut
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreatePagerDutyIntegrationService"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -542,7 +544,9 @@ func (a *PagerDutyIntegrationApiService) updatePagerDutyIntegrationServiceExecut
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdatePagerDutyIntegrationService"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

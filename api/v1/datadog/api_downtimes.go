@@ -235,7 +235,9 @@ func (a *DowntimesApiService) cancelDowntimesByScopeExecute(r apiCancelDowntimes
 	localVarHeaderParams["DD-OPERATION-ID"] = "CancelDowntimesByScope"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -400,7 +402,9 @@ func (a *DowntimesApiService) createDowntimeExecute(r apiCreateDowntimeRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateDowntime"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1024,7 +1028,9 @@ func (a *DowntimesApiService) updateDowntimeExecute(r apiUpdateDowntimeRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateDowntime"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -100,7 +100,9 @@ func (a *AzureIntegrationApiService) createAzureIntegrationExecute(r apiCreateAz
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateAzureIntegration"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -255,7 +257,9 @@ func (a *AzureIntegrationApiService) deleteAzureIntegrationExecute(r apiDeleteAz
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteAzureIntegration"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -558,7 +562,9 @@ func (a *AzureIntegrationApiService) updateAzureHostFiltersExecute(r apiUpdateAz
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateAzureHostFilters"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -715,7 +721,9 @@ func (a *AzureIntegrationApiService) updateAzureIntegrationExecute(r apiUpdateAz
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateAzureIntegration"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

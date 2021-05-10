@@ -101,7 +101,9 @@ func (a *AWSLogsIntegrationApiService) checkAWSLogsLambdaAsyncExecute(r apiCheck
 	localVarHeaderParams["DD-OPERATION-ID"] = "CheckAWSLogsLambdaAsync"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -265,7 +267,9 @@ func (a *AWSLogsIntegrationApiService) checkAWSLogsServicesAsyncExecute(r apiChe
 	localVarHeaderParams["DD-OPERATION-ID"] = "CheckAWSLogsServicesAsync"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -420,7 +424,9 @@ func (a *AWSLogsIntegrationApiService) createAWSLambdaARNExecute(r apiCreateAWSL
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateAWSLambdaARN"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -575,7 +581,9 @@ func (a *AWSLogsIntegrationApiService) deleteAWSLambdaARNExecute(r apiDeleteAWSL
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteAWSLambdaARN"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -730,7 +738,9 @@ func (a *AWSLogsIntegrationApiService) enableAWSLogServicesExecute(r apiEnableAW
 	localVarHeaderParams["DD-OPERATION-ID"] = "EnableAWSLogServices"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

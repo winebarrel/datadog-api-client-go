@@ -399,7 +399,9 @@ func (a *MonitorsApiService) createMonitorExecute(r apiCreateMonitorRequest) (Mo
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateMonitor"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1185,7 +1187,9 @@ func (a *MonitorsApiService) updateMonitorExecute(r apiUpdateMonitorRequest) (Mo
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateMonitor"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1360,7 +1364,9 @@ func (a *MonitorsApiService) validateMonitorExecute(r apiValidateMonitorRequest)
 	localVarHeaderParams["DD-OPERATION-ID"] = "ValidateMonitor"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

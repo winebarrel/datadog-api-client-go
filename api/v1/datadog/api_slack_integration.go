@@ -98,7 +98,9 @@ func (a *SlackIntegrationApiService) createSlackIntegrationChannelExecute(r apiC
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateSlackIntegrationChannel"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -747,7 +749,9 @@ func (a *SlackIntegrationApiService) updateSlackIntegrationChannelExecute(r apiU
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateSlackIntegrationChannel"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

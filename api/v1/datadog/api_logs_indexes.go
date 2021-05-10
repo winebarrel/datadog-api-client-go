@@ -95,7 +95,9 @@ func (a *LogsIndexesApiService) createLogsIndexExecute(r apiCreateLogsIndexReque
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateLogsIndex"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -685,7 +687,9 @@ func (a *LogsIndexesApiService) updateLogsIndexExecute(r apiUpdateLogsIndexReque
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsIndex"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -851,7 +855,9 @@ func (a *LogsIndexesApiService) updateLogsIndexOrderExecute(r apiUpdateLogsIndex
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateLogsIndexOrder"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

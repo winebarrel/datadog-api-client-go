@@ -96,7 +96,9 @@ func (a *EventsApiService) createEventExecute(r apiCreateEventRequest) (EventCre
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateEvent"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

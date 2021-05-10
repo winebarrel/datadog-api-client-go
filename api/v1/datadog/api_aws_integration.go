@@ -97,7 +97,9 @@ func (a *AWSIntegrationApiService) createAWSAccountExecute(r apiCreateAWSAccount
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateAWSAccount"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -262,7 +264,9 @@ func (a *AWSIntegrationApiService) createAWSTagFilterExecute(r apiCreateAWSTagFi
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateAWSTagFilter"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -417,7 +421,9 @@ func (a *AWSIntegrationApiService) createNewAWSExternalIDExecute(r apiCreateNewA
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateNewAWSExternalID"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -572,7 +578,9 @@ func (a *AWSIntegrationApiService) deleteAWSAccountExecute(r apiDeleteAWSAccount
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteAWSAccount"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -737,7 +745,9 @@ func (a *AWSIntegrationApiService) deleteAWSTagFilterExecute(r apiDeleteAWSTagFi
 	localVarHeaderParams["DD-OPERATION-ID"] = "DeleteAWSTagFilter"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1424,7 +1434,9 @@ func (a *AWSIntegrationApiService) updateAWSAccountExecute(r apiUpdateAWSAccount
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateAWSAccount"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -95,7 +95,9 @@ func (a *KeyManagementApiService) createAPIKeyExecute(r apiCreateAPIKeyRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateAPIKey"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -250,7 +252,9 @@ func (a *KeyManagementApiService) createCurrentUserApplicationKeyExecute(r apiCr
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateCurrentUserApplicationKey"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1878,7 +1882,9 @@ func (a *KeyManagementApiService) updateAPIKeyExecute(r apiUpdateAPIKeyRequest) 
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateAPIKey"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2046,7 +2052,9 @@ func (a *KeyManagementApiService) updateApplicationKeyExecute(r apiUpdateApplica
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateApplicationKey"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -2214,7 +2222,9 @@ func (a *KeyManagementApiService) updateCurrentUserApplicationKeyExecute(r apiUp
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateCurrentUserApplicationKey"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

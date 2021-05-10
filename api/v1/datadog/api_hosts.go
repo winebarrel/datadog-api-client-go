@@ -520,7 +520,9 @@ func (a *HostsApiService) muteHostExecute(r apiMuteHostRequest) (HostMuteRespons
 	localVarHeaderParams["DD-OPERATION-ID"] = "MuteHost"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

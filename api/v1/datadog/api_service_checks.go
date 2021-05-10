@@ -96,7 +96,9 @@ func (a *ServiceChecksApiService) submitServiceCheckExecute(r apiSubmitServiceCh
 	localVarHeaderParams["DD-OPERATION-ID"] = "SubmitServiceCheck"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

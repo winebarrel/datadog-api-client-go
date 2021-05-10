@@ -105,7 +105,9 @@ func (a *OrganizationsApiService) createChildOrgExecute(r apiCreateChildOrgReque
 	localVarHeaderParams["DD-OPERATION-ID"] = "CreateChildOrg"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -552,7 +554,9 @@ func (a *OrganizationsApiService) updateOrgExecute(r apiUpdateOrgRequest) (Organ
 	localVarHeaderParams["DD-OPERATION-ID"] = "UpdateOrg"
 
 	// body params
-	localVarPostBody = r.body
+	if r.body != nil {
+		localVarPostBody = r.body
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
