@@ -1,3 +1,6 @@
+.idea/
+datadog-api-client-go.iml
+
 .travis.yml
 git_push.sh
 gotestsum.json
