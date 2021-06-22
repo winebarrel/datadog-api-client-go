@@ -2,7 +2,6 @@ package test
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"reflect"
 	"strings"
@@ -11,7 +10,6 @@ import (
 	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
 	"github.com/DataDog/datadog-api-client-go/tests"
 	"github.com/go-bdd/gobdd"
-	ddtesting "gopkg.in/DataDog/dd-trace-go.v1/contrib/testing"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
@@ -33,16 +31,6 @@ func TestScenarios(t *testing.T) {
 		gobdd.WithBeforeScenario(func(ctx gobdd.Context) {
 			ct, _ := ctx.Get(gobdd.TestingTKey{})
 			tt := ct.(*testing.T)
-			testParts := strings.Split(tt.Name(), "/")
-			cctx, closeSpan := ddtesting.StartSpanWithFinish(
-				NewDefaultContext(context.Background()),
-				tt,
-				ddtesting.WithSpanOptions(
-					tracer.Tag(ext.TestName, testParts[2]),
-					tracer.Tag(ext.TestSuite, fmt.Sprintf("v2/%s", testParts[1])),
-					tracer.Tag(ext.TestFramework, "github.com/go-bdd/gobdd"),
-				),
-			)
 			cctx, closeRecorder := WithRecorder(
 				context.WithValue(
 					cctx,
@@ -56,7 +44,6 @@ func TestScenarios(t *testing.T) {
 			tests.SetData(ctx, make(map[string]interface{}))
 			tests.SetCleanup(ctx, map[string]func(){"99-finish": func() {
 				closeRecorder()
-				closeSpan()
 			}})
 		}), gobdd.WithAfterScenario(func(ctx gobdd.Context) {
 			tests.RunCleanup(ctx)

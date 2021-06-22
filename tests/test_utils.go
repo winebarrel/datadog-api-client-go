@@ -28,7 +28,6 @@ import (
 	"github.com/jonboulle/clockwork"
 	"github.com/stretchr/testify/require"
 	ddhttp "gopkg.in/DataDog/dd-trace-go.v1/contrib/net/http"
-	ddtesting "gopkg.in/DataDog/dd-trace-go.v1/contrib/testing"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/ext"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
@@ -245,25 +244,10 @@ func getEndpointTagValue(t *testing.T) (string, error) {
 // WithTestSpan starts new span with test information.
 func WithTestSpan(ctx context.Context, t *testing.T) (context.Context, func()) {
 	t.Helper()
-	tag, err := getEndpointTagValue(t)
-	if err != nil {
-		t.Log(err.Error())
-		tag = "features"
-	}
-	ctx, finish := ddtesting.StartSpanWithFinish(ctx, t, ddtesting.WithSkipFrames(2), ddtesting.WithSpanOptions(
-		// We need to make the tag be something that is then searchable in monitors
-		// https://docs.datadoghq.com/tracing/guide/metrics_namespace/#errors
-		// "version" is really the only one we can use here
-		// NOTE: version is treated in slightly different way, because it's a special tag;
-		// if we set it in StartSpanFromContext, it would get overwritten
-		tracer.Tag(ext.Version, tag),
-	))
-
 	return ctx, func() {
 		if r := recover(); r != nil {
 			t.Errorf("test paniced: %v", r)
 		}
-		finish()
 	}
 }
 
