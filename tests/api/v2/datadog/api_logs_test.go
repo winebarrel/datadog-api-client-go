@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/DataDog/datadog-api-client-go/tests"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 
-	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+	"github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func TestLogsList(t *testing.T) {

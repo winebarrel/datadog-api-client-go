@@ -10,8 +10,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/DataDog/datadog-api-client-go/api/v1/datadog"
-	"github.com/DataDog/datadog-api-client-go/tests"
+	"github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 )
 
 func TestAuthenticationValidate(t *testing.T) {

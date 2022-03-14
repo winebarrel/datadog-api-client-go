@@ -14,10 +14,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/DataDog/datadog-api-client-go/api/v1/datadog"
 	ddtesting "github.com/DataDog/dd-sdk-go-testing"
 	msgs "github.com/cucumber/messages-go/v12"
 	"github.com/go-bdd/gobdd"
+	"github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 

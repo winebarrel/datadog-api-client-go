@@ -9,7 +9,7 @@ package test
 import (
 	"testing"
 
-	"github.com/DataDog/datadog-api-client-go/tests"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 )
 
 // TestMain starts the tracer.

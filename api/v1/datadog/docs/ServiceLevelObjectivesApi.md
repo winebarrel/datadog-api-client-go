@@ -31,7 +31,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -97,7 +97,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -166,7 +166,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -310,7 +310,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -384,7 +384,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -458,7 +458,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -540,7 +540,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {
@@ -623,7 +623,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {

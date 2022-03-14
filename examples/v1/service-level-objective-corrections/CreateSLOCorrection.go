@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	datadog "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+	datadog "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 )
 
 func main() {

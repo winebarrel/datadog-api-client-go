@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/DataDog/datadog-api-client-go/tests"
 	"github.com/go-bdd/gobdd"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 )
 
 var templateFunctions = map[string]func(map[string]interface{}, string) string{

@@ -26,7 +26,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
@@ -158,7 +158,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
@@ -226,7 +226,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {
@@ -315,7 +315,7 @@ import (
     "encoding/json"
     "fmt"
     "os"
-    datadog "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
+    datadog "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
 )
 
 func main() {

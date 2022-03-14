@@ -18,13 +18,13 @@ import (
 	"strings"
 	"time"
 
-	v1 "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
-	v2 "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	testsV1 "github.com/DataDog/datadog-api-client-go/tests/api/v1/datadog"
-	testsV2 "github.com/DataDog/datadog-api-client-go/tests/api/v2/datadog"
+	v1 "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
+	v2 "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
+	testsV1 "github.com/winebarrel/datadog-api-client-go/tests/api/v1/datadog"
+	testsV2 "github.com/winebarrel/datadog-api-client-go/tests/api/v2/datadog"
 
-	"github.com/DataDog/datadog-api-client-go/tests"
 	"github.com/go-bdd/gobdd"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 )
 
 // UndoAction describes undo action.

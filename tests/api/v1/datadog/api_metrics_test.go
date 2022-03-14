@@ -14,9 +14,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/DataDog/datadog-api-client-go/tests"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 
-	"github.com/DataDog/datadog-api-client-go/api/v1/datadog"
+	"github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
 	"gopkg.in/h2non/gock.v1"
 )
 

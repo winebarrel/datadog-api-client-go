@@ -16,10 +16,10 @@ import (
 	"strconv"
 	"strings"
 
-	v1 "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
-	v2 "github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	"github.com/DataDog/datadog-api-client-go/tests"
 	"github.com/go-bdd/gobdd"
+	v1 "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
+	v2 "github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 	is "gotest.tools/assert/cmp"
 )
 

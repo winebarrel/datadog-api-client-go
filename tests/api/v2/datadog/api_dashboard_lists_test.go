@@ -12,9 +12,9 @@ import (
 	"os"
 	"testing"
 
-	datadogV1 "github.com/DataDog/datadog-api-client-go/api/v1/datadog"
-	"github.com/DataDog/datadog-api-client-go/api/v2/datadog"
-	"github.com/DataDog/datadog-api-client-go/tests"
+	datadogV1 "github.com/winebarrel/datadog-api-client-go/api/v1/datadog"
+	"github.com/winebarrel/datadog-api-client-go/api/v2/datadog"
+	"github.com/winebarrel/datadog-api-client-go/tests"
 )
 
 const (
